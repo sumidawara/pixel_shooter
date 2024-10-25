@@ -4,6 +4,7 @@
 struct God::Impl
 {
 public:
+	//ゲーム
 	std::shared_ptr<World> _ptr_world;
 	std::shared_ptr<Player> _ptr_player;
 	std::shared_ptr<Camera2D> _ptr_camera;
@@ -15,6 +16,13 @@ public:
 	std::shared_ptr<AbilityManager> _ptr_ability_manager;
 	std::shared_ptr<TimeManager> _ptr_time_manager;
 
+	//タイトル
+	std::shared_ptr<TitleSceneGUIManager> _ptr_titlescene_gui_manager;
+
+	//ゲームオーバー
+	std::shared_ptr<GameoverSceneGUIManager> _ptr_gameoverscene_gui_manager;
+
+	//共通
 	SceneType _change_scene_flag;
 };
 
@@ -88,11 +96,6 @@ std::shared_ptr<TimeManager> God::getPtrTimeManager()
 	return p_impl->_ptr_time_manager;
 }
 
-SceneType God::getChangeSceneFlag() const
-{
-	return p_impl->_change_scene_flag;
-}
-
 void God::setPtrWorld(const std::shared_ptr<World>& ptr_world) const
 {
 	p_impl->_ptr_world = ptr_world;
@@ -143,6 +146,33 @@ void God::setTimeManager(const std::shared_ptr<TimeManager>& ptr_time_manager)
 	p_impl->_ptr_time_manager = ptr_time_manager;
 }
 
+std::shared_ptr<TitleSceneGUIManager> God::getTitleSceneGUIManager() const
+{
+	return p_impl->_ptr_titlescene_gui_manager;
+}
+
+void God::setTitleSceneGUIManager(const std::shared_ptr<TitleSceneGUIManager>& value)
+{
+	p_impl->_ptr_titlescene_gui_manager = value;
+}
+
+std::shared_ptr<GameoverSceneGUIManager> God::getGameoverSceneGUIManager() const
+{
+	return p_impl->_ptr_gameoverscene_gui_manager;
+}
+
+void God::setGameoverSceneGUIManager(const std::shared_ptr<GameoverSceneGUIManager>& value)
+{
+	p_impl->_ptr_gameoverscene_gui_manager = value;
+}
+
+
+//共通
+
+SceneType God::getChangeSceneFlag() const
+{
+	return p_impl->_change_scene_flag;
+}
 void God::setChangeSceneFlag(SceneType value)
 {
 	p_impl->_change_scene_flag = value;

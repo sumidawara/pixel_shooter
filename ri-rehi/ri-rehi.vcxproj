@@ -133,6 +133,87 @@
     <ClCompile Include="EnemyManager.cpp" />
     <ClCompile Include="Enum.cpp" />
     <ClCompile Include="FrameSequencer.cpp" />
+    <ClCompile Include="GameoverScene\GameoverMenu.cpp" />
+    <ClCompile Include="GameoverScene\GameoverSceneGUI.cpp" />
+    <ClCompile Include="GameoverScene\GameoverSceneGUIManager.cpp" />
+    <ClCompile Include="GameScene.cpp">
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <Optimization>Disabled</Optimization>
+      <SupportJustMyCode>true</SupportJustMyCode>
+      <AssemblerOutput>NoListing</AssemblerOutput>
+      <AssemblerListingLocation>E:\root\development\c++\siv3d\ri-rehi\Intermediate\ri-rehi\Debug\Intermediate\</AssemblerListingLocation>
+      <UndefineAllPreprocessorDefinitions>false</UndefineAllPreprocessorDefinitions>
+      <BrowseInformation>false</BrowseInformation>
+      <BrowseInformationFile>E:\root\development\c++\siv3d\ri-rehi\Intermediate\ri-rehi\Debug\Intermediate\</BrowseInformationFile>
+      <CompileAs>Default</CompileAs>
+      <ConformanceMode>true</ConformanceMode>
+      <DiagnosticsFormat>Column</DiagnosticsFormat>
+      <DisableLanguageExtensions>false</DisableLanguageExtensions>
+      <ErrorReporting>Prompt</ErrorReporting>
+      <ExpandAttributedSource>false</ExpandAttributedSource>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <EnableASAN>false</EnableASAN>
+      <EnableFuzzer>false</EnableFuzzer>
+      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <ForcedIncludeFiles>stdafx.h;</ForcedIncludeFiles>
+      <GenerateModuleDependencies>false</GenerateModuleDependencies>
+      <GenerateSourceDependencies>false</GenerateSourceDependencies>
+      <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <LanguageStandard_C>Default</LanguageStandard_C>
+      <MinimalRebuild>false</MinimalRebuild>
+      <ModuleDependenciesFile>E:\root\development\c++\siv3d\ri-rehi\Intermediate\ri-rehi\Debug\Intermediate\</ModuleDependenciesFile>
+      <ModuleOutputFile>E:\root\development\c++\siv3d\ri-rehi\Intermediate\ri-rehi\Debug\Intermediate\</ModuleOutputFile>
+      <OmitDefaultLibName>false</OmitDefaultLibName>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <ObjectFileName>E:\root\development\c++\siv3d\ri-rehi\Intermediate\ri-rehi\Debug\Intermediate\</ObjectFileName>
+      <CallingConvention>Cdecl</CallingConvention>
+      <ProgramDataBaseFileName>E:\root\development\c++\siv3d\ri-rehi\Intermediate\ri-rehi\Debug\Intermediate\vc143.pdb</ProgramDataBaseFileName>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>E:\root\development\c++\siv3d\ri-rehi\Intermediate\ri-rehi\Debug\Intermediate\ri-rehi(debug).pch</PrecompiledHeaderOutputFile>
+      <PreprocessToFile>false</PreprocessToFile>
+      <PreprocessKeepComments>false</PreprocessKeepComments>
+      <PreprocessSuppressLineNumbers>false</PreprocessSuppressLineNumbers>
+      <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+      <ShowIncludes>false</ShowIncludes>
+      <SourceDependenciesFile>E:\root\development\c++\siv3d\ri-rehi\Intermediate\ri-rehi\Debug\Intermediate\</SourceDependenciesFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
+      <SmallerTypeCheck>false</SmallerTypeCheck>
+      <SpectreMitigation>false</SpectreMitigation>
+      <StructMemberAlignment>Default</StructMemberAlignment>
+      <TrackerLogDirectory>E:\root\development\c++\siv3d\ri-rehi\Intermediate\ri-rehi\Debug\Intermediate\ri-rehi.tlog\</TrackerLogDirectory>
+      <TranslateIncludes>false</TranslateIncludes>
+      <MinimalRebuildFromTracking>true</MinimalRebuildFromTracking>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <UseFullPaths>true</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <XMLDocumentationFileName>E:\root\development\c++\siv3d\ri-rehi\Intermediate\ri-rehi\Debug\Intermediate\</XMLDocumentationFileName>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <IntelJCCErratum>false</IntelJCCErratum>
+      <BuildStlModules>false</BuildStlModules>
+      <TreatAngleIncludeAsExternal>false</TreatAngleIncludeAsExternal>
+      <ExternalWarningLevel>InheritWarningLevel</ExternalWarningLevel>
+      <TreatExternalTemplatesAsInternal>true</TreatExternalTemplatesAsInternal>
+      <DisableAnalyzeExternal>false</DisableAnalyzeExternal>
+      <PreprocessorDefinitions>_DEBUG;_WINDOWS;_ENABLE_EXTENDED_ALIGNED_STORAGE;_SILENCE_CXX20_CISO646_REMOVED_WARNING;_SILENCE_ALL_CXX23_DEPRECATION_WARNINGS;_SILENCE_ALL_MS_EXT_DEPRECATION_WARNINGS;_UNICODE;UNICODE;</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DisableSpecificWarnings>26451;26812;</DisableSpecificWarnings>
+      <AdditionalOptions>/Zc:__cplusplus </AdditionalOptions>
+      <LinkCompiled>true</LinkCompiled>
+    </ClCompile>
     <ClCompile Include="God.cpp" />
     <ClCompile Include="GraphicSetting.cpp" />
     <ClCompile Include="GUI\Component\Button.cpp" />
@@ -396,8 +477,7 @@
     <ClCompile Include="Player\PlayerStateManager.cpp" />
     <ClCompile Include="Player\ShotManager.cpp" />
     <ClCompile Include="Reloader.cpp" />
-    <ClCompile Include="Scene\GameoverScene.cpp" />
-    <ClCompile Include="Scene\GameScene.cpp" />
+    <ClCompile Include="GameoverScene\GameoverScene.cpp" />
     <ClCompile Include="Slime.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -561,6 +641,7 @@
       <AdditionalOptions>/Zc:__cplusplus </AdditionalOptions>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
+    <ClCompile Include="TitleScene\TitleSceneGUIManager.cpp" />
     <ClCompile Include="TitleScene\TitleSceneMenu.cpp">
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -863,6 +944,10 @@
     <ClInclude Include="EnemyManager.h" />
     <ClInclude Include="Enum.h" />
     <ClInclude Include="FrameSequencer.h" />
+    <ClInclude Include="GameoverScene\GameoverMenu.h" />
+    <ClInclude Include="GameoverScene\GameoverSceneGUI.h" />
+    <ClInclude Include="GameoverScene\GameoverSceneGUIManager.h" />
+    <ClInclude Include="GameScene.h" />
     <ClInclude Include="God.h" />
     <ClInclude Include="GraphicSetting.h" />
     <ClInclude Include="GUI\Component\Button.h" />
@@ -894,14 +979,14 @@
     <ClInclude Include="Player\PlayerStateManager.h" />
     <ClInclude Include="Player\ShotManager.h" />
     <ClInclude Include="Reloader.h" />
-    <ClInclude Include="Scene\GameoverScene.h" />
-    <ClInclude Include="Scene\GameScene.h" />
+    <ClInclude Include="GameoverScene\GameoverScene.h" />
     <ClInclude Include="Slime.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="StillBehavior.h" />
     <ClInclude Include="TimeManager.h" />
     <ClInclude Include="TitleScene\TitleScene.h" />
     <ClInclude Include="TitleScene\TitleSceneGUI.h" />
+    <ClInclude Include="TitleScene\TitleSceneGUIManager.h" />
     <ClInclude Include="TitleScene\TitleSceneMenu.h" />
     <ClInclude Include="WanderBehavior.h" />
     <ClInclude Include="World.h" />

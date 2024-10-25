@@ -2,9 +2,9 @@
 #include <Siv3D.hpp> // OpenSiv3D v0.6.3
 #include "Player/Player.h"
 #include "DebugSetting.h"
-#include "Scene/GameoverScene.h"
+#include "GameoverScene/GameoverScene.h"
 
-#include "Scene/GameScene.h"
+#include "GameScene.h"
 #include "TitleScene/TitleScene.h"
 
 
@@ -32,7 +32,7 @@ void Main()
 	manager.add<GameoverScene>(Sc_Gameover);
 	manager.add<TitleScene>(Sc_Title);
 
-	manager.init(Sc_Game, 0.0);
+	manager.init(Sc_Game, 500);
 
 	while (System::Update())
 	{

@@ -4,8 +4,10 @@
 #include "TimeManager.h"
 #include "Player/Player.h"
 #include "World.h"
+#include "GameoverScene/GameoverSceneGUIManager.h"
 #include "GUI/GameScene/GameSceneGUI.h"
 #include "GUI/GameScene/GameSceneGUIManager.h"
+#include "TitleScene/TitleSceneGUIManager.h"
 
 class God
 {
@@ -16,6 +18,8 @@ public:
     God& operator=(God&&) = delete;
 
     static God& getInstance();
+
+	//ゲーム
 
 	World getWorld() const;
 	Player getPlayer() const;
@@ -34,8 +38,6 @@ public:
 	std::shared_ptr<AbilityManager> getPtrAbilityManager();
 	std::shared_ptr<TimeManager> getPtrTimeManager();
 
-	SceneType getChangeSceneFlag() const;
-
 	void setPtrWorld(const std::shared_ptr<World>& ptr_world) const;
 	void setPtrPlayer(const std::shared_ptr<Player>& ptr_player) const;
 	void setPtrCamera(const std::shared_ptr<Camera2D>& ptr_camera);
@@ -47,6 +49,18 @@ public:
 	void setAbilityManager(const std::shared_ptr<AbilityManager>& ptr_ability_manager);
 	void setTimeManager(const std::shared_ptr<TimeManager>& ptr_time_manager);
 
+	//タイトル
+	std::shared_ptr<TitleSceneGUIManager> getTitleSceneGUIManager() const;
+
+	void setTitleSceneGUIManager(const std::shared_ptr<TitleSceneGUIManager>& value);
+
+	//ゲームオーバー
+	std::shared_ptr<GameoverSceneGUIManager> getGameoverSceneGUIManager() const;
+
+	void setGameoverSceneGUIManager(const std::shared_ptr<GameoverSceneGUIManager>& value);
+
+	//共通
+	SceneType getChangeSceneFlag() const;
 	void setChangeSceneFlag(SceneType value);
 
 private:

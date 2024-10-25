@@ -8,8 +8,13 @@
 #include "AssetManager.h"
 #include "God.h"
 
-GameScene::GameScene(const InitData& init)
-	: IScene{ init }
+GameScene::GameScene(const InitData& init_data)
+	: IScene{ init_data }
+{
+	init();
+}
+
+void GameScene::init()
 {
 	_ptr_world = std::make_shared<World>();
 	_ptr_player = std::make_shared<Player>();
@@ -27,7 +32,7 @@ GameScene::GameScene(const InitData& init)
 	God::getInstance().setCollisionManager(_ptr_collision_manager);
 
 	_ptr_world->init({0, 0}, U"resources/world/world.json");
-    _ptr_player->init({200, 200});
+	_ptr_player->init({200, 200});
 	_ptr_camera->setParameters(Camera2DParameters::NoControl());
 	_ptr_gamescene_gui->init();
 	_ptr_gamescene_gui_manager->init();
@@ -37,7 +42,7 @@ GameScene::GameScene(const InitData& init)
 	_cursor.init();
 
 	God::getInstance().setPtrWorld(_ptr_world);
-    God::getInstance().setPtrPlayer(_ptr_player);
+	God::getInstance().setPtrPlayer(_ptr_player);
 	God::getInstance().setPtrCamera(_ptr_camera);
 	God::getInstance().setParticleManager(_ptr_particle_manager);
 	God::getInstance().setBulletManager(_ptr_bullet_manager);
@@ -49,7 +54,7 @@ GameScene::GameScene(const InitData& init)
 
 	_ptr_enemy_manager->init();
 
-    Debug::getInstance().init();
+	Debug::getInstance().init();
 
 	//ICollidableの登録
 	God::getInstance().addICollidable(_ptr_player);
@@ -61,10 +66,6 @@ GameScene::GameScene(const InitData& init)
 			God::getInstance().addICollidable(ptr_block);
 		}
 	}
-}
-
-void GameScene::init()
-{
 }
 
 void GameScene::update()
@@ -95,11 +96,18 @@ void GameScene::update()
 
 	if(_ptr_player->getPtrPlayerStateManager()->getPlayerState().current_hp == 0)
 	{
+		God::getInstance().setChangeSceneFlag(Sc_None);
 		changeScene(Sc_Gameover);
 	}
 	if(God::getInstance().getChangeSceneFlag() == Sc_Title)
 	{
-		changeScene(Sc_Title);
+		God::getInstance().setChangeSceneFlag(Sc_None);
+		changeScene(Sc_Title, 1000);
+	}
+	if(God::getInstance().getChangeSceneFlag() == Sc_Game)
+	{
+		God::getInstance().setChangeSceneFlag(Sc_None);
+		init();
 	}
 
 	//Debug::getInstance().writeline(9, FileSystem::CurrentDirectory());
@@ -137,10 +145,20 @@ void GameScene::draw() const
 
 void GameScene::drawFadeIn(double t) const
 {
+	Vec2 pos = {0, 0};
+	Vec2 size = { (1 - t) * Scene::Size().x, Scene::Size().y};
+	RectF fade_in_background = {pos, size};
+
 	draw();
+	fade_in_background.draw(Palette::Black);
 }
 
 void GameScene::drawFadeOut(double t) const
 {
+	Vec2 pos = {0, 0};
+	Vec2 size = { t * Scene::Size().x, Scene::Size().y};
+	RectF fade_in_background = {pos, size};
+
 	draw();
+	fade_in_background.draw(Palette::Black);
 }
