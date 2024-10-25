@@ -1,13 +1,10 @@
 ﻿#pragma once
-#include "GUI/StatusBar/HPBar.h"
 
-
-class StatusBar
+class GameSceneGUI
 {
 public:
-	StatusBar();
-	void init(Vec2 pos);
-
+	GameSceneGUI();
+	void init();
 	void update(double delta_time);
 	void draw() const;
 

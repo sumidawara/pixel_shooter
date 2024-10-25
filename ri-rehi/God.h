@@ -4,8 +4,8 @@
 #include "TimeManager.h"
 #include "Player/Player.h"
 #include "World.h"
-#include "GUI/GameSceneGUI.h"
-#include "GUI/GameSceneGUIManager.h"
+#include "GUI/GameScene/GameSceneGUI.h"
+#include "GUI/GameScene/GameSceneGUIManager.h"
 
 class God
 {

@@ -3,6 +3,7 @@
 
 #include "GameSceneMenu.h"
 #include "AbilitySelectBlock/AbilitySelectBlock.h"
+#include "StatusBar/StatusBar.h"
 #include "God.h"
 
 struct GameSceneGUI::Impl

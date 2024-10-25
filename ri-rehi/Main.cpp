@@ -25,6 +25,8 @@ void Main()
 
 	FileSystem::ChangeCurrentDirectory( U"E:/root/development/c++/siv3d/vanpire_survival_like_game_1/vanpire_survival_like_game_1/App");
 
+	//Console << FileSystem::ModulePath();
+
 	App manager;
 	manager.add<GameScene>(Sc_Game);
 	manager.add<GameoverScene>(Sc_Gameover);

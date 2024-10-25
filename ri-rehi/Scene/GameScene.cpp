@@ -101,6 +101,8 @@ void GameScene::update()
 	{
 		changeScene(Sc_Title);
 	}
+
+	//Debug::getInstance().writeline(9, FileSystem::CurrentDirectory());
 }
 
 void GameScene::draw() const

@@ -5,12 +5,12 @@
 #include "World.h"
 #include "Debug.h"
 #include "Slime.h"
-#include "GUI/GameSceneGUI.h"
+#include "GUI/GameScene/GameSceneGUI.h"
 #include "Particle/ParticleManager.h"
 #include "EnemyManager.h"
 #include "TimeManager.h"
 #include "GUI/CursorEx.h"
-#include "GUI/GameSceneGUIManager.h"
+#include "GUI/GameScene/GameSceneGUIManager.h"
 
 using App = SceneManager<SceneType>;
 

@@ -1,5 +1,6 @@
 ﻿#include "stdafx.h"
 #include "StatusBar.h"
+
 #include "HPBlock.h"
 #include "ExpBlock.h"
 #include "God.h"

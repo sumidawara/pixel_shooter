@@ -3,7 +3,7 @@
 
 #include "God.h"
 #include "GraphicSetting.h"
-#include "Component/Button.h"
+#include "GUI/Component/Button.h"
 
 struct GameSceneMenu::Impl
 {
