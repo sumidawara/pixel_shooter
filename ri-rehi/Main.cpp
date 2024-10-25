@@ -24,7 +24,6 @@ void Main()
 	Scene::SetBackground(Palette::Pink);
 
 	FileSystem::ChangeCurrentDirectory( U"E:/root/development/c++/siv3d/vanpire_survival_like_game_1/vanpire_survival_like_game_1/App");
-	FileSystem::ChangeCurrentDirectory( U"C:/Users/mrkei/root/development/C++/siv3d/vampire_survival_like_game/vanpire_survival_like_game_1/App");
 
 	App manager;
 	manager.add<GameScene>(Sc_Game);

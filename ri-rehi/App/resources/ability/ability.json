@@ -1,0 +1,38 @@
+{
+    "abilities":[
+        {
+            "id":100,
+            "required_id":[],
+            "parameter":[{
+                "max_hp":10
+            }],
+
+            "title":"HP上昇",
+            "icon_large_assetname":"blankicon_large",
+            "description_list":["HP +10"]
+        },
+        {
+            "id":101,
+            "required_id":[],
+            "parameter":[{
+                "defence":1
+            }],
+
+            "title":"防御力上昇",
+            "icon_large_assetname":"blankicon_large",
+            "description_list":["defence +1"]
+        },
+        {
+            "id":102,
+            "required_id":[],
+            "parameter":[{
+                "ranged_damage":1
+            }],
+
+            "title":"遠距離攻撃力上昇",
+            "icon_large_assetname":"blankicon_large",
+            "description_list":["ranged damage +1"]
+        }
+    ]
+    
+}

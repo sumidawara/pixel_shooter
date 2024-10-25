@@ -118,6 +118,7 @@
     <ClCompile Include="Ability.cpp" />
     <ClCompile Include="AbilityContext.cpp" />
     <ClCompile Include="AbilityManager.cpp" />
+    <None Include="App\resources\shader\shader.hlsl" />
     <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="Block.cpp" />
     <ClCompile Include="Bullet\Bullet.cpp" />
@@ -529,6 +530,44 @@
     <Folder Include="GUI\GameScene\StatusBar\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App\resources\ability\ability.json" />
+    <Content Include="App\resources\font\PixelMplus12-Bold.ttf" />
+    <Content Include="App\resources\font\PixelMplus12-Regular.ttf" />
+    <Content Include="App\resources\img\blankicon.png" />
+    <Content Include="App\resources\img\cursor.png" />
+    <Content Include="App\resources\img\empty32x32.png" />
+    <Content Include="App\resources\img\liebesrechner32x32_run.png" />
+    <Content Include="App\resources\img\liebesrechner32x32_stand.png" />
+    <Content Include="App\resources\img\slime.png" />
+    <Content Include="App\resources\img\tilemap.png" />
+    <Content Include="App\resources\output\extended_tilemap.png" />
+    <Content Include="App\resources\output\tilemap0_0.png" />
+    <Content Include="App\resources\output\tilemap0_1.png" />
+    <Content Include="App\resources\output\tilemap0_2.png" />
+    <Content Include="App\resources\output\tilemap0_3.png" />
+    <Content Include="App\resources\output\tilemap0_4.png" />
+    <Content Include="App\resources\output\tilemap1_0.png" />
+    <Content Include="App\resources\output\tilemap1_1.png" />
+    <Content Include="App\resources\output\tilemap1_2.png" />
+    <Content Include="App\resources\output\tilemap1_3.png" />
+    <Content Include="App\resources\output\tilemap1_4.png" />
+    <Content Include="App\resources\output\tilemap2_0.png" />
+    <Content Include="App\resources\output\tilemap2_1.png" />
+    <Content Include="App\resources\output\tilemap2_2.png" />
+    <Content Include="App\resources\output\tilemap2_3.png" />
+    <Content Include="App\resources\output\tilemap2_4.png" />
+    <Content Include="App\resources\output\tilemap3_0.png" />
+    <Content Include="App\resources\output\tilemap3_1.png" />
+    <Content Include="App\resources\output\tilemap3_2.png" />
+    <Content Include="App\resources\output\tilemap3_3.png" />
+    <Content Include="App\resources\output\tilemap3_4.png" />
+    <Content Include="App\resources\output\tilemap4_0.png" />
+    <Content Include="App\resources\output\tilemap4_1.png" />
+    <Content Include="App\resources\output\tilemap4_2.png" />
+    <Content Include="App\resources\output\tilemap4_3.png" />
+    <Content Include="App\resources\output\tilemap4_4.png" />
+    <Content Include="App\resources\output\����������.png" />
+    <Content Include="App\resources\world\world.json" />
     <Content Include="ri-rehi.vcxproj.filters" />
     <Content Include="ri-rehi.vcxproj.user" />
   </ItemGroup>
