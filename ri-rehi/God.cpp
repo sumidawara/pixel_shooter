@@ -61,14 +61,9 @@ std::shared_ptr<ParticleManager> God::getPtrParticleManager()
 	return p_impl->_ptr_particle_manager;
 }
 
-void God::addBullet(const std::shared_ptr<Bullet>& ptr_bullet) const
+std::shared_ptr<BulletManager> God::getBulletManager()
 {
-	p_impl->_ptr_bullet_manager->addBullet(ptr_bullet);
-}
-
-void God::removeBullet(const std::shared_ptr<Bullet>& ptr_bullet) const
-{
-	p_impl->_ptr_bullet_manager->removeBullet(ptr_bullet);
+	return p_impl->_ptr_bullet_manager;
 }
 
 std::shared_ptr<GameSceneGUIManager> God::getPtrGameSceneGUIManager()

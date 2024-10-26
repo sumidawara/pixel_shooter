@@ -29,7 +29,7 @@ struct ShotManager::Impl
 
 		auto ptr_bullet = std::make_shared<Bullet>();
 		ptr_bullet->init(context);
-		God::getInstance().addBullet(ptr_bullet);
+		God::getInstance().getBulletManager()->addBullet(ptr_bullet);
 	}
 
 	void mouse_pressed(double delta_time)
