@@ -7,7 +7,7 @@ class Bullet : public ICollidable
 {
 public:
 	Bullet();
-	void init(BulletContext bullet_context);
+	void init(const BulletContext& bullet_context);
 	void update(double delta_time);
 	void draw() const;
 

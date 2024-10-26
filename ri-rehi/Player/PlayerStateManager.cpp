@@ -79,7 +79,7 @@ void PlayerStateManager::init()
 	p_impl->_ptr_player_state->bullet_range = 600;
 	p_impl->_ptr_player_state->bullet_size = 10;
 	p_impl->_ptr_player_state->bullet_speed = 400;
-	p_impl->_ptr_player_state->reflection_count = 1;
+	p_impl->_ptr_player_state->reflection_count = 2;
 	p_impl->_ptr_player_state->penetration_count = 0;
 
 	p_impl->_ptr_player_state->is_invincible = false;

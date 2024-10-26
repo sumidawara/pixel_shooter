@@ -131,7 +131,7 @@ Bullet::Bullet() : p_impl(std::make_shared<Impl>())
 {
 }
 
-void Bullet::init(BulletContext bullet_context)
+void Bullet::init(const BulletContext& bullet_context)
 {
 	p_impl->_rectf = bullet_context.rectf;
 	p_impl->_direction = bullet_context.direction;

@@ -65,6 +65,8 @@ struct CollisionManager::Impl
 
 					casted_ptr_block->onCollision(*ptr_entity_i);
 					ptr_entity_i->onCollision(*casted_ptr_block);
+
+					break;
 				}
 			}
 		}
