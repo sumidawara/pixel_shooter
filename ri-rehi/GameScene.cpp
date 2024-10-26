@@ -39,7 +39,7 @@ void GameScene::init()
 	_ptr_world->init({0, 0}, U"resources/world/world.json");
 	God::getInstance().setPtrWorld(_ptr_world);
 
-	_ptr_player->init({200, 200});
+	_ptr_player->init(God::getInstance().getInitialPlayerPos());
 	_ptr_camera->setParameters(Camera2DParameters::NoControl());
 	_ptr_gamescene_gui->init();
 	_ptr_gamescene_gui_manager->init();

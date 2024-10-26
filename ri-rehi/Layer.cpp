@@ -10,6 +10,7 @@ struct Layer::Impl
 	std::shared_ptr<Grid<int32>> _index_grid;
 	std::shared_ptr<Grid<std::shared_ptr<Block>>> _block_grid;
 
+	Vec2 _world_pos;
 	Point _world_size;
 
 	LayerType _layer_type;
@@ -17,6 +18,7 @@ struct Layer::Impl
 	void initGrids(const LayerJsonData& layer_json_data)
 	{
 		auto world_size = layer_json_data.world_size;
+		_world_pos = layer_json_data.world_pos;
 		_world_size = world_size;
 
 		_index_grid = std::make_shared<Grid<int32>>(world_size.x, world_size.y, -1);
@@ -67,10 +69,13 @@ struct Layer::Impl
 				switch (_index_grid->at(gy, gx))
 				{
 				case TileIndexKey::player:
-					//God::setInitialPlayerPos()
+					auto initial_player_pos = indexPos2worldPos(Point{gx, gy}, true);
+					God::getInstance().setInitialPlayerPos(initial_player_pos);
 					break;
 
 				case TileIndexKey::exit:
+					auto exit_pos = indexPos2worldPos(Point{gx, gy}, true);
+					God::getInstance().setExitPos(exit_pos);
 					break;
 
 				case TileIndexKey::slime:
@@ -78,6 +83,20 @@ struct Layer::Impl
 				}
 			}
 		}
+	}
+
+	Vec2 indexPos2worldPos(Point index_pos, bool is_center)
+	{
+		auto NORMAL_WIDTH = GraphicSetting::getNormalTileWidth();
+		auto NORMAL_HEIGHT = GraphicSetting::getNormalTileHeight();
+		Vec2 worldpos = {_world_pos.x + index_pos.x * NORMAL_WIDTH, _world_pos.y + index_pos.y * NORMAL_HEIGHT};
+
+		if (is_center)
+		{
+			worldpos += Vec2{NORMAL_WIDTH / 2, NORMAL_HEIGHT / 2};
+		}
+
+		return worldpos;
 	}
 };
 
@@ -98,6 +117,7 @@ void Layer::init(const LayerJsonData& layer_json_data, LayerType layer_type)
 		break;
 	case L_EntityPlacement:
 		p_impl->initGrids(layer_json_data);
+		p_impl->placeEntity();
 		break;
 	}
 }
