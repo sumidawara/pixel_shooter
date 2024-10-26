@@ -1,6 +1,7 @@
 ﻿#include "stdafx.h"
 #include "GameoverMenu.h"
 
+#include "AssetKey.h"
 #include "God.h"
 #include "GUI/Component/Button.h"
 
@@ -47,7 +48,7 @@ void GameoverMenu::init()
 {
 	Vec2 btn_size = {180, 50};
 	double btn_interval = 30 + btn_size.y;
-	AssetName font_asset_name = U"pixel_b48";
+	AssetNameView font_asset_name = AssetKey::pixel_b48;
 
 	auto center_pos = Arg::center(Scene::Width() / 2, Scene::Height() / 2);
 	auto rectf_size = Vec2{400, 300};

@@ -119,6 +119,7 @@
     <ClCompile Include="AbilityContext.cpp" />
     <ClCompile Include="AbilityManager.cpp" />
     <None Include="App\resources\shader\shader.hlsl" />
+    <ClCompile Include="AssetKey.cpp" />
     <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="Block.cpp" />
     <ClCompile Include="Bullet\Bullet.cpp" />
@@ -930,6 +931,7 @@
     <ClInclude Include="Ability.h" />
     <ClInclude Include="AbilityContext.h" />
     <ClInclude Include="AbilityManager.h" />
+    <ClInclude Include="AssetKey.h" />
     <ClInclude Include="AssetManager.h" />
     <ClInclude Include="Block.h" />
     <ClInclude Include="Bullet\Bullet.h" />

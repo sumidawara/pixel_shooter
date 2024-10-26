@@ -21,7 +21,7 @@ Button::Button() : p_impl(std::make_shared<Impl>())
 {
 }
 
-void Button::init(const RectF& rectf, const String& text, const AssetName& font_asset_name)
+void Button::init(const RectF& rectf, const String& text, const AssetNameView& font_asset_name)
 {
 	p_impl->_rectf = rectf;
 	p_impl->_text = text;

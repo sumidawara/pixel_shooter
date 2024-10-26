@@ -1,5 +1,7 @@
 ﻿#include "stdafx.h"
 #include "AssetManager.h"
+
+#include "AssetKey.h"
 #include "GraphicSetting.h"
 
 int32 AssetManager::_tilemap_g_width = 5;
@@ -37,31 +39,25 @@ void AssetManager::registerImage()
 	Image original_tilemap_image{ U"resources/img/tilemap.png" };
 	Image scaled_tilemap_image = original_tilemap_image.scale(SCALE_RATE, InterpolationAlgorithm::Nearest);
 	Image extended_tilemap = tileMapExtend(scaled_tilemap_image);
-	TextureAsset::Register(U"extended_tilemap", image2TextureAssetData(extended_tilemap));
 	registerTileFromTileMap(extended_tilemap);
-
-	//空のタイル
-	Image original_empty32x32_image{U"resources/img/empty32x32.png"};
-	TextureAsset::Register(U"empty32x32", image2TextureAssetData(original_empty32x32_image.scale(SCALE_RATE, InterpolationAlgorithm::Nearest)));
-
-	//Abilityのアイコン
-	//空
-	Image original_blankicon_image{U"resources/img/blankicon.png"};
-	TextureAsset::Register(U"blankicon_small", image2TextureAssetData(original_blankicon_image));
-	TextureAsset::Register(U"blankicon_large", image2TextureAssetData(original_blankicon_image.scale(8, InterpolationAlgorithm::Nearest)));
 
 	//プレイヤー
 	Image original_liebesrechner_stand_image{ U"resources/img/liebesrechner32x32_stand.png" };
 	Image scaled_liebesrechner_stand_image = original_liebesrechner_stand_image.scale(SCALE_RATE, InterpolationAlgorithm::Nearest);
-	TextureAsset::Register(U"liebesrechner_stand", image2TextureAssetData(scaled_liebesrechner_stand_image));
+	TextureAsset::Register(AssetKey::liebesrechner_stand, image2TextureAssetData(scaled_liebesrechner_stand_image));
 
 	Image original_liebesrechner_run_image{ U"resources/img/liebesrechner32x32_run.png" };
 	Image scaled_liebesrechner_run_image = original_liebesrechner_run_image.scale(SCALE_RATE, InterpolationAlgorithm::Nearest);
-	TextureAsset::Register(U"liebesrechner_run", image2TextureAssetData(scaled_liebesrechner_run_image));
+	TextureAsset::Register(AssetKey::liebesrechner_run, image2TextureAssetData(scaled_liebesrechner_run_image));
 
 	//スライム
 	Image original_slime_image{ U"resources/img/slime.png" };
-	TextureAsset::Register(U"slime", image2TextureAssetData(original_slime_image.scale(SCALE_RATE, InterpolationAlgorithm::Nearest)));
+	TextureAsset::Register(AssetKey::slime, image2TextureAssetData(original_slime_image.scale(SCALE_RATE, InterpolationAlgorithm::Nearest)));
+
+	//Abilityのアイコン
+	Image original_blankicon_image{U"resources/img/blankicon.png"};
+	TextureAsset::Register(U"blankicon_small", image2TextureAssetData(original_blankicon_image));
+	TextureAsset::Register(U"blankicon_large", image2TextureAssetData(original_blankicon_image.scale(8, InterpolationAlgorithm::Nearest)));
 }
 
 void AssetManager::registerFont()
@@ -69,25 +65,25 @@ void AssetManager::registerFont()
 	String pixel_m_plus_12_url = U"resources/font/PixelMplus12-Regular.ttf";
 	String pixel_m_plus_12_bold_url = U"resources/font/PixelMplus12-Bold.ttf";
 
-	FontAsset::Register(U"pixel_12", 12, pixel_m_plus_12_url);
-	FontAsset::Register(U"pixel_24", 24, pixel_m_plus_12_url);
-	FontAsset::Register(U"pixel_36", 36, pixel_m_plus_12_url);
-	FontAsset::Register(U"pixel_48", 48, pixel_m_plus_12_url);
-	FontAsset::Register(U"pixel_60", 60, pixel_m_plus_12_url);
+	// FontAsset::Register(U"pixel_12", 12, pixel_m_plus_12_url);
+	// FontAsset::Register(U"pixel_24", 24, pixel_m_plus_12_url);
+	// FontAsset::Register(U"pixel_36", 36, pixel_m_plus_12_url);
+	// FontAsset::Register(U"pixel_48", 48, pixel_m_plus_12_url);
+	// FontAsset::Register(U"pixel_60", 60, pixel_m_plus_12_url);
 
-	FontAsset::Register(U"pixel_b12", 12, pixel_m_plus_12_bold_url);
-	FontAsset::Register(U"pixel_b18", 18, pixel_m_plus_12_bold_url);
-	FontAsset::Register(U"pixel_b24", 24, pixel_m_plus_12_bold_url);
-	FontAsset::Register(U"pixel_b30", 30, pixel_m_plus_12_bold_url);
-	FontAsset::Register(U"pixel_b36", 36, pixel_m_plus_12_bold_url);
-	FontAsset::Register(U"pixel_b48", 48, pixel_m_plus_12_bold_url);
-	FontAsset::Register(U"pixel_b60", 60, pixel_m_plus_12_bold_url);
-	FontAsset::Register(U"pixel_b80", 80, pixel_m_plus_12_bold_url);
+	FontAsset::Register(AssetKey::pixel_b12, 12, pixel_m_plus_12_bold_url);
+	FontAsset::Register(AssetKey::pixel_b18, 18, pixel_m_plus_12_bold_url);
+	FontAsset::Register(AssetKey::pixel_b24, 24, pixel_m_plus_12_bold_url);
+	FontAsset::Register(AssetKey::pixel_b30, 30, pixel_m_plus_12_bold_url);
+	FontAsset::Register(AssetKey::pixel_b36, 36, pixel_m_plus_12_bold_url);
+	FontAsset::Register(AssetKey::pixel_b48, 48, pixel_m_plus_12_bold_url);
+	FontAsset::Register(AssetKey::pixel_b60, 60, pixel_m_plus_12_bold_url);
+	FontAsset::Register(AssetKey::pixel_b80, 80, pixel_m_plus_12_bold_url);
 }
 
 void AssetManager::registerPixelShader()
 {
-	PixelShaderAsset::Register(U"ps_default", HLSL{U"resources/shader/shader.hlsl", U"PS_Texture"});
+	PixelShaderAsset::Register(AssetKey::ps_default, HLSL{U"resources/shader/shader.hlsl", U"PS_Texture"});
 }
 
 std::unique_ptr<TextureAssetData> AssetManager::image2TextureAssetData(Image image)

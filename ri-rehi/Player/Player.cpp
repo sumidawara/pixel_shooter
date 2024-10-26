@@ -1,6 +1,7 @@
 ﻿#include "stdafx.h"
 #include "Player.h"
 
+#include "AssetKey.h"
 #include "DebugSetting.h"
 #include "Bullet/Bullet.h"
 #include "GraphicSetting.h"
@@ -144,7 +145,7 @@ void Player::draw() const
 	{
 		int32 NORMAL_TILE_WIDTH = GraphicSetting::getNormalTileWidth();
 		int32 NORMAL_TILE_HEIGHT = GraphicSetting::getNormalTileHeight();
-		TextureAsset(U"liebesrechner_run")(
+		TextureAsset(AssetKey::liebesrechner_run)(
 			p_impl->_animation_frame_sequencer.getCurrentIndex() * NORMAL_TILE_WIDTH,
 			0,
 			NORMAL_TILE_WIDTH,
@@ -153,7 +154,7 @@ void Player::draw() const
 	}
 	else
 	{
-		TextureAsset(U"liebesrechner_stand").mirrored(p_impl->_is_right_face).drawAt(p_impl->_rectf.center());
+		TextureAsset(AssetKey::liebesrechner_stand).mirrored(p_impl->_is_right_face).drawAt(p_impl->_rectf.center());
 	}
 
 	//衝突判定の描画

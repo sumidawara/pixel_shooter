@@ -1,6 +1,7 @@
 ﻿#include "stdafx.h"
 #include "DamageAmountParticle.h"
 
+#include "AssetKey.h"
 #include "DebugSetting.h"
 
 struct DamageAmountParticle::Impl
@@ -36,8 +37,8 @@ bool DamageAmountParticle::update(double delta_time, double accumulated_time)
 void DamageAmountParticle::draw() const
 {
 	String str = Format(p_impl->_damage_amount);
-	auto black_rect = FontAsset(U"pixel_b24")(str).drawAt(p_impl->_pos + p_impl->_offset, Palette::Black);
-	auto white_rect = FontAsset(U"pixel_b24")(str).drawAt(p_impl->_pos, Palette::White);
+	auto black_rect = FontAsset(AssetKey::pixel_b24)(str).drawAt(p_impl->_pos + p_impl->_offset, Palette::Black);
+	auto white_rect = FontAsset(AssetKey::pixel_b24)(str).drawAt(p_impl->_pos, Palette::White);
 
 	if(DebugSetting::getIsParticleRectVisible())
 	{

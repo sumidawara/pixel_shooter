@@ -1,6 +1,7 @@
 ﻿#include "stdafx.h"
 #include "AbilitySelectTile.h"
 
+#include "AssetKey.h"
 #include "DebugSetting.h"
 #include "God.h"
 
@@ -81,7 +82,7 @@ void AbilitySelectTile::draw()
 	std::vector<RectF> desc_rects;
 	for(int i = 0; i < p_impl->_description_list.size(); i++)
 	{
-		auto desc_rect = FontAsset(U"pixel_b36")(p_impl->_description_list[i]).draw(p_impl->_description_pos);
+		auto desc_rect = FontAsset(AssetKey::pixel_b36)(p_impl->_description_list[i]).draw(p_impl->_description_pos);
 		desc_rects.push_back(desc_rect);
 	}
 

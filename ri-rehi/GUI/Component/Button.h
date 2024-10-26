@@ -4,7 +4,7 @@ class Button
 {
 public:
 	Button();
-	void init(const RectF& rectf, const String& text, const AssetName& font_asset_name);
+	void init(const RectF& rectf, const String& text, const AssetNameView& font_asset_name);
 	void update(double delta_time);
 	void draw() const;
 

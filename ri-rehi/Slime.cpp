@@ -1,5 +1,7 @@
 ﻿#include "stdafx.h"
 #include "Slime.h"
+
+#include "AssetKey.h"
 #include "GraphicSetting.h"
 #include "DebugSetting.h"
 #include "CollisionUtil.h"
@@ -131,7 +133,7 @@ void Slime::update(double delta_time)
 
 void Slime::draw() const
 {
-	TextureAsset(U"slime").mirrored(p_impl->_is_right_face).drawAt(p_impl->_rectf.center());
+	TextureAsset(AssetKey::slime).mirrored(p_impl->_is_right_face).drawAt(p_impl->_rectf.center());
 
 	//衝突判定の描画
 	if (DebugSetting::getIsCollisionRectVisible())

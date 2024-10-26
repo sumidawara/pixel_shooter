@@ -3,6 +3,8 @@
 #include "memory"
 
 #include "GameScene.h"
+
+#include "AssetKey.h"
 #include "Bullet/Bullet.h"
 #include "DebugSetting.h"
 #include "AssetManager.h"
@@ -58,14 +60,6 @@ void GameScene::init()
 
 	//ICollidableの登録 これは将来消す
 	_ptr_collision_manager->addICollidable(_ptr_player);
-	// Layer terrain_object_layer = God::getInstance().getWorld().getLayer(L_TerrainObject);
-	// for(auto ptr_block : *(terrain_object_layer.getBlockGrid()))
-	// {
-	// 	if(ptr_block->getId() != -1)
-	// 	{
-	// 		_ptr_collision_manager->addICollidable(ptr_block);
-	// 	}
-	// }
 }
 
 void GameScene::update()
@@ -109,8 +103,6 @@ void GameScene::update()
 		God::getInstance().setChangeSceneFlag(Sc_None);
 		init();
 	}
-
-	//Debug::getInstance().writeline(9, FileSystem::CurrentDirectory());
 }
 
 void GameScene::draw() const
@@ -136,7 +128,7 @@ void GameScene::draw() const
 	}
 
 	{
-		//const ScopedCustomShader2D shader{PixelShaderAsset{U"ps_default"}};
+		//const ScopedCustomShader2D shader{PixelShaderAsset{AssetKey::ps_default}};
 
 		(void)_render_texture.draw(0, 0);
 	}

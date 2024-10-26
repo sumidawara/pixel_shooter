@@ -1,5 +1,7 @@
 ﻿#include "stdafx.h"
 #include "ExpProgress.h"
+
+#include "AssetKey.h"
 #include "DebugSetting.h"
 
 struct ExpProgress::Impl
@@ -35,11 +37,11 @@ void ExpProgress::draw() const
 	bool is_gui_debugging_visible = DebugSetting::getIsGuiDebuggingVisible();
 	if(is_gui_debugging_visible) Circle{p_impl->_pos, 3}.draw(DebugSetting::getGuiDebugColor());
 
-	FontAsset(U"pixel_b24")(U"次のレベルまで").draw(p_impl->_text_tsuginoreberumade_pos);
+	FontAsset(AssetKey::pixel_b24)(U"次のレベルまで").draw(p_impl->_text_tsuginoreberumade_pos);
 	if(is_gui_debugging_visible) Circle{p_impl->_text_tsuginoreberumade_pos, 3}.draw(DebugSetting::getGuiDebugColor());
 
 	String str_ato_xx_exp = U"あと" + Format(p_impl->_remaining_exp_to_next_levelup) + U"exp";
-	FontAsset(U"pixel_b24")(str_ato_xx_exp).draw(p_impl->_text_ato_xx_exp_pos);
+	FontAsset(AssetKey::pixel_b24)(str_ato_xx_exp).draw(p_impl->_text_ato_xx_exp_pos);
 	if(is_gui_debugging_visible) Circle{p_impl->_text_ato_xx_exp_pos, 3}.draw(DebugSetting::getGuiDebugColor());
 }
 

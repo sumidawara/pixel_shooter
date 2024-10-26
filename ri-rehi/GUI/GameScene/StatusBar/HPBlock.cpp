@@ -1,6 +1,7 @@
 ﻿#include "stdafx.h"
 #include "HPBlock.h"
 
+#include "AssetKey.h"
 #include "DebugSetting.h"
 #include "HPBar.h"
 
@@ -36,7 +37,7 @@ void HPBlock::draw() const
 	bool is_gui_debugging_visible = DebugSetting::getIsGuiDebuggingVisible();
 	if(is_gui_debugging_visible) Circle{p_impl->_pos, 3}.draw(DebugSetting::getGuiDebugColor());
 
-	FontAsset(U"pixel_b80")(U"HP").draw(p_impl->_hptext_pos);
+	FontAsset(AssetKey::pixel_b80)(U"HP").draw(p_impl->_hptext_pos);
 	if(is_gui_debugging_visible) Circle{p_impl->_hptext_pos, 3}.draw(DebugSetting::getGuiDebugColor());
 
 	p_impl->_hpbar.draw();
