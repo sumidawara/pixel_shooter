@@ -58,14 +58,14 @@ void GameScene::init()
 
 	//ICollidableの登録 これは将来消す
 	_ptr_collision_manager->addICollidable(_ptr_player);
-	Layer terrain_object_layer = God::getInstance().getWorld().getLayer(L_TerrainObject);
-	for(auto ptr_block : *(terrain_object_layer.getBlockPtrList()))
-	{
-		if(ptr_block->getId() != -1)
-		{
-			_ptr_collision_manager->addICollidable(ptr_block);
-		}
-	}
+	// Layer terrain_object_layer = God::getInstance().getWorld().getLayer(L_TerrainObject);
+	// for(auto ptr_block : *(terrain_object_layer.getBlockGrid()))
+	// {
+	// 	if(ptr_block->getId() != -1)
+	// 	{
+	// 		_ptr_collision_manager->addICollidable(ptr_block);
+	// 	}
+	// }
 }
 
 void GameScene::update()

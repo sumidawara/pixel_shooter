@@ -72,6 +72,25 @@ void World::draw() const
 	p_impl->_ptr_terrain_object_layer->draw();
 }
 
+bool World::isBlockAtWorldPos(Vec2 worldPos)
+{
+	auto index_pos = worldPos2indexPos(worldPos);
+	return isBlockAtIndexPos(index_pos);
+}
+
+bool World::isBlockAtIndexPos(Point index_pos)
+{
+	auto index_grid = p_impl->_ptr_terrain_object_layer->getIndexGrid();
+	if(index_grid->at(index_pos.y, index_pos.x) != -1)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
 Point World::worldPos2indexPos(Vec2 worldpos)
 {
 	auto base_pos = worldpos - p_impl->_world_pos;
@@ -106,4 +125,9 @@ Layer World::getLayer(LayerType layer_type) const
 		throw Error(U"switch error");
 	}
 
+}
+
+std::shared_ptr<Grid<std::shared_ptr<Block>>> World::getCollidableBlockGrid() const
+{
+	return p_impl->_ptr_terrain_object_layer->getBlockGrid();
 }

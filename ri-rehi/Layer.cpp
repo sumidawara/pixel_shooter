@@ -82,7 +82,12 @@ void Layer::draw() const
 	}
 }
 
-std::shared_ptr<Grid<std::shared_ptr<Block>>> Layer::getBlockPtrList()
+std::shared_ptr<Grid<int32>> Layer::getIndexGrid()
+{
+	return p_impl->_index_grid;
+}
+
+std::shared_ptr<Grid<std::shared_ptr<Block>>> Layer::getBlockGrid()
 {
 	return p_impl->_block_grid;
 }

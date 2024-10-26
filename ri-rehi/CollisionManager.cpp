@@ -30,12 +30,41 @@ struct CollisionManager::Impl
 					auto rectf_i = ptr_icollidable_i->getBoundingShape();
 					auto rectf_j = ptr_icollidable_j->getBoundingShape();
 
-					bool is_intersecting = rectf_i.intersects(rectf_j);
-
-					if (not is_intersecting) continue;
+					if (not rectf_i.intersects(rectf_j)) continue;
 
 					ptr_icollidable_i->onCollision(*ptr_icollidable_j);
 					ptr_icollidable_j->onCollision(*ptr_icollidable_i);
+				}
+			}
+		}
+	}
+
+	void checkEntityWithBlock()
+	{
+		//4頂点の取得
+		for (int32 i = 0; i < _ptr_entity_list->size(); i++)
+		{
+			auto ptr_entity_i = _ptr_entity_list->at(i);
+			auto rect = ptr_entity_i->getBoundingShape();
+			auto world = God::getInstance().getWorld();
+
+			std::vector<Point> four_points;
+			four_points.push_back(world.worldPos2indexPos(rect.tl()));
+			four_points.push_back(world.worldPos2indexPos(rect.tr()));
+			four_points.push_back(world.worldPos2indexPos(rect.bl()));
+			four_points.push_back(world.worldPos2indexPos(rect.br()));
+
+			auto collidable_block_grid = world.getCollidableBlockGrid();
+			for(int j = 0; j < 4; j++)
+			{
+				if(world.isBlockAtIndexPos(four_points[j]))
+				{
+					//４頂点のインデックス座標上に存在するblockのポインタを取得
+					auto ptr_block = collidable_block_grid->at(four_points[j].y, four_points[j].x);
+					auto casted_ptr_block = std::static_pointer_cast<ICollidable>(ptr_block);
+
+					casted_ptr_block->onCollision(*ptr_entity_i);
+					ptr_entity_i->onCollision(*casted_ptr_block);
 				}
 			}
 		}
@@ -105,6 +134,7 @@ void CollisionManager::init()
 void CollisionManager::update(double delta_time)
 {
 	p_impl->checkEntityWithEntity();
+	p_impl->checkEntityWithBlock();
 	p_impl->analyzeCollision(delta_time);
 	p_impl->writelineCollisionCount();
 }

@@ -10,7 +10,8 @@ public:
 	void update();
 	void draw() const;
 
-	std::shared_ptr<Grid<std::shared_ptr<Block>>> getBlockPtrList();
+	std::shared_ptr<Grid<int32>> getIndexGrid();
+	std::shared_ptr<Grid<std::shared_ptr<Block>>> getBlockGrid();
 
 private:
 	struct Impl;
