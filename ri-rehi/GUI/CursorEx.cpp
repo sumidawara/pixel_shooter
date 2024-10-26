@@ -3,6 +3,7 @@
 
 #include "Debug.h"
 #include "DebugSetting.h"
+#include "God.h"
 #include "MathEx.h"
 
 struct CursorEx::Impl
@@ -31,11 +32,18 @@ struct CursorEx::Impl
 		}
 	}
 
+
 	void writeline()
 	{
 		if(Debug::getInstance().getDebugScreenIndex() == _writeline_index)
 		{
-			Debug::getInstance().writeline(_writeline_index, U"CursorPos : " + Format(Cursor::Pos()));
+			auto camera_mat3x2 = God::getInstance().getCamera().getMat3x2().inverse();
+			auto worldPos = camera_mat3x2.transformPoint(Cursor::PosF());
+			auto indexPos = God::getInstance().getWorld().worldPos2indexPos(worldPos);
+
+			Debug::getInstance().writeline(_writeline_index, U"CursorScreenPos : " + Format(Cursor::Pos()));
+			Debug::getInstance().writeline(_writeline_index, U"CursorWorldPos  : " + Format(worldPos));
+			Debug::getInstance().writeline(_writeline_index, U"CursorIndexPos  : " + Format(indexPos));
 			if(MouseR.pressed())
 			{
 				Debug::getInstance().writeline(_writeline_index, U"StartPos : " + Format(_start_point));

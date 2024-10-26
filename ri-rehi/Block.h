@@ -5,7 +5,7 @@ class Block : public ICollidable
 {
 public:
 	Block();
-	void init(RectF rectf, AssetName tile_asset_name, int32 id);
+	void init(const RectF& rectf, const AssetName& tile_asset_name, int32 id, bool is_collidable);
 	void update();
 	void draw() const;
 

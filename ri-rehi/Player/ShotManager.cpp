@@ -11,13 +11,15 @@ struct ShotManager::Impl
 	void shot()
 	{
 		auto camera_mat3x2 = God::getInstance().getCamera().getMat3x2().inverse();
+		auto cursorWorldPos = camera_mat3x2.transformPoint(Cursor::PosF());
+
 		auto player = God::getInstance().getPlayer();
 		auto player_rectf = player.getRect();
 		auto player_state = player.getPtrPlayerStateManager()->getPlayerState();
 
 		BulletContext context;
 		context.rectf = RectF{Arg::center_<Vec2>(player_rectf.center()), player_state.bullet_size, player_state.bullet_size};
-		context.direction = Vec2{camera_mat3x2.transformPoint(Cursor::PosF()) - player_rectf.center()}.normalize();
+		context.direction = Vec2{cursorWorldPos - player_rectf.center()}.normalize();
 		context.owner_type = T_Player;
 		context.speed = player_state.bullet_speed;
 		context.range = player_state.bullet_range;

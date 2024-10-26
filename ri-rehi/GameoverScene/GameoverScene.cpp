@@ -51,6 +51,7 @@ void GameoverScene::update()
 
 void GameoverScene::draw() const
 {
+	ClearPrint();
 	{
 		const ScopedRenderTarget2D target{ p_impl->_render_texture.clear(Palette::Black) };
 

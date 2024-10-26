@@ -8,7 +8,7 @@ struct ExpBlock::Impl
 	Vec2 _level_text_pos;
 	ExpProgress _expprogress;
 
-	int32 _level;
+	int32 _level = 1;
 };
 
 ExpBlock::ExpBlock() : p_impl(std::make_shared<Impl>())

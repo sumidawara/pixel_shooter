@@ -8,7 +8,7 @@ struct ExpProgress::Impl
 	Vec2 _text_tsuginoreberumade_pos;
 	Vec2 _text_ato_xx_exp_pos;
 
-	int32 _remaining_exp_to_next_levelup;
+	int32 _remaining_exp_to_next_levelup = 1;
 };
 
 ExpProgress::ExpProgress() : p_impl(std::make_shared<Impl>())

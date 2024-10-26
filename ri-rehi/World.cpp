@@ -1,5 +1,7 @@
 ﻿#include "stdafx.h"
 #include "World.h"
+
+#include "GraphicSetting.h"
 #include "LayerJsonData.h"
 
 struct World::Impl
@@ -10,7 +12,7 @@ struct World::Impl
 	std::shared_ptr<Layer> _ptr_terrain_object_layer;
 	std::shared_ptr<Layer> _ptr_ground_layer;
 
-	void loadWorldJSON(String file_path)
+	std::vector<LayerJsonData> loadWorldJSON(const String& file_path)
 	{
 		const JSON json = JSON::Load(file_path);
 		if (not json) throw Error{ U"Failed to load " + file_path };
@@ -19,10 +21,11 @@ struct World::Impl
 		_world_size.x = world_size.x;
 		_world_size.y = world_size.y;
 
-		Array<LayerJsonData> layer_json_data_list;
+		std::vector<LayerJsonData> layer_json_data_list;
 		for (const auto& layer : json[U"layers"].arrayView())
 		{
 			LayerJsonData layer_json_data;
+			layer_json_data.world_pos = _world_pos;
 			layer_json_data.world_size = world_size;
 			for (const auto& n : layer[U"data"].arrayView())
 			{
@@ -30,15 +33,19 @@ struct World::Impl
 				layer_json_data.index_data.push_back(n.get<int32>() - 1);
 			}
 
-			layer_json_data_list << layer_json_data;
+			layer_json_data_list.push_back(layer_json_data);
 		}
 
-		//layer_json_data_listから諸々のレイヤーの初期化
+		return layer_json_data_list;
+	}
+
+	void initLayers(const std::vector<LayerJsonData>& layer_json_data_list)
+	{
 		_ptr_ground_layer = std::make_shared<Layer>();
 		_ptr_terrain_object_layer = std::make_shared<Layer>();
 
-		_ptr_ground_layer->init(layer_json_data_list[0]);
-		_ptr_terrain_object_layer->init(layer_json_data_list[1]);
+		_ptr_ground_layer->init(layer_json_data_list[0], L_Ground);
+		_ptr_terrain_object_layer->init(layer_json_data_list[1], L_TerrainObject);
 	}
 };
 
@@ -46,10 +53,11 @@ World::World() : p_impl(std::make_shared<Impl>())
 {
 }
 
-void World::init(Vec2 pos, String file_path)
+void World::init(Vec2 pos, const String& file_path)
 {
 	p_impl->_world_pos = pos;
-	p_impl->loadWorldJSON(file_path);
+	auto layer_json_data_list = p_impl->loadWorldJSON(file_path);
+	p_impl->initLayers(layer_json_data_list);
 }
 
 void World::update(double delta_time)
@@ -62,6 +70,17 @@ void World::draw() const
 {
 	p_impl->_ptr_ground_layer->draw();
 	p_impl->_ptr_terrain_object_layer->draw();
+}
+
+Point World::worldPos2indexPos(Vec2 worldpos)
+{
+	auto base_pos = worldpos - p_impl->_world_pos;
+
+	Point indexPos;
+	indexPos.x = base_pos.x / GraphicSetting::getNormalTileWidth();
+	indexPos.y = base_pos.y / GraphicSetting::getNormalTileHeight();
+
+	return indexPos;
 }
 
 Vec2 World::getPos() const

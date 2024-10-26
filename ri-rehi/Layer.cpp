@@ -6,9 +6,52 @@
 
 struct Layer::Impl
 {
-	std::vector<int32> _index_data; //インデックスをつけたい
-	std::vector<std::shared_ptr<Block>> _block_list; //インデックスをつけたい
+	std::shared_ptr<Grid<int32>> _index_grid; //インデックスをつけたい
+	std::shared_ptr<Grid<std::shared_ptr<Block>>> _block_grid; //インデックスをつけたい
 
+	LayerType _layer_type;
+
+	void initGrids(const LayerJsonData& layer_json_data)
+	{
+		auto world_size = layer_json_data.world_size;
+
+		_index_grid = std::make_shared<Grid<int32>>(world_size.x, world_size.y, -1);
+		_block_grid = std::make_shared<Grid<std::shared_ptr<Block>>>(world_size.x, world_size.y);
+
+		for (int32 gy = 0; gy < world_size.y; gy++)
+		{
+			for (int32 gx = 0; gx < world_size.x; gx++)
+			{
+				int32 index = layer_json_data.index_data[gx + gy * layer_json_data.world_size.x];
+
+				//_index_gridの初期化
+				_index_grid->at(gy, gx) = index;
+
+				AssetName asset_name = AssetManager::tilemapX_Y(index);
+				RectF rectf{
+					layer_json_data.world_pos.x + GraphicSetting::getNormalTileWidth() * gx,
+					layer_json_data.world_pos.y + GraphicSetting::getNormalTileHeight() * gy,
+					GraphicSetting::getNormalTileWidth(),
+					GraphicSetting::getNormalTileHeight() };
+				bool is_collidable;
+				if(_layer_type == L_TerrainObject)
+				{
+					is_collidable = true;
+				}
+				else
+				{
+					is_collidable = false;
+				}
+
+				Block block{};
+				block.init(rectf, asset_name, index, is_collidable);
+				auto ptr_block = std::make_shared<Block>(block);
+
+				//_block_gridの初期化
+				_block_grid->at(gy, gx) = ptr_block;
+			}
+		}
+	}
 };
 
 Layer::Layer() : p_impl(std::make_shared<Impl>())
@@ -16,27 +59,10 @@ Layer::Layer() : p_impl(std::make_shared<Impl>())
 
 }
 
-void Layer::init(LayerJsonData layer_json_data)
+void Layer::init(const LayerJsonData& layer_json_data, LayerType layer_type)
 {
-	for (int32 gy = 0; gy < layer_json_data.world_size.y; gy++)
-	{
-		for (int32 gx = 0; gx < layer_json_data.world_size.x; gx++)
-		{
-			int32 tile_index = layer_json_data.index_data[gx + gy * layer_json_data.world_size.x];
-			AssetName asset_name = AssetManager::tilemapX_Y(tile_index);
-			RectF rectf{
-				layer_json_data.world_size.x + GraphicSetting::getNormalTileWidth() * gx,
-				layer_json_data.world_size.y + GraphicSetting::getNormalTileHeight() * gy,
-				GraphicSetting::getNormalTileWidth(),
-				GraphicSetting::getNormalTileHeight() };
-
-			Block block{};
-			block.init(rectf, asset_name, tile_index);
-			auto ptr_block = std::make_shared<Block>(block);
-
-			p_impl->_block_list.push_back(ptr_block);
-		}
-	}
+	p_impl->_layer_type = layer_type;
+	p_impl->initGrids(layer_json_data);
 }
 
 void Layer::update()
@@ -51,12 +77,12 @@ void Layer::draw() const
 	{
 		for (int32 gx = 0; gx < world_size.x; gx++)
 		{
-			p_impl->_block_list[gx + gy * world_size.x]->draw();
+			p_impl->_block_grid->at(gy, gx)->draw();
 		}
 	}
 }
 
-std::vector<std::shared_ptr<Block>>& Layer::getBlockPtrList()
+std::shared_ptr<Grid<std::shared_ptr<Block>>> Layer::getBlockPtrList()
 {
-	return p_impl->_block_list;
+	return p_impl->_block_grid;
 }

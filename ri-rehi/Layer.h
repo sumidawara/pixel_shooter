@@ -6,11 +6,11 @@ class Layer
 {
 public:
 	Layer();
-	void init(LayerJsonData layer_json_data);
+	void init(const LayerJsonData& layer_json_data, LayerType layer_type);
 	void update();
 	void draw() const;
 
-	std::vector<std::shared_ptr<Block>>& getBlockPtrList();
+	std::shared_ptr<Grid<std::shared_ptr<Block>>> getBlockPtrList();
 
 private:
 	struct Impl;

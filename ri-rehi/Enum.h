@@ -10,6 +10,7 @@ enum ICollidableType
 
 enum LayerType
 {
+	L_EntityPlacement,
     L_TerrainObject,
     L_Ground,
 };

@@ -12,17 +12,19 @@ struct Block::Impl
 	RectF _rectf;
 	AssetName _tile_asset_name;
 	int32 _id;
+	bool _is_collidable;
 };
 
 Block::Block() : p_impl(std::make_shared<Impl>())
 {
 }
 
-void Block::init(RectF rectf, AssetName tile_asset_name, int32 id)
+void Block::init(const RectF& rectf, const AssetName& tile_asset_name, int32 id, bool is_collidable)
 {
 	p_impl->_rectf = rectf;
 	p_impl->_tile_asset_name = tile_asset_name;
 	p_impl->_id = id;
+	p_impl->_is_collidable = is_collidable;
 }
 
 void Block::update()
@@ -38,7 +40,12 @@ void Block::draw() const
 			GraphicSetting::getExtendedLength(),
 			GraphicSetting::getNormalTileWidth(),
 			GraphicSetting::getNormalTileHeight() };
-		TextureAsset(p_impl->_tile_asset_name)(clippedRect).draw(p_impl->_rectf.pos);
+		auto rect = TextureAsset(p_impl->_tile_asset_name)(clippedRect).draw(p_impl->_rectf.pos);
+
+		if(p_impl->_is_collidable && DebugSetting::getIsCollisionRectVisible())
+		{
+			rect.draw(DebugSetting::getCollisionColor());
+		}
 	}
 }
 
