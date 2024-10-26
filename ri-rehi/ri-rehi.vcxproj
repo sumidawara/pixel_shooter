@@ -485,6 +485,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="StillBehavior.cpp" />
+    <ClCompile Include="TileIndexKey.cpp" />
     <ClCompile Include="TimeManager.cpp" />
     <ClCompile Include="TitleScene\TitleScene.cpp">
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -985,6 +986,7 @@
     <ClInclude Include="Slime.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="StillBehavior.h" />
+    <ClInclude Include="TileIndexKey.h" />
     <ClInclude Include="TimeManager.h" />
     <ClInclude Include="TitleScene\TitleScene.h" />
     <ClInclude Include="TitleScene\TitleSceneGUI.h" />
