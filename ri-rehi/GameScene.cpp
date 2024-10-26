@@ -33,7 +33,12 @@ void GameScene::init()
 	_ptr_collision_manager->init();
 	God::getInstance().setCollisionManager(_ptr_collision_manager);
 
+	_ptr_enemy_manager->init();
+	God::getInstance().setEnemyManager(_ptr_enemy_manager);
+
 	_ptr_world->init({0, 0}, U"resources/world/world.json");
+	God::getInstance().setPtrWorld(_ptr_world);
+
 	_ptr_player->init({200, 200});
 	_ptr_camera->setParameters(Camera2DParameters::NoControl());
 	_ptr_gamescene_gui->init();
@@ -43,7 +48,6 @@ void GameScene::init()
 	_ptr_time_manager->init();
 	_cursor.init();
 
-	God::getInstance().setPtrWorld(_ptr_world);
 	God::getInstance().setPtrPlayer(_ptr_player);
 	God::getInstance().setPtrCamera(_ptr_camera);
 	God::getInstance().setParticleManager(_ptr_particle_manager);
@@ -53,8 +57,6 @@ void GameScene::init()
 	God::getInstance().setAbilityManager(_ptr_ability_manager);
 	God::getInstance().setTimeManager(_ptr_time_manager);
 	AssetManager::registerAsset();
-
-	_ptr_enemy_manager->init();
 
 	Debug::getInstance().init();
 

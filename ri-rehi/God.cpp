@@ -8,6 +8,9 @@ public:
 	std::shared_ptr<World> _ptr_world;
 	std::shared_ptr<Player> _ptr_player;
 	std::shared_ptr<Camera2D> _ptr_camera;
+	Vec2 _initial_player_pos;
+	Vec2 _exit_pos;
+
 	std::shared_ptr<CollisionManager> _ptr_collision_manager;
 	std::shared_ptr<ParticleManager> _ptr_particle_manager;
 	std::shared_ptr<BulletManager> _ptr_bullet_manager;
@@ -15,6 +18,7 @@ public:
 	std::shared_ptr<GameSceneGUIManager> _ptr_gamescene_gui_manager;
 	std::shared_ptr<AbilityManager> _ptr_ability_manager;
 	std::shared_ptr<TimeManager> _ptr_time_manager;
+	std::shared_ptr<EnemyManager> _ptr_enemy_manager;
 
 	//タイトル
 	std::shared_ptr<TitleSceneGUIManager> _ptr_titlescene_gui_manager;
@@ -44,6 +48,16 @@ Player God::getPlayer() const
 Camera2D God::getCamera() const
 {
 	return *p_impl->_ptr_camera;
+}
+
+Vec2 God::getInitialPlayerPos() const
+{
+	return p_impl->_initial_player_pos;
+}
+
+Vec2 God::getExitPos() const
+{
+	return p_impl->_exit_pos;
 }
 
 World God::getWorld() const
@@ -81,6 +95,13 @@ std::shared_ptr<TimeManager> God::getPtrTimeManager()
 	return p_impl->_ptr_time_manager;
 }
 
+std::shared_ptr<EnemyManager> God::getEnemyManager()
+{
+	return p_impl->_ptr_enemy_manager;
+}
+
+//セッター
+
 void God::setPtrWorld(const std::shared_ptr<World>& ptr_world) const
 {
 	p_impl->_ptr_world = ptr_world;
@@ -94,6 +115,16 @@ void God::setPtrPlayer(const std::shared_ptr<Player>& ptr_player) const
 void God::setPtrCamera(const std::shared_ptr<Camera2D>& ptr_camera)
 {
 	p_impl->_ptr_camera = ptr_camera;
+}
+
+void God::setInitialPlayerPos(Vec2 pos)
+{
+	p_impl->_initial_player_pos = pos;
+}
+
+void God::setExitPos(Vec2 pos)
+{
+	p_impl->_exit_pos = pos;
 }
 
 void God::setCollisionManager(const std::shared_ptr<CollisionManager>& ptr_collision_manager)
@@ -129,6 +160,11 @@ void God::setAbilityManager(const std::shared_ptr<AbilityManager>& ptr_ability_m
 void God::setTimeManager(const std::shared_ptr<TimeManager>& ptr_time_manager)
 {
 	p_impl->_ptr_time_manager = ptr_time_manager;
+}
+
+void God::setEnemyManager(const std::shared_ptr<EnemyManager>& ptr_enemy_manager)
+{
+	p_impl->_ptr_enemy_manager = ptr_enemy_manager;
 }
 
 std::shared_ptr<TitleSceneGUIManager> God::getTitleSceneGUIManager() const
