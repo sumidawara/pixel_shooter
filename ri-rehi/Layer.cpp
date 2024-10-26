@@ -79,6 +79,8 @@ struct Layer::Impl
 					break;
 
 				case TileIndexKey::slime:
+					auto enemy_manager = God::getInstance().getEnemyManager();
+					enemy_manager->createEnemy(EnemyType::Slime, indexPos2worldPos(Point{gx, gy}, true));
 					break;
 				}
 			}

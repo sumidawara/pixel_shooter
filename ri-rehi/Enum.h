@@ -30,3 +30,11 @@ enum SceneType
 	Sc_Game,
 	Sc_Gameover
 };
+
+namespace EnemyType
+{
+	enum EnemyType
+	{
+		Slime
+	};
+}

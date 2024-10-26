@@ -23,7 +23,6 @@ void GameScene::init()
 	_ptr_particle_manager = std::make_shared<ParticleManager>();
 	_ptr_bullet_manager = std::make_shared<BulletManager>();
 	_ptr_enemy_manager = std::make_shared<EnemyManager>();
-	_ptr_camera = std::make_shared<Camera2D>(_ptr_player->getCenterPos(), 1.0);
 	_ptr_gamescene_gui = std::make_shared<GameSceneGUI>();
 	_ptr_gamescene_gui_manager = std::make_shared<GameSceneGUIManager>();
 	_ptr_collision_manager = std::make_shared<CollisionManager>();
@@ -40,13 +39,15 @@ void GameScene::init()
 	God::getInstance().setPtrWorld(_ptr_world);
 
 	_ptr_player->init(God::getInstance().getInitialPlayerPos());
-	_ptr_camera->setParameters(Camera2DParameters::NoControl());
 	_ptr_gamescene_gui->init();
 	_ptr_gamescene_gui_manager->init();
 	_ptr_particle_manager->init();
 	_ptr_ability_manager->init();
 	_ptr_time_manager->init();
 	_cursor.init();
+
+	_ptr_camera = std::make_shared<Camera2D>(God::getInstance().getInitialPlayerPos(), 1.0);
+	_ptr_camera->setParameters(Camera2DParameters::NoControl());
 
 	God::getInstance().setPtrPlayer(_ptr_player);
 	God::getInstance().setPtrCamera(_ptr_camera);
