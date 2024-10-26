@@ -181,7 +181,7 @@ void Player::onCollision(const ICollidable& other)
 	}
 }
 
-std::variant<RectF, Circle> Player::getBoundingShape() const
+RectF Player::getBoundingShape() const
 {
 	return p_impl->_rectf;
 }

@@ -12,7 +12,7 @@ public:
 	void draw() const;
 
 	//ICollidable
-	std::variant<RectF, Circle> getBoundingShape() const override;
+	RectF getBoundingShape() const override;
 	void onCollision(const ICollidable& other) override;
 	ICollidableType getType() const override;
 

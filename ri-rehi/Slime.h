@@ -17,7 +17,7 @@ public:
 
 	//ICollidable
 	void onCollision(const ICollidable& other) override;
-	std::variant<RectF, Circle> getBoundingShape() const override;
+	RectF getBoundingShape() const override;
 	ICollidableType getType() const override;
 
 	//IEnemy

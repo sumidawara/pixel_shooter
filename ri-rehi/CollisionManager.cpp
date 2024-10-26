@@ -6,7 +6,7 @@
 
 struct CollisionManager::Impl
 {
-	std::shared_ptr<std::vector<std::shared_ptr<ICollidable>>> _ptr_icollidable_list;
+	std::shared_ptr<std::vector<std::shared_ptr<ICollidable>>> _ptr_entity_list;
 
 	int32 _writeline_index = 1;
 	int32 _t_block_count = 0;
@@ -16,44 +16,21 @@ struct CollisionManager::Impl
 	double _accumulated_count_time = 0.0;
 	double THRESHOLD_COUNT_TIME = 1.0;
 
-	void checkCollision()
+	void checkEntityWithEntity()
 	{
-		for (int32 i = 0; i < _ptr_icollidable_list->size(); i++)
+		for (int32 i = 0; i < _ptr_entity_list->size(); i++)
 		{
-			for (int32 j = i; j < _ptr_icollidable_list->size(); j++)
+			for (int32 j = i; j < _ptr_entity_list->size(); j++)
 			{
 				if (i != j)
 				{
-					auto ptr_icollidable_i = (*_ptr_icollidable_list)[i];
-					auto ptr_icollidable_j = (*_ptr_icollidable_list)[j];
+					auto ptr_icollidable_i = (*_ptr_entity_list)[i];
+					auto ptr_icollidable_j = (*_ptr_entity_list)[j];
 
-					auto shape_i = ptr_icollidable_i->getBoundingShape();
-					auto shape_j = ptr_icollidable_j->getBoundingShape();
+					auto rectf_i = ptr_icollidable_i->getBoundingShape();
+					auto rectf_j = ptr_icollidable_j->getBoundingShape();
 
-					bool is_intersecting = false;
-
-					if (auto rect_i = std::get_if<RectF>(&shape_i))
-					{
-						if (auto rect_j = std::get_if<RectF>(&shape_j))
-						{
-							is_intersecting = rect_i->intersects(*rect_j);
-						}
-						else if (auto circle_j = std::get_if<Circle>(&shape_j))
-						{
-							is_intersecting = rect_i->intersects(*circle_j);
-						}
-					}
-					else if (auto circle_i = std::get_if<Circle>(&shape_i))
-					{
-						if (auto rect_j = std::get_if<RectF>(&shape_j))
-						{
-							is_intersecting = circle_i->intersects(*rect_j);
-						}
-						else if (auto circle_j = std::get_if<Circle>(&shape_j))
-						{
-							is_intersecting = circle_i->intersects(*circle_j);
-						}
-					}
+					bool is_intersecting = rectf_i.intersects(rectf_j);
 
 					if (not is_intersecting) continue;
 
@@ -79,10 +56,10 @@ struct CollisionManager::Impl
 				_t_bullet_count = 0;
 				_t_enemy_count = 0;
 
-				for (int32 i = 0; i < _ptr_icollidable_list->size(); i++)
+				for (int32 i = 0; i < _ptr_entity_list->size(); i++)
 				{
 					//ICollidableの数の確認
-					switch ((*_ptr_icollidable_list)[i]->getType())
+					switch ((*_ptr_entity_list)[i]->getType())
 					{
 					case T_Block:
 						_t_block_count++;
@@ -122,12 +99,12 @@ CollisionManager::CollisionManager() : p_impl(std::make_shared<Impl>())
 
 void CollisionManager::init()
 {
-	p_impl->_ptr_icollidable_list = std::make_shared<std::vector<std::shared_ptr<ICollidable>>>();
+	p_impl->_ptr_entity_list = std::make_shared<std::vector<std::shared_ptr<ICollidable>>>();
 }
 
 void CollisionManager::update(double delta_time)
 {
-	p_impl->checkCollision();
+	p_impl->checkEntityWithEntity();
 	p_impl->analyzeCollision(delta_time);
 	p_impl->writelineCollisionCount();
 }
@@ -138,21 +115,21 @@ void CollisionManager::draw() const
 
 void CollisionManager::addICollidable(const std::shared_ptr<ICollidable>& ptr_icollidable) const
 {
-	p_impl->_ptr_icollidable_list->push_back(ptr_icollidable);
+	p_impl->_ptr_entity_list->push_back(ptr_icollidable);
 }
 
 void CollisionManager::removeICollidable(const std::shared_ptr<ICollidable>& ptr_icollidable)
 {
-	auto collidable_it = std::find(p_impl->_ptr_icollidable_list->begin(), p_impl->_ptr_icollidable_list->end(),
+	auto collidable_it = std::find(p_impl->_ptr_entity_list->begin(), p_impl->_ptr_entity_list->end(),
 	                               ptr_icollidable);
 
-	if (collidable_it != p_impl->_ptr_icollidable_list->end())
+	if (collidable_it != p_impl->_ptr_entity_list->end())
 	{
-		p_impl->_ptr_icollidable_list->erase(collidable_it);
+		p_impl->_ptr_entity_list->erase(collidable_it);
 	}
 }
 
 std::shared_ptr<std::vector<std::shared_ptr<ICollidable>>> CollisionManager::getPtrICollisionList()
 {
-	return p_impl->_ptr_icollidable_list;
+	return p_impl->_ptr_entity_list;
 }

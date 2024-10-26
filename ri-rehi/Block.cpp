@@ -54,7 +54,7 @@ void Block::onCollision(const ICollidable& other)
 
 }
 
-std::variant<RectF, Circle> Block::getBoundingShape() const
+RectF Block::getBoundingShape() const
 {
 	return p_impl->_rectf;
 }

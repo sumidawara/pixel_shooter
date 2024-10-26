@@ -52,14 +52,11 @@ struct Bullet::Impl
 		Line ray = {previous_rectf.center(), Arg::direction = (_direction * RAY_LENGTH)};
 
 		std::vector<Line> rect_line_list;
-		auto other_shape = other.getBoundingShape();
-		if (auto other_rectf = std::get_if<RectF>(&other_shape))
-		{
-			rect_line_list.push_back(other_rectf->top());
-			rect_line_list.push_back(other_rectf->right());
-			rect_line_list.push_back(other_rectf->bottom());
-			rect_line_list.push_back(other_rectf->left());
-		}
+		auto other_rectf = other.getBoundingShape();
+		rect_line_list.push_back(other_rectf.top());
+		rect_line_list.push_back(other_rectf.right());
+		rect_line_list.push_back(other_rectf.bottom());
+		rect_line_list.push_back(other_rectf.left());
 
 		//交点を取得
 		std::vector<Vec2> point_list;
@@ -157,7 +154,7 @@ void Bullet::draw() const
 	p_impl->_rectf.draw(Palette::White);
 }
 
-std::variant<RectF, Circle> Bullet::getBoundingShape() const
+RectF Bullet::getBoundingShape() const
 {
 	return p_impl->_rectf;
 }

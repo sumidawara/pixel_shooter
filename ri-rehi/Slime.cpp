@@ -173,7 +173,7 @@ void Slime::onCollision(const ICollidable& other)
 	}
 }
 
-std::variant<RectF, Circle> Slime::getBoundingShape() const
+RectF Slime::getBoundingShape() const
 {
 	return p_impl->_rectf;
 }
