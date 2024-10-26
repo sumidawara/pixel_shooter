@@ -1,6 +1,7 @@
 ﻿#include "stdafx.h"
 #include "World.h"
 
+#include "DebugSetting.h"
 #include "GraphicSetting.h"
 #include "LayerJsonData.h"
 
@@ -9,6 +10,7 @@ struct World::Impl
 	Point _world_size;
 	Vec2 _world_pos;
 
+	std::shared_ptr<Layer> _ptr_entity_placement_layer;
 	std::shared_ptr<Layer> _ptr_terrain_object_layer;
 	std::shared_ptr<Layer> _ptr_ground_layer;
 
@@ -43,9 +45,11 @@ struct World::Impl
 	{
 		_ptr_ground_layer = std::make_shared<Layer>();
 		_ptr_terrain_object_layer = std::make_shared<Layer>();
+		_ptr_entity_placement_layer = std::make_shared<Layer>();
 
 		_ptr_ground_layer->init(layer_json_data_list[0], L_Ground);
 		_ptr_terrain_object_layer->init(layer_json_data_list[1], L_TerrainObject);
+		_ptr_entity_placement_layer->init(layer_json_data_list[2], L_EntityPlacement);
 	}
 };
 
@@ -64,12 +68,18 @@ void World::update(double delta_time)
 {
 	p_impl->_ptr_ground_layer->update();
 	p_impl->_ptr_terrain_object_layer->update();
+	p_impl->_ptr_entity_placement_layer->update();
 }
 
 void World::draw() const
 {
 	p_impl->_ptr_ground_layer->draw();
 	p_impl->_ptr_terrain_object_layer->draw();
+
+	if(DebugSetting::getIsEntityPlacementLayerVisible())
+	{
+		p_impl->_ptr_entity_placement_layer->draw();
+	}
 }
 
 bool World::isBlockAtWorldPos(Vec2 worldPos)

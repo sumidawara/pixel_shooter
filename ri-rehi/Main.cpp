@@ -23,7 +23,7 @@ void Main()
 
 	Scene::SetBackground(Palette::Pink);
 
-	FileSystem::ChangeCurrentDirectory( U"E:/root/development/c++/siv3d/vanpire_survival_like_game_1/vanpire_survival_like_game_1/App");
+	FileSystem::ChangeCurrentDirectory( U"E:/root/development/c++/siv3d/ri-rehi/ri-rehi/App");
 
 	//Console << FileSystem::ModulePath();
 

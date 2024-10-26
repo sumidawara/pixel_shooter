@@ -62,7 +62,18 @@ Layer::Layer() : p_impl(std::make_shared<Impl>())
 void Layer::init(const LayerJsonData& layer_json_data, LayerType layer_type)
 {
 	p_impl->_layer_type = layer_type;
-	p_impl->initGrids(layer_json_data);
+	switch (layer_type)
+	{
+	case L_Ground:
+		p_impl->initGrids(layer_json_data);
+		break;
+	case L_TerrainObject:
+		p_impl->initGrids(layer_json_data);
+		break;
+	case L_EntityPlacement:
+		p_impl->initGrids(layer_json_data);
+		break;
+	}
 }
 
 void Layer::update()

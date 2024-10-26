@@ -140,7 +140,7 @@ Image AssetManager::tileMapExtend(Image old_image)
 	return new_image;
 }
 
-void AssetManager::registerTileFromTileMap(Image extended_image)
+void AssetManager::registerTileFromTileMap(const Image& extended_image)
 {
 	int32 extended_tile_width = GraphicSetting::getExtendedTileWidth();
 	int32 extended_tile_height = GraphicSetting::getExtendedTileHeight();
@@ -159,7 +159,7 @@ void AssetManager::registerTileFromTileMap(Image extended_image)
 				extended_tile_height);
 			AssetName tileAssetName = tilemapX_Y(gx, gy);
 			TextureAsset::Register(tileAssetName, image2TextureAssetData(tileImage));
-			//tileImage.save(U"resources/output/" + tileAssetName + U".png");
+			tileImage.save(U"resources/output/" + tileAssetName + U".png");
 		}
 	}
 }

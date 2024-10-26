@@ -49,6 +49,7 @@ struct Debug::Impl
 		DebugSetting::setIsViewRangeVisible(false);
 		DebugSetting::setIsGuiDebuggingVisible(false);
 		DebugSetting::setIsParticleRectVisible(false);
+		DebugSetting::setIsEntityPlacementLayerVisible(false);
 	}
 
 	void changeDebugSetting(int32 debug_screen_index)
@@ -58,6 +59,8 @@ struct Debug::Impl
 		case 1:
 			//衝突判定描画
 			DebugSetting::setIsCollisionRectVisible(true);
+			//敵配置・プレイヤー配置・出口の配置の表示
+			DebugSetting::setIsEntityPlacementLayerVisible(true);
 			break;
 		case 2:
 			//敵キャラの視野
@@ -72,7 +75,9 @@ struct Debug::Impl
 			DebugSetting::setIsParticleRectVisible(true);
 			break;
 		case 5:
-			// Case 5の処理
+			//アビリティーの表示
+
+
 			break;
 		case 6:
 			break;

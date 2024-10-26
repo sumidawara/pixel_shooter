@@ -5,6 +5,7 @@ bool DebugSetting::_is_collision_rect_visible = false;
 bool DebugSetting::_is_view_range_visible = false;
 bool DebugSetting::_is_particle_rect_visible = false;
 bool DebugSetting::_is_gui_debugging_visible = false;
+bool DebugSetting::_is_entity_placement_layer_visible = false;
 
 ColorF DebugSetting::_collision_color = ColorF{ 1.0, 0.0, 0.0, 0.3 };
 ColorF DebugSetting::_view_range_color = ColorF{ 0.0, 1.0, 0.0, 0.3 };
@@ -49,6 +50,14 @@ void DebugSetting::setIsGuiDebuggingVisible(bool value)
 	_is_gui_debugging_visible = value;
 }
 
+bool DebugSetting::getIsEntityPlacementLayerVisible()
+{
+	return _is_entity_placement_layer_visible;
+}
+void DebugSetting::setIsEntityPlacementLayerVisible(bool value)
+{
+	_is_entity_placement_layer_visible = value;
+}
 
 
 ColorF DebugSetting::getCollisionColor()

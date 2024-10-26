@@ -14,6 +14,9 @@ public:
 	static bool getIsGuiDebuggingVisible();
 	static void setIsGuiDebuggingVisible(bool value);
 
+	static bool getIsEntityPlacementLayerVisible();
+	static void setIsEntityPlacementLayerVisible(bool value);
+
 
 	static ColorF getCollisionColor();
 	static ColorF getViewRangeColor();
@@ -25,6 +28,7 @@ private:
 	static bool _is_view_range_visible;
 	static bool _is_particle_rect_visible;
 	static bool _is_gui_debugging_visible;
+	static bool _is_entity_placement_layer_visible;
 
 
 	static ColorF _collision_color;
