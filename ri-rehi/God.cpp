@@ -51,24 +51,14 @@ World God::getWorld() const
 	return *p_impl->_ptr_world;
 }
 
-void God::addICollidable(const std::shared_ptr<ICollidable>& ptr_icollidable) const
-{
-	p_impl->_ptr_collision_manager->addICollidable(ptr_icollidable);
-}
-
-void God::removeICollidable(const std::shared_ptr<ICollidable>& ptr_icollidable)
-{
-	p_impl->_ptr_collision_manager->removeICollidable(ptr_icollidable);
-}
-
 std::shared_ptr<CollisionManager> God::getPtrCollisionManager()
 {
 	return p_impl->_ptr_collision_manager;
 }
 
-void God::addIParticle(const std::shared_ptr<IParticle>& ptr_iparticle) const
+std::shared_ptr<ParticleManager> God::getPtrParticleManager()
 {
-	p_impl->_ptr_particle_manager->addParticle(ptr_iparticle);
+	return p_impl->_ptr_particle_manager;
 }
 
 void God::addBullet(const std::shared_ptr<Bullet>& ptr_bullet) const

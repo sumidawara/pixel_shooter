@@ -6,8 +6,8 @@
 
 struct Layer::Impl
 {
-	std::shared_ptr<Grid<int32>> _index_grid; //インデックスをつけたい
-	std::shared_ptr<Grid<std::shared_ptr<Block>>> _block_grid; //インデックスをつけたい
+	std::shared_ptr<Grid<int32>> _index_grid;
+	std::shared_ptr<Grid<std::shared_ptr<Block>>> _block_grid;
 
 	LayerType _layer_type;
 

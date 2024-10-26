@@ -10,7 +10,7 @@ public:
 	void draw() const;
 
 	void addBullet(std::shared_ptr<Bullet> ptr_bullet);
-	void removeBullet(std::shared_ptr<Bullet> ptr_bullet);
+	void removeBullet(const std::shared_ptr<Bullet>& ptr_bullet);
 
 	std::vector<std::shared_ptr<Bullet>>& getBulletPtrList();
 

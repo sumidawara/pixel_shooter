@@ -22,8 +22,9 @@ void EnemyManager::init()
 	p_impl->_ptr_slime_list.push_back(_ptr_slime1);
 	p_impl->_ptr_slime_list.push_back(_ptr_slime2);
 
-	God::getInstance().addICollidable(_ptr_slime1);
-	God::getInstance().addICollidable(_ptr_slime2);
+	auto collision_manager = God::getInstance().getPtrCollisionManager();
+	collision_manager->addICollidable(_ptr_slime1);
+	collision_manager->addICollidable(_ptr_slime2);
 }
 
 void EnemyManager::update(double delta_time)
@@ -40,7 +41,8 @@ void EnemyManager::update(double delta_time)
 		if (not is_active)
 		{
 			// ICollidableListからも削除
-			God::getInstance().removeICollidable(*it);
+			auto collision_manager = God::getInstance().getPtrCollisionManager();
+			collision_manager->removeICollidable(*it);
 
 			it = p_impl->_ptr_slime_list.erase(it);
 		}

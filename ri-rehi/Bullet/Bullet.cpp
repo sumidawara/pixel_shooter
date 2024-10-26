@@ -124,7 +124,7 @@ struct Bullet::Impl
 		{
 			std::shared_ptr<BulletParticle> ptr_bulletParticle = std::make_shared<BulletParticle>();
 			ptr_bulletParticle->init(_rectf.center());
-			God::getInstance().addIParticle(ptr_bulletParticle);
+			God::getInstance().getPtrParticleManager()->addParticle(ptr_bulletParticle);
 			_is_active = false;
 		}
 	}

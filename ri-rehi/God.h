@@ -25,15 +25,11 @@ public:
 	Player getPlayer() const;
 	Camera2D getCamera() const;
 
-	void addICollidable(const std::shared_ptr<ICollidable>& ptr_icollidable) const;
-	void removeICollidable(const std::shared_ptr<ICollidable>& ptr_icollidable);
-
-	void addIParticle(const std::shared_ptr<IParticle>& ptr_iparticle) const;
-
 	void addBullet(const std::shared_ptr<Bullet>& ptr_bullet) const;
 	void removeBullet(const std::shared_ptr<Bullet>& ptr_bullet) const;
 
 	std::shared_ptr<CollisionManager> getPtrCollisionManager();
+	std::shared_ptr<ParticleManager> getPtrParticleManager();
 	std::shared_ptr<GameSceneGUIManager> getPtrGameSceneGUIManager();
 	std::shared_ptr<AbilityManager> getPtrAbilityManager();
 	std::shared_ptr<TimeManager> getPtrTimeManager();

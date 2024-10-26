@@ -20,7 +20,8 @@ void BulletManager::update(double delta_time)
 		if (not is_bullet_active)
 		{
 			// ICollidableListからも削除
-			God::getInstance().removeICollidable(*it);
+			auto collision_manager = God::getInstance().getPtrCollisionManager();
+			collision_manager->removeICollidable(*it);
 
 			it = _bullet_ptr_list.erase(it);
 		}
@@ -45,10 +46,11 @@ void BulletManager::addBullet(std::shared_ptr<Bullet> ptr_bullet)
 	_bullet_ptr_list.push_back(ptr_bullet);
 
 	//ICollidableListにも追加
-	God::getInstance().addICollidable(std::static_pointer_cast<ICollidable>(ptr_bullet));
+	auto collision_manager = God::getInstance().getPtrCollisionManager();
+	collision_manager->addICollidable(ptr_bullet);
 }
 
-void BulletManager::removeBullet(std::shared_ptr<Bullet> ptr_bullet)
+void BulletManager::removeBullet(const std::shared_ptr<Bullet>& ptr_bullet)
 {
 	auto bullet_it = std::find(_bullet_ptr_list.begin(), _bullet_ptr_list.end(), ptr_bullet);
 

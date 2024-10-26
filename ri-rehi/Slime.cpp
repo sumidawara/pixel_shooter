@@ -57,7 +57,7 @@ struct Slime::Impl
 
     	std::shared_ptr<DamageAmountParticle> ptr_damage_amount_particle = std::make_shared<DamageAmountParticle>();
     	ptr_damage_amount_particle->init(_rectf.center(), damage_amount);
-    	God::getInstance().addIParticle(ptr_damage_amount_particle);
+    	God::getInstance().getPtrParticleManager()->addParticle(ptr_damage_amount_particle);
 
     	if(_current_hp < 0)
     	{
