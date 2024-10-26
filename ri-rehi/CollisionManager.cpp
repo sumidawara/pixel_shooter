@@ -55,6 +55,7 @@ struct CollisionManager::Impl
 			four_points.push_back(world.worldPos2indexPos(rect.br()));
 
 			auto collidable_block_grid = world.getCollidableBlockGrid();
+			std::vector<std::shared_ptr<ICollidable>> buffer;//casted_ptr_blockを格納
 			for(int j = 0; j < 4; j++)
 			{
 				if(world.isBlockAtIndexPos(four_points[j]))
@@ -63,10 +64,19 @@ struct CollisionManager::Impl
 					auto ptr_block = collidable_block_grid->at(four_points[j].y, four_points[j].x);
 					auto casted_ptr_block = std::static_pointer_cast<ICollidable>(ptr_block);
 
-					casted_ptr_block->onCollision(*ptr_entity_i);
-					ptr_entity_i->onCollision(*casted_ptr_block);
+					if (std::find(buffer.begin(), buffer.end(), casted_ptr_block) != buffer.end())
+					{
+						//以前に衝突判定したものと同一のブロック
+					}
+					else
+					{
+						//以前に衝突判定したものとは異なるブロック
 
-					break;
+						casted_ptr_block->onCollision(*ptr_entity_i);
+						ptr_entity_i->onCollision(*casted_ptr_block);
+
+						buffer.push_back(casted_ptr_block);
+					}
 				}
 			}
 		}
