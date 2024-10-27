@@ -20,6 +20,7 @@ void GameScene::init()
 {
 	_ptr_world = std::make_shared<World>();
 	_ptr_player = std::make_shared<Player>();
+	_ptr_exit = std::make_shared<Exit>();
 	_ptr_particle_manager = std::make_shared<ParticleManager>();
 	_ptr_bullet_manager = std::make_shared<BulletManager>();
 	_ptr_enemy_manager = std::make_shared<EnemyManager>();
@@ -39,6 +40,7 @@ void GameScene::init()
 	God::getInstance().setPtrWorld(_ptr_world);
 
 	_ptr_player->init(God::getInstance().getInitialPlayerPos());
+	_ptr_exit->init(God::getInstance().getExitPos());
 	_ptr_gamescene_gui->init();
 	_ptr_gamescene_gui_manager->init();
 	_ptr_particle_manager->init();
@@ -75,6 +77,7 @@ void GameScene::update()
 	if((not is_manually_paused) and (not is_forcibly_paused))
 	{
 		_ptr_world->update(game_delta_time);
+		_ptr_exit->update(game_delta_time);
 		_ptr_player->update(game_delta_time);
 		_ptr_enemy_manager->update(game_delta_time);
 		_ptr_particle_manager->update(game_delta_time);
@@ -118,6 +121,7 @@ void GameScene::draw() const
 			const Transformer2D transform = _ptr_camera->createTransformer();
 
 			_ptr_world->draw();
+			_ptr_exit->draw();
 			_ptr_enemy_manager->draw();
 			_ptr_player->draw();
 			_ptr_bullet_manager->draw();

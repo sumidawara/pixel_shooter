@@ -5,6 +5,7 @@ namespace AssetKey
 	constexpr StringView cursor = U"cursor";
 	constexpr StringView liebesrechner_run = U"liebesrechner_run";
 	constexpr StringView liebesrechner_stand = U"liebesrechner_stand";
+	constexpr StringView exit = U"exit";
 	constexpr StringView slime = U"slime";
 
 	constexpr StringView pixel_b12 = U"pixel_b12";

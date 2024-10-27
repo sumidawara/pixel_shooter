@@ -133,6 +133,7 @@
     <ClCompile Include="DebugSetting.cpp" />
     <ClCompile Include="EnemyManager.cpp" />
     <ClCompile Include="Enum.cpp" />
+    <ClCompile Include="Exit.cpp" />
     <ClCompile Include="FrameSequencer.cpp" />
     <ClCompile Include="GameoverScene\GameoverMenu.cpp" />
     <ClCompile Include="GameoverScene\GameoverSceneGUI.cpp" />
@@ -946,6 +947,7 @@
     <ClInclude Include="DebugSetting.h" />
     <ClInclude Include="EnemyManager.h" />
     <ClInclude Include="Enum.h" />
+    <ClInclude Include="Exit.h" />
     <ClInclude Include="FrameSequencer.h" />
     <ClInclude Include="GameoverScene\GameoverMenu.h" />
     <ClInclude Include="GameoverScene\GameoverSceneGUI.h" />

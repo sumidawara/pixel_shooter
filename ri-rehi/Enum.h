@@ -5,7 +5,8 @@ enum ICollidableType
     T_Player,
     T_Enemy,
     T_Block,
-    T_Bullet
+    T_Bullet,
+	T_Exit
 };
 
 enum LayerType

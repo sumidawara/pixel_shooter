@@ -27,6 +27,8 @@ struct ShotManager::Impl
 		context.reflection_count = player_state.reflection_count;
 		context.penetration_count = player_state.penetration_count;
 
+
+
 		auto ptr_bullet = std::make_shared<Bullet>();
 		ptr_bullet->init(context);
 		God::getInstance().getBulletManager()->addBullet(ptr_bullet);

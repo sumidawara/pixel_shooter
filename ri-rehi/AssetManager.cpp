@@ -50,6 +50,10 @@ void AssetManager::registerImage()
 	Image scaled_liebesrechner_run_image = original_liebesrechner_run_image.scale(SCALE_RATE, InterpolationAlgorithm::Nearest);
 	TextureAsset::Register(AssetKey::liebesrechner_run, image2TextureAssetData(scaled_liebesrechner_run_image));
 
+	//出口
+	Image original_exit_image{U"resources/img/exit.png"};
+	TextureAsset::Register(AssetKey::exit, image2TextureAssetData(original_exit_image.scale(SCALE_RATE, InterpolationAlgorithm::Nearest)));
+
 	//スライム
 	Image original_slime_image{ U"resources/img/slime.png" };
 	TextureAsset::Register(AssetKey::slime, image2TextureAssetData(original_slime_image.scale(SCALE_RATE, InterpolationAlgorithm::Nearest)));

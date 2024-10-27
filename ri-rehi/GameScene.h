@@ -8,6 +8,7 @@
 #include "GUI/GameScene/GameSceneGUI.h"
 #include "Particle/ParticleManager.h"
 #include "EnemyManager.h"
+#include "Exit.h"
 #include "TimeManager.h"
 #include "GUI/CursorEx.h"
 #include "GUI/GameScene/GameSceneGUIManager.h"
@@ -28,6 +29,7 @@ public:
 private:
 	std::shared_ptr<World> _ptr_world;
 	std::shared_ptr<Player> _ptr_player;
+	std::shared_ptr<Exit> _ptr_exit;
 	std::shared_ptr<EnemyManager> _ptr_enemy_manager;
 	std::shared_ptr<ParticleManager> _ptr_particle_manager;
 	std::shared_ptr<CollisionManager> _ptr_collision_manager;
