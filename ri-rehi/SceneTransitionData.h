@@ -11,6 +11,8 @@ public:
 	int32 getTransitionTimeMillisecond() const;
 	bool getIsGameSceneToGameScene() const;
 
+	void setIsGameSceneToGameScene(bool value);
+
 	static SceneTransitionData None();
 	static SceneTransitionData Game();
 	static SceneTransitionData GameOver();

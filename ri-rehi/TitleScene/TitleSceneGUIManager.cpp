@@ -29,7 +29,7 @@ void TitleSceneGUIManager::draw() const
 
 void TitleSceneGUIManager::onStarBtnClicked()
 {
-	God::getInstance().setSceneTransitionData(Sc_Game);
+	God::getInstance().setSceneTransitionData(SceneTransitionData::Game());
 }
 
 void TitleSceneGUIManager::onSettingBtnClicked()

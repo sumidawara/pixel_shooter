@@ -38,7 +38,7 @@ void Exit::onCollision(const ICollidable& other)
 {
 	if(other.getType() == T_Player)
 	{
-		God::getInstance().setSceneTransitionData(Sc_Game);
+		God::getInstance().setSceneTransitionData(SceneTransitionData::Game());
 
 	}
 }

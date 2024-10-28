@@ -35,9 +35,35 @@ bool SceneTransitionData::getIsGameSceneToGameScene() const
 	return p_impl->_is_gamescene_to_gamescene;
 }
 
+void SceneTransitionData::setIsGameSceneToGameScene(bool value)
+{
+	p_impl->_is_gamescene_to_gamescene = value;
+}
+
 SceneTransitionData SceneTransitionData::None()
 {
 	SceneTransitionData scene_transition_data;
 	scene_transition_data.init(Sc_None, -1, false);
+	return scene_transition_data;
+}
+
+SceneTransitionData SceneTransitionData::Game()
+{
+	SceneTransitionData scene_transition_data;
+	scene_transition_data.init(Sc_Game, 1000, false);
+	return scene_transition_data;
+}
+
+SceneTransitionData SceneTransitionData::GameOver()
+{
+	SceneTransitionData scene_transition_data;
+	scene_transition_data.init(Sc_Gameover, 1000, false);
+	return scene_transition_data;
+}
+
+SceneTransitionData SceneTransitionData::Title()
+{
+	SceneTransitionData scene_transition_data;
+	scene_transition_data.init(Sc_Title, 1000, false);
 	return scene_transition_data;
 }
