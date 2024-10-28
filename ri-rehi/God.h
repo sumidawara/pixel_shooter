@@ -2,6 +2,7 @@
 #include "AbilityManager.h"
 #include "CollisionManager.h"
 #include "EnemyManager.h"
+#include "SceneTransitionData.h"
 #include "TimeManager.h"
 #include "Player/Player.h"
 #include "World.h"
@@ -62,8 +63,8 @@ public:
 	void setGameoverSceneGUIManager(const std::shared_ptr<GameoverSceneGUIManager>& value);
 
 	//共通
-	SceneType getChangeSceneFlag() const;
-	void setChangeSceneFlag(SceneType value);
+	SceneTransitionData getSceneTransitionData() const;
+	void setSceneTransitionData(const SceneTransitionData& value);
 
 private:
     struct Impl;

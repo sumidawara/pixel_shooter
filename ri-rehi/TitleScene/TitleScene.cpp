@@ -41,9 +41,11 @@ void TitleScene::update()
 	p_impl->_titlescene_gui_manager->update(delta_time);
 	Debug::getInstance().update(delta_time);
 
-	if(God::getInstance().getChangeSceneFlag() == Sc_Game)
+	auto scene_transition_data = God::getInstance().getSceneTransitionData();
+	if(scene_transition_data.getDestinationSceneType() == Sc_Game)
 	{
-		changeScene(Sc_Game, 1000);
+		God::getInstance().setSceneTransitionData(SceneTransitionData::None());
+		changeScene(Sc_Game, scene_transition_data.getTransitionTimeMillisecond());
 	}
 }
 

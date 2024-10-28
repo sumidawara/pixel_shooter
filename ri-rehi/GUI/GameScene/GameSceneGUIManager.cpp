@@ -83,7 +83,7 @@ void GameSceneGUIManager::onSettingBtnClicked()
 
 void GameSceneGUIManager::onTitleBtnClicked()
 {
-	God::getInstance().setChangeSceneFlag(Sc_Title);
+	God::getInstance().setSceneTransitionData(Sc_Title);
 }
 
 //セッター

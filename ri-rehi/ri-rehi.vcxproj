@@ -480,6 +480,7 @@
     <ClCompile Include="Player\ShotManager.cpp" />
     <ClCompile Include="Reloader.cpp" />
     <ClCompile Include="GameoverScene\GameoverScene.cpp" />
+    <ClCompile Include="SceneTransitionData.cpp" />
     <ClCompile Include="Slime.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -985,6 +986,7 @@
     <ClInclude Include="Player\ShotManager.h" />
     <ClInclude Include="Reloader.h" />
     <ClInclude Include="GameoverScene\GameoverScene.h" />
+    <ClInclude Include="SceneTransitionData.h" />
     <ClInclude Include="Slime.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="StillBehavior.h" />

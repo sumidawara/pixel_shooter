@@ -14,7 +14,7 @@ struct World::Impl
 	std::shared_ptr<Layer> _ptr_terrain_object_layer;
 	std::shared_ptr<Layer> _ptr_ground_layer;
 
-	std::vector<LayerJsonData> loadWorldJSON(const String& file_path)
+	std::vector<LayerJsonData> loadWorldJSON(const StringView& file_path)
 	{
 		const JSON json = JSON::Load(file_path);
 		if (not json) throw Error{ U"Failed to load " + file_path };
@@ -57,7 +57,7 @@ World::World() : p_impl(std::make_shared<Impl>())
 {
 }
 
-void World::init(Vec2 pos, const String& file_path)
+void World::init(Vec2 pos, const StringView& file_path)
 {
 	p_impl->_world_pos = pos;
 	auto layer_json_data_list = p_impl->loadWorldJSON(file_path);

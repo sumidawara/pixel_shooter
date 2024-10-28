@@ -36,7 +36,7 @@ void GameScene::init()
 	_ptr_enemy_manager->init();
 	God::getInstance().setEnemyManager(_ptr_enemy_manager);
 
-	_ptr_world->init({0, 0}, U"resources/world/world.json");
+	_ptr_world->init({0, 0}, AssetKey::getStages()[0]);
 	God::getInstance().setPtrWorld(_ptr_world);
 
 	_ptr_player->init(God::getInstance().getInitialPlayerPos());
@@ -65,6 +65,7 @@ void GameScene::init()
 
 	//ICollidableの登録 これは将来消す
 	_ptr_collision_manager->addICollidable(_ptr_player);
+	_ptr_collision_manager->addICollidable(_ptr_exit);
 }
 
 void GameScene::update()
@@ -94,19 +95,24 @@ void GameScene::update()
 	_ptr_time_manager->update(system_delta_time);
 	Debug::getInstance().update(system_delta_time);
 
+	auto scene_transition_data = God::getInstance().getSceneTransitionData();
 	if(_ptr_player->getPtrPlayerStateManager()->getPlayerState().current_hp == 0)
 	{
-		God::getInstance().setChangeSceneFlag(Sc_None);
-		changeScene(Sc_Gameover);
+		God::getInstance().setSceneTransitionData(SceneTransitionData::None());
+		changeScene(Sc_Gameover, scene_transition_data.getTransitionTimeMillisecond());
 	}
-	if(God::getInstance().getChangeSceneFlag() == Sc_Title)
+	if(scene_transition_data.getDestinationSceneType() == Sc_Title)
 	{
-		God::getInstance().setChangeSceneFlag(Sc_None);
-		changeScene(Sc_Title, 1000);
+		God::getInstance().setSceneTransitionData(SceneTransitionData::None());
+		changeScene(Sc_Title, scene_transition_data.getTransitionTimeMillisecond());
 	}
-	if(God::getInstance().getChangeSceneFlag() == Sc_Game)
+	if(scene_transition_data.getDestinationSceneType() == Sc_Game)
 	{
-		God::getInstance().setChangeSceneFlag(Sc_None);
+		God::getInstance().setSceneTransitionData(SceneTransitionData::None());
+		if(scene_transition_data.getIsGameSceneToGameScene())
+		{
+
+		}
 		init();
 	}
 }

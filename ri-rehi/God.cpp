@@ -27,7 +27,7 @@ public:
 	std::shared_ptr<GameoverSceneGUIManager> _ptr_gameoverscene_gui_manager;
 
 	//共通
-	SceneType _change_scene_flag;
+	SceneTransitionData _scene_transition_data;
 };
 
 God::God() : p_impl(std::make_shared<Impl>())
@@ -190,11 +190,11 @@ void God::setGameoverSceneGUIManager(const std::shared_ptr<GameoverSceneGUIManag
 
 //共通
 
-SceneType God::getChangeSceneFlag() const
+SceneTransitionData God::getSceneTransitionData() const
 {
-	return p_impl->_change_scene_flag;
+	return p_impl->_scene_transition_data;
 }
-void God::setChangeSceneFlag(SceneType value)
+void God::setSceneTransitionData(const SceneTransitionData& value)
 {
-	p_impl->_change_scene_flag = value;
+	p_impl->_scene_transition_data = value;
 }

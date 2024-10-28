@@ -2,6 +2,7 @@
 #include "Exit.h"
 
 #include "AssetKey.h"
+#include "God.h"
 #include "GraphicSetting.h"
 
 struct Exit::Impl
@@ -37,7 +38,8 @@ void Exit::onCollision(const ICollidable& other)
 {
 	if(other.getType() == T_Player)
 	{
-		Console << U"hit exit";
+		God::getInstance().setSceneTransitionData(Sc_Game);
+
 	}
 }
 

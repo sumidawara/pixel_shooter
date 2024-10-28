@@ -39,11 +39,11 @@ void GameoverScene::update()
 	p_impl->_gameover_scene_gui_manager->update(delta_time);
 	Debug::getInstance().update(delta_time);
 
-	if(God::getInstance().getChangeSceneFlag() == Sc_Game)
+	if(God::getInstance().getSceneTransitionData() == Sc_Game)
 	{
 		changeScene(Sc_Game, 1000);
 	}
-	if(God::getInstance().getChangeSceneFlag() == Sc_Title)
+	if(God::getInstance().getSceneTransitionData() == Sc_Title)
 	{
 		changeScene(Sc_Title, 1000);
 	}

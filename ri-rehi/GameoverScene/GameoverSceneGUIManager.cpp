@@ -28,10 +28,10 @@ void GameoverSceneGUIManager::draw() const
 
 void GameoverSceneGUIManager::onRestartBtnClicked()
 {
-	God::getInstance().setChangeSceneFlag(Sc_Game);
+	God::getInstance().setSceneTransitionData(Sc_Game);
 }
 
 void GameoverSceneGUIManager::onTitleBtnClicked()
 {
-	God::getInstance().setChangeSceneFlag(Sc_Title);
+	God::getInstance().setSceneTransitionData(Sc_Title);
 }

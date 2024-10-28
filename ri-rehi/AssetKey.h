@@ -18,4 +18,15 @@ namespace AssetKey
 	constexpr StringView pixel_b80 = U"pixel_b80";
 
 	constexpr StringView ps_default = U"ps_default";
+
+	// constexpr StringView stage1 = U"resources/world/stage1.json";
+	// constexpr StringView stage2 = U"resources/world/stage2.json";
+
+	inline std::vector<StringView> getStages()
+	{
+		return {
+			U"resources/world/stage1.json",
+			U"resources/world/stage2.json"
+		};
+	}
 }

@@ -5,7 +5,7 @@ class World
 {
 public:
 	World();
-	void init(Vec2 pos, const String& file_path);
+	void init(Vec2 pos, const StringView& file_path);
 	void update(double delta_time);
 	void draw() const;
 
