@@ -12,7 +12,7 @@ struct PlayerState
 	int32 current_exp = 0;
 
 	//ShotManagerが使用するパラメーター
-	double shot_interval = 0.0;
+	double shot_interval = 0.0; //最低頻度も設けるべき
 	int32 n_way_front_shot = 0;
 	int32 n_way_side_shot = 0;
 	int32 n_way_back_shot = 0;
