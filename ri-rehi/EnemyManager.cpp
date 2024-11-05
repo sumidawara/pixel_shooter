@@ -7,7 +7,7 @@ struct EnemyManager::Impl
 {
 	std::vector<std::shared_ptr<IEnemy>> _ptr_enemy_list;
 
-	void deleteInActiveEnemy()
+	void deleteInactiveEnemy()
 	{
 		for (auto it = _ptr_enemy_list.begin(); it != _ptr_enemy_list.end();)
 		{
@@ -35,17 +35,6 @@ EnemyManager::EnemyManager() : p_impl(std::make_shared<Impl>())
 
 void EnemyManager::init()
 {
-	std::shared_ptr<Slime> _ptr_slime1 = std::make_shared<Slime>();
-	std::shared_ptr<Slime> _ptr_slime2 = std::make_shared<Slime>();
-	_ptr_slime1->init({500, 500});
-	_ptr_slime2->init({650, 500});
-
-	p_impl->_ptr_enemy_list.push_back(_ptr_slime1);
-	p_impl->_ptr_enemy_list.push_back(_ptr_slime2);
-
-	auto collision_manager = God::getInstance().getPtrCollisionManager();
-	collision_manager->addICollidable(_ptr_slime1);
-	collision_manager->addICollidable(_ptr_slime2);
 }
 
 void EnemyManager::update(double delta_time)
@@ -54,7 +43,7 @@ void EnemyManager::update(double delta_time)
 	{
 		ptr_slime->update(delta_time);
 	}
-	p_impl->deleteInActiveEnemy();
+	p_impl->deleteInactiveEnemy();
 }
 
 void EnemyManager::draw() const
@@ -63,6 +52,11 @@ void EnemyManager::draw() const
 	{
 		ptr_slime->draw();
 	}
+}
+
+void EnemyManager::clear()
+{
+	p_impl->_ptr_enemy_list.clear();
 }
 
 void EnemyManager::createEnemy(EnemyType::EnemyType enemy_type, Vec2 pos)

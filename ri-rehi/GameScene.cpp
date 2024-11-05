@@ -179,23 +179,8 @@ void GameScene::drawFadeOut(double t) const
 
 void GameScene::loadNextStage()
 {
-	// _ptr_world = std::make_shared<World>();
-	// _ptr_player = std::make_shared<Player>();
-	// _ptr_exit = std::make_shared<Exit>();
-	// _ptr_particle_manager = std::make_shared<ParticleManager>();
-	// _ptr_bullet_manager = std::make_shared<BulletManager>();
-	// _ptr_enemy_manager = std::make_shared<EnemyManager>();
-	// _ptr_gamescene_gui = std::make_shared<GameSceneGUI>();
-	// _ptr_gamescene_gui_manager = std::make_shared<GameSceneGUIManager>();
-	// _ptr_collision_manager = std::make_shared<CollisionManager>();
-	// _ptr_ability_manager = std::make_shared<AbilityManager>();
-	// _ptr_time_manager = std::make_shared<TimeManager>();
-
-	_ptr_collision_manager->init();
-	God::getInstance().setCollisionManager(_ptr_collision_manager);
-
-	_ptr_enemy_manager->init();
-	God::getInstance().setEnemyManager(_ptr_enemy_manager);
+	_ptr_collision_manager->clear();
+	_ptr_enemy_manager->clear();
 
 	_ptr_world->init({0, 0}, AssetKey::getStages()[God::getInstance().getStageNum()]);
 	God::getInstance().setPtrWorld(_ptr_world);

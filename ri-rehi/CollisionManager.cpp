@@ -155,6 +155,11 @@ void CollisionManager::draw() const
 {
 }
 
+void CollisionManager::clear()
+{
+	p_impl->_ptr_entity_list->clear();
+}
+
 void CollisionManager::addICollidable(const std::shared_ptr<ICollidable>& ptr_icollidable) const
 {
 	p_impl->_ptr_entity_list->push_back(ptr_icollidable);
