@@ -197,8 +197,7 @@ void GameScene::loadNextStage()
 
 	_ptr_camera = std::make_shared<Camera2D>(God::getInstance().getInitialPlayerPos(), 1.0);
 	_ptr_camera->setParameters(Camera2DParameters::NoControl());
-
-	_cursor.init();
+	God::getInstance().setPtrCamera(_ptr_camera);
 
 	//ICollidableの登録 これは将来消す
 	_ptr_collision_manager->addICollidable(_ptr_player);
