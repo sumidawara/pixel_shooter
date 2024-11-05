@@ -1,10 +1,10 @@
 ﻿#pragma once
 #include "FrameSequencer.h"
-#include "IEnemyBehavior.h"
+#include "Behavior/IEnemyBehavior.h"
 #include "IEnemy.h"
-#include "StillBehavior.h"
-#include "ChasePlayerBehavior.h"
-#include "WanderBehavior.h"
+#include "Behavior/StillBehavior.h"
+#include "Behavior/ChasePlayerBehavior.h"
+#include "Behavior/WanderBehavior.h"
 #include "Player/Player.h"
 
 class Slime : public IEnemy

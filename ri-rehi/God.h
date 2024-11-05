@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include "AbilityManager.h"
 #include "CollisionManager.h"
-#include "EnemyManager.h"
+#include "Enemy/EnemyManager.h"
 #include "SceneTransitionData.h"
 #include "TimeManager.h"
 #include "Player/Player.h"
