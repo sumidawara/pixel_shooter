@@ -10,6 +10,8 @@ struct Debug::Impl
 	int32 _log_count = 10;
 	std::vector<std::vector<String>> _log_list;
 
+	Font _font;
+
 	Impl() : _log_list(_log_count)
 	{
 	}
@@ -105,6 +107,8 @@ Debug& Debug::getInstance()
 
 void Debug::init()
 {
+	auto path = FileSystem::GetFolderPath(SpecialFolder::SystemFonts) + U"msgothic.ttc";
+	p_impl->_font = {20, path};
 }
 
 void Debug::update(double delta_time)
@@ -114,22 +118,18 @@ void Debug::update(double delta_time)
 
 void Debug::draw() const
 {
-	// if (DebugSetting::getIsMousePosVisible())
-	// {
-	// 	Print << U"MousePos : " << Cursor::Pos();
-	// 	p_impl->printPartition();
-	// }
-
-
 	int32 debug_screen_index = p_impl->_debug_screen_index;
 	if (debug_screen_index != -1)
 	{
-		Print << U"DebugScreenIndex : " << debug_screen_index;
-		Print << U"-------------------------------";
+		auto print = detail::Print_impl{};
+		print.setFont(p_impl->_font);
+
+		print << U"DebugScreenIndex : " << debug_screen_index;
+		print << U"-------------------------------";
 
 		for (int32 line = 0; line < p_impl->_log_list[debug_screen_index].size(); line++)
 		{
-			Print << p_impl->_log_list[debug_screen_index][line];
+			print << p_impl->_log_list[debug_screen_index][line];
 		}
 
 		if(debug_screen_index !=0)

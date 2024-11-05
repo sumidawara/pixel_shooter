@@ -17,6 +17,9 @@ public:
 	Point getSize() const;
 	Layer getLayer(LayerType layer_type) const;
 
+	//プレイヤーからの距離
+	std::shared_ptr<Grid<int32>> getDistanceField() const;
+
 	//現状はterrain_object_layerのgetBlockGridを返すだけ
 	std::shared_ptr<Grid<std::shared_ptr<Block>>> getCollidableBlockGrid() const;
 
