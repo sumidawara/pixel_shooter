@@ -16,6 +16,9 @@ struct PlayerState
 	int32 n_way_front_shot = 0;
 	int32 n_way_side_shot = 0;
 	int32 n_way_back_shot = 0;
+	double front_angle = 0;
+	double side_angle = 0;
+	double back_angle = 0;
 	double reload_interval = 0.0;
 	double ammo_capacity = 0;
 

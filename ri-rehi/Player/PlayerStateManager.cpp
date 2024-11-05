@@ -69,9 +69,12 @@ void PlayerStateManager::init()
 
 	//ShotManagerのパラメータ
 	p_impl->_ptr_player_state->shot_interval = 0.3;
-	p_impl->_ptr_player_state->n_way_front_shot = 1;
+	p_impl->_ptr_player_state->n_way_front_shot = 2;
 	p_impl->_ptr_player_state->n_way_side_shot = 0;
-	p_impl->_ptr_player_state->n_way_back_shot = 0;
+	p_impl->_ptr_player_state->n_way_back_shot = 1;
+	p_impl->_ptr_player_state->front_angle = 60;
+	p_impl->_ptr_player_state->side_angle = 60;
+	p_impl->_ptr_player_state->back_angle = 60;
 	p_impl->_ptr_player_state->reload_interval = 2.0;
 	p_impl->_ptr_player_state->ammo_capacity = 10;
 
