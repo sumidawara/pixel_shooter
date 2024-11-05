@@ -31,17 +31,18 @@ struct GameSceneGUIManager::Impl
 	//トランジションがフェードイン
 	void onEnterTransitionStarting()
 	{
-		Debug::getInstance().writeline(0, U"GameSceneTransition : Enter Starting");
+		//時間を止める
+		God::getInstance().getPtrTimeManager()->setIsForciblyPaused(true);
 	}
 
 	//トランジションがフェードアウト
 	void onEnterTransitionEnding()
 	{
-		Debug::getInstance().writeline(0, U"GameSceneTransition : Enter Ending");
-
+		//ステージ数のインクリメント
 		auto next_stage_num = God::getInstance().getStageNum() + 1;
 		God::getInstance().setStageNum(next_stage_num);
 
+		//SceneTransitionDataの作成
 		auto transition_data = SceneTransitionData::Game();
 		transition_data.setIsGameSceneToGameScene(true);
 		God::getInstance().setSceneTransitionData(transition_data);
@@ -50,7 +51,8 @@ struct GameSceneGUIManager::Impl
 	//トランジションが完全に終了
 	void onEnterTransitionNone()
 	{
-		Debug::getInstance().writeline(0, U"GameSceneTransition : Enter None");
+		//時間を解除
+		God::getInstance().getPtrTimeManager()->setIsForciblyPaused(false);
 	}
 
 	void setIsGamesceneMenuEnabled(int value)

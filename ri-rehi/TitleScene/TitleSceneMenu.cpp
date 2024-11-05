@@ -25,7 +25,7 @@ struct TitleSceneMenu::Impl
 		if(_start_btn.getIsClicked())
 		{
 			auto titlescene_gui_manager = God::getInstance().getTitleSceneGUIManager();
-			titlescene_gui_manager->onStarBtnClicked();
+			titlescene_gui_manager->onStartBtnClicked();
 			_start_btn.setIsClicked(false);
 		}
 		if(_setting_btn.getIsClicked())

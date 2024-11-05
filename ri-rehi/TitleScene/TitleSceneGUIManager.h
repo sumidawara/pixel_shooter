@@ -8,7 +8,7 @@ public:
 	void update(double delta_time);
 	void draw() const;
 
-	void onStarBtnClicked();
+	void onStartBtnClicked();
 	void onSettingBtnClicked();
 	void onExitBtnClicked();
 

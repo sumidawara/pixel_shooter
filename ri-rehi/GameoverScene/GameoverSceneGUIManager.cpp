@@ -28,6 +28,9 @@ void GameoverSceneGUIManager::draw() const
 
 void GameoverSceneGUIManager::onRestartBtnClicked()
 {
+	//ステージ数を初期化
+	God::getInstance().setStageNum(1);
+
 	God::getInstance().setSceneTransitionData(SceneTransitionData::Game());
 }
 

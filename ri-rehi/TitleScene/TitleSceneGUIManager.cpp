@@ -27,8 +27,11 @@ void TitleSceneGUIManager::draw() const
 
 //イベント
 
-void TitleSceneGUIManager::onStarBtnClicked()
+void TitleSceneGUIManager::onStartBtnClicked()
 {
+	//ステージ数を初期化
+	God::getInstance().setStageNum(1);
+
 	God::getInstance().setSceneTransitionData(SceneTransitionData::Game());
 }
 
