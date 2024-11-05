@@ -54,7 +54,7 @@ void EnemyManager::draw() const
 	}
 }
 
-void EnemyManager::clear()
+void EnemyManager::clearEnemy()
 {
 	p_impl->_enemy_ptr_list.clear();
 }

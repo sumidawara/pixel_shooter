@@ -9,7 +9,7 @@ public:
 	void update(double delta_time);
 	void draw() const;
 
-	void clear();
+	void clearEnemy();
 
 	void createEnemy(EnemyType::EnemyType enemy_type, Vec2 pos);
 	void giveKeyToOneEnemy();

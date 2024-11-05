@@ -10,6 +10,8 @@ public:
 	void update(double delta_time);
 	void draw() const;
 
+	void clearParticle();
+
 	void addParticle(std::shared_ptr<IParticle> ptr_particle);
 
 private:

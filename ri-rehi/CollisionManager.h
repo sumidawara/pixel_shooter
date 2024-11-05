@@ -9,7 +9,7 @@ public:
 	void update(double delta_time);
 	void draw() const;
 
-	void clear();
+	void clearCollision();
 
 	void addICollidable(const std::shared_ptr<ICollidable>& ptr_icollidable) const;
 	void removeICollidable(const std::shared_ptr<ICollidable>& ptr_icollidable);

@@ -8,7 +8,7 @@
 
 struct ParticleManager::Impl
 {
-	Array<std::shared_ptr<IParticle>> _ptr_particle_list;
+	Array<std::shared_ptr<IParticle>> _particle_ptr_list;
 
 	int32 _writeline_index = 4;
 	int32 _bullet_particle_count = 0;
@@ -18,7 +18,7 @@ struct ParticleManager::Impl
 	{
 		//Particleのアップデートを実行
 		//なおかつnot is_activeなものを削除
-		_ptr_particle_list.remove_if([delta_time](const std::shared_ptr<IParticle>& ptr_particle)
+		_particle_ptr_list.remove_if([delta_time](const std::shared_ptr<IParticle>& ptr_particle)
 		{
 			bool is_particle_active = ptr_particle->update(
 				delta_time,
@@ -32,7 +32,7 @@ struct ParticleManager::Impl
 		_bullet_particle_count = 0;
 		_damage_amount_particle_count = 0;
 
-		for (auto& ptr_particle : _ptr_particle_list)
+		for (auto& ptr_particle : _particle_ptr_list)
 		{
 			if (auto ptr = dynamic_cast<BulletParticle*>(ptr_particle.get()))
 			{
@@ -76,14 +76,19 @@ void ParticleManager::update(double delta_time)
 
 void ParticleManager::draw() const
 {
-	for (auto& ptr_particle : p_impl->_ptr_particle_list)
+	for (auto& ptr_particle : p_impl->_particle_ptr_list)
 	{
 		ptr_particle->draw();
 	}
 }
 
+void ParticleManager::clearParticle()
+{
+	p_impl->_particle_ptr_list.clear();
+}
+
 
 void ParticleManager::addParticle(std::shared_ptr<IParticle> ptr_particle)
 {
-	p_impl->_ptr_particle_list << ptr_particle;
+	p_impl->_particle_ptr_list << ptr_particle;
 }

@@ -19,7 +19,7 @@ struct Player::Impl
 
 	static constexpr int32 AnimationFrame = 24;
 	static constexpr int32 AnimationIndexCount = 4;
-	FrameSequencer _animation_frame_sequencer{ AnimationFrame, AnimationIndexCount };
+	FrameSequencer _animation_frame_sequencer{AnimationFrame, AnimationIndexCount};
 
 	bool _is_right_face = false;
 	Vec2 _move_amount = {};
@@ -29,81 +29,81 @@ struct Player::Impl
 
 	ShotManager _shot_manager;
 
-    void move(double delta_time)
-    {
-        double d = _ptr_player_state_manager->getPlayerState().move_speed * delta_time;
+	void move(double delta_time)
+	{
+		double d = _ptr_player_state_manager->getPlayerState().move_speed * delta_time;
 
-        _move_amount = { 0.0, 0.0 };
+		_move_amount = {0.0, 0.0};
 
-        //上に移動
-        if (KeyW.pressed())
-        {
-            Vec2 delta = { 0.0, -d };
-            _rectf.moveBy(delta);
-            _move_amount += delta;
-            _is_run = true;
-        }
+		//上に移動
+		if (KeyW.pressed())
+		{
+			Vec2 delta = {0.0, -d};
+			_rectf.moveBy(delta);
+			_move_amount += delta;
+			_is_run = true;
+		}
 
-        //下に移動
-        if (KeyS.pressed())
-        {
-            Vec2 delta = { 0.0, d };
-            _rectf.moveBy(delta);
-            _move_amount += delta;
-        	_is_run = true;
-        }
+		//下に移動
+		if (KeyS.pressed())
+		{
+			Vec2 delta = {0.0, d};
+			_rectf.moveBy(delta);
+			_move_amount += delta;
+			_is_run = true;
+		}
 
-        //左に移動
-        if (KeyA.pressed())
-        {
-            Vec2 delta = {-d, 0.0 };
-            _rectf.moveBy(delta);
-            _move_amount += delta;
-        	_is_run = true;
-            _is_right_face = false;
-        }
+		//左に移動
+		if (KeyA.pressed())
+		{
+			Vec2 delta = {-d, 0.0};
+			_rectf.moveBy(delta);
+			_move_amount += delta;
+			_is_run = true;
+			_is_right_face = false;
+		}
 
-        //右に移動
-        if (KeyD.pressed())
-        {
-            Vec2 delta = { d, 0.0 };
-            _rectf.moveBy(delta);
-            _move_amount += delta;
-        	_is_run = true;
-            _is_right_face = true;
-        }
+		//右に移動
+		if (KeyD.pressed())
+		{
+			Vec2 delta = {d, 0.0};
+			_rectf.moveBy(delta);
+			_move_amount += delta;
+			_is_run = true;
+			_is_right_face = true;
+		}
 
-        if ((not KeyW.pressed()) && (not KeyA.pressed()) && (not KeyS.pressed()) && (not KeyD.pressed()))
-        {
-            Vec2 delta = { 0.0, 0.0 };
-        	_is_run = false;
-        }
-    }
+		if ((not KeyW.pressed()) && (not KeyA.pressed()) && (not KeyS.pressed()) && (not KeyD.pressed()))
+		{
+			Vec2 delta = {0.0, 0.0};
+			_is_run = false;
+		}
+	}
 
 	//PlayerStateManagerに移動すべき
-    void onDamaged(int32 damage_from_enemy)
-    {
-    	bool is_invincible = _ptr_player_state_manager->getPlayerState().is_invincible;
-        if (not is_invincible)
-        {
-        	//HP更新
-        	auto player_state = _ptr_player_state_manager->getPlayerState();
-        	int32 damage_amount = damage_from_enemy -  player_state.defence;
-        	if(damage_amount < 0) damage_amount = 0;
-        	_ptr_player_state_manager->setCurrentHP(player_state.current_hp - damage_amount);
+	void onDamaged(int32 damage_from_enemy)
+	{
+		bool is_invincible = _ptr_player_state_manager->getPlayerState().is_invincible;
+		if (not is_invincible)
+		{
+			//HP更新
+			auto player_state = _ptr_player_state_manager->getPlayerState();
+			int32 damage_amount = damage_from_enemy - player_state.defence;
+			if (damage_amount < 0) damage_amount = 0;
+			_ptr_player_state_manager->setCurrentHP(player_state.current_hp - damage_amount);
 
-        	//DamageAmountEffect
-        	std::shared_ptr<DamageAmountParticle> ptr_damage_amount_particle = std::make_shared<DamageAmountParticle>();
-        	ptr_damage_amount_particle->init(_rectf.center(), damage_amount);
-        	God::getInstance().getPtrParticleManager()->addParticle(ptr_damage_amount_particle);
+			//DamageAmountEffect
+			std::shared_ptr<DamageAmountParticle> ptr_damage_amount_particle = std::make_shared<DamageAmountParticle>();
+			ptr_damage_amount_particle->init(_rectf.center(), damage_amount);
+			God::getInstance().getPtrParticleManager()->addParticle(ptr_damage_amount_particle);
 
-        	if( player_state.current_hp < 0)
-        	{
-        		_ptr_player_state_manager->setCurrentHP(0);
-        	}
-        	_ptr_player_state_manager->setIsInvincible(true);
-        }
-    }
+			if (player_state.current_hp < 0)
+			{
+				_ptr_player_state_manager->setCurrentHP(0);
+			}
+			_ptr_player_state_manager->setIsInvincible(true);
+		}
+	}
 };
 
 Player::Player() : p_impl(std::make_shared<Impl>())
@@ -112,18 +112,7 @@ Player::Player() : p_impl(std::make_shared<Impl>())
 
 void Player::init(Vec2 pos)
 {
-    {
-        int32 _original_offset_left = 6; // 当たり判定は実際の画像より左に5pxずれる
-        int32 _original_offset_right = 6;
-        int32 _original_offset_top = 3;
-        int32 _original_offset_bottom = 2;
-
-        p_impl->_rectf = RectF(
-            Arg::center_<Vec2>(pos),
-            (GraphicSetting::getOriginalTileWidth() - _original_offset_left - _original_offset_right) * GraphicSetting::getScaleRate(),
-            (GraphicSetting::getOriginalTileHeight() - _original_offset_top - _original_offset_bottom) * GraphicSetting::getScaleRate()
-        );
-    };
+	setCenterPos(pos);
 
 	p_impl->_ptr_player_state_manager = std::make_shared<PlayerStateManager>();
 	p_impl->_ptr_player_state_manager->init();
@@ -151,18 +140,18 @@ void Player::draw() const
 		int32 NORMAL_TILE_WIDTH = GraphicSetting::getNormalTileWidth();
 		int32 NORMAL_TILE_HEIGHT = GraphicSetting::getNormalTileHeight();
 		TextureAsset(AssetKey::liebesrechner_run)(
-			p_impl->_animation_frame_sequencer.getCurrentIndex() * NORMAL_TILE_WIDTH,
-			0,
-			NORMAL_TILE_WIDTH,
-			NORMAL_TILE_HEIGHT)
+				p_impl->_animation_frame_sequencer.getCurrentIndex() * NORMAL_TILE_WIDTH,
+				0,
+				NORMAL_TILE_WIDTH,
+				NORMAL_TILE_HEIGHT)
 			.mirrored(p_impl->_is_right_face)
-		.drawAt(p_impl->_rectf.center(), ColorF{1.0, alpha});
+			.drawAt(p_impl->_rectf.center(), ColorF{1.0, alpha});
 	}
 	else
 	{
 		TextureAsset(AssetKey::liebesrechner_stand)
-		.mirrored(p_impl->_is_right_face)
-		.drawAt(p_impl->_rectf.center(), ColorF{1.0, alpha});
+			.mirrored(p_impl->_is_right_face)
+			.drawAt(p_impl->_rectf.center(), ColorF{1.0, alpha});
 	}
 
 	//衝突判定の描画
@@ -200,9 +189,25 @@ ICollidableType Player::getType() const
 	return T_Player;
 }
 
+void Player::setCenterPos(Vec2 center_pos)
+{
+	int32 _original_offset_left = 6; // 当たり判定は実際の画像より左に5pxずれる
+	int32 _original_offset_right = 6;
+	int32 _original_offset_top = 3;
+	int32 _original_offset_bottom = 2;
+
+	p_impl->_rectf = RectF(
+		Arg::center_<Vec2>(center_pos),
+		(GraphicSetting::getOriginalTileWidth() - _original_offset_left - _original_offset_right) *
+		GraphicSetting::getScaleRate(),
+		(GraphicSetting::getOriginalTileHeight() - _original_offset_top - _original_offset_bottom) *
+		GraphicSetting::getScaleRate()
+	);
+}
+
 Vec2 Player::getCenterPos() const
 {
-	return Vec2{ p_impl->_rectf.centerX(), p_impl->_rectf.centerY()};
+	return Vec2{p_impl->_rectf.centerX(), p_impl->_rectf.centerY()};
 }
 
 RectF Player::getRect() const
@@ -219,10 +224,3 @@ std::shared_ptr<PlayerStateManager> Player::getPtrPlayerStateManager() const
 {
 	return p_impl->_ptr_player_state_manager;
 }
-
-
-
-
-
-
-

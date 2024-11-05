@@ -18,9 +18,10 @@ public:
 	RectF getBoundingShape() const override;
 	ICollidableType getType() const override;
 
+	void setCenterPos(Vec2 center_pos);
+
 	Vec2 getCenterPos() const;
 	RectF getRect() const;
-
 	PlayerState getPlayerState() const;
 	std::shared_ptr<PlayerStateManager> getPtrPlayerStateManager() const;
 

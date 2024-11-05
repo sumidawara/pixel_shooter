@@ -155,7 +155,7 @@ void CollisionManager::draw() const
 {
 }
 
-void CollisionManager::clear()
+void CollisionManager::clearCollision()
 {
 	p_impl->_ptr_entity_list->clear();
 }

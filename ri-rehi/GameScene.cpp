@@ -44,6 +44,7 @@ void GameScene::init()
 	_ptr_gamescene_gui->init();
 	_ptr_gamescene_gui_manager->init();
 	_ptr_particle_manager->init();
+	_ptr_bullet_manager->init();
 	_ptr_ability_manager->init();
 	_ptr_time_manager->init();
 	_cursor.init();
@@ -185,34 +186,17 @@ void GameScene::drawFadeOut(double t) const
 
 void GameScene::loadNextStage()
 {
-	_ptr_collision_manager->clear();
-	_ptr_enemy_manager->clear();
+	_ptr_collision_manager->clearCollision();
+	_ptr_enemy_manager->clearEnemy();
 
 	_ptr_world->init({0, 0}, AssetKey::getStages()[God::getInstance().getStageNum()]);
-	God::getInstance().setPtrWorld(_ptr_world);
-
-	_ptr_player->init(God::getInstance().getInitialPlayerPos());
+	_ptr_player->setCenterPos(God::getInstance().getInitialPlayerPos());
 	_ptr_exit->init(God::getInstance().getExitPos());
-	// _ptr_gamescene_gui->init();
-	// _ptr_gamescene_gui_manager->init();
-	// _ptr_particle_manager->init();
-	// _ptr_ability_manager->init();
-	// _ptr_time_manager->init();
-	// _cursor.init();
+	_ptr_particle_manager->clearParticle();
+	_ptr_bullet_manager->clearBullet();
 
 	_ptr_camera = std::make_shared<Camera2D>(God::getInstance().getInitialPlayerPos(), 1.0);
 	_ptr_camera->setParameters(Camera2DParameters::NoControl());
-
-	God::getInstance().setPtrPlayer(_ptr_player);
-	God::getInstance().setPtrCamera(_ptr_camera);
-	// God::getInstance().setParticleManager(_ptr_particle_manager);
-	// God::getInstance().setBulletManager(_ptr_bullet_manager);
-	// God::getInstance().setGameSceneGUI(_ptr_gamescene_gui);
-	// God::getInstance().setGameSceneGUIManager(_ptr_gamescene_gui_manager);
-	// God::getInstance().setAbilityManager(_ptr_ability_manager);
-	// God::getInstance().setTimeManager(_ptr_time_manager);
-	// AssetManager::registerAsset();
-	// Debug::getInstance().init();
 
 	//ICollidableの登録 これは将来消す
 	_ptr_collision_manager->addICollidable(_ptr_player);
