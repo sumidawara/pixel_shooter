@@ -9,6 +9,9 @@ int32 GraphicSetting::ORIGINAL_TILE_WIDTH = 32;
 int32 GraphicSetting::ORIGINAL_TILE_HEIGHT = 32;
 
 ColorF GraphicSetting::PINK = ColorF{0.95, 0.12, 1.0, 1.0};
+ColorF GraphicSetting::SKY = ColorF{0.275, 1.0, 1.0, 1.0};
+ColorF GraphicSetting::YELLOW = ColorF{0.95, 1.0, 0.15, 1.0};
+
 
 int32 GraphicSetting::getScaleRate() {
 	return SCALE_RATE;
@@ -48,4 +51,14 @@ int32 GraphicSetting::getExtendedTileHeight()
 ColorF GraphicSetting::getPINK()
 {
 	return PINK;
+}
+
+ColorF GraphicSetting::getSKY()
+{
+	return SKY;
+}
+
+ColorF GraphicSetting::getYELLOW()
+{
+	return  YELLOW;
 }

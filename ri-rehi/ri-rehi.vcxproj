@@ -754,7 +754,6 @@
       <AdditionalOptions>/Zc:__cplusplus </AdditionalOptions>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
-    <ClCompile Include="Enemy\WhiteEye.cpp" />
     <ClCompile Include="Enum.cpp" />
     <ClCompile Include="Exit.cpp" />
     <ClCompile Include="FrameSequencer.cpp" />
@@ -1571,7 +1570,6 @@
     <ClInclude Include="Enemy\EnemyManager.h" />
     <ClInclude Include="Enemy\IEnemy.h" />
     <ClInclude Include="Enemy\Slime.h" />
-    <ClInclude Include="Enemy\WhiteEye.h" />
     <ClInclude Include="Enum.h" />
     <ClInclude Include="Exit.h" />
     <ClInclude Include="FrameSequencer.h" />

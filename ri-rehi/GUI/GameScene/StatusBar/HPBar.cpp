@@ -15,7 +15,8 @@ struct HPBar::Impl
 	double _border_width = 5;
 
 	ColorF _rectf_color{ 0.0, 0.0, 0.0, 1.0 };
-	ColorF _rectf_hp_color{ 1.0, 1.0, 1.0, 1.0 };
+	ColorF _rectf_hp_color = GraphicSetting::getPINK();
+	ColorF _rectf_hp_border_color = Palette::White;
 
 };
 
@@ -45,7 +46,7 @@ void HPBar::draw() const
 	RectF rectf_hp{ rectf_hp_pos, rectf_hp_size};
 
 	p_impl->_rectf.draw(p_impl->_rectf_color);
-	p_impl->_rectf.drawFrame(p_impl->_border_width, Palette::White);
+	p_impl->_rectf.drawFrame(p_impl->_border_width, p_impl->_rectf_hp_border_color);
 	rectf_hp.draw(p_impl->_rectf_hp_color);
 }
 

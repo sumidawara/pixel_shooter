@@ -14,6 +14,8 @@ public:
 	static int32 getExtendedTileHeight();
 
 	static ColorF getPINK();
+	static ColorF getSKY();
+	static ColorF getYELLOW();
 
 private:
 	static int32 SCALE_RATE;
@@ -24,5 +26,7 @@ private:
 	static int32 ORIGINAL_TILE_HEIGHT;
 
 	static ColorF PINK;
+	static ColorF SKY;
+	static ColorF YELLOW;
 };
 

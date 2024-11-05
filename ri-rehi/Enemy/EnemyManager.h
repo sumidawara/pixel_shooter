@@ -12,6 +12,7 @@ public:
 	void clear();
 
 	void createEnemy(EnemyType::EnemyType enemy_type, Vec2 pos);
+	void giveKeyToOneEnemy();
 
 private:
 	struct Impl;

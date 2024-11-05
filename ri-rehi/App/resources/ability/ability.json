@@ -121,7 +121,7 @@
             "rarity":1,
             "required_id":[],
             "parameter":[{
-                "ranged_damage":1
+                "ranged_damage":3
             }],
             "title":"射撃ダメージ++",
             "icon_large_assetname":"blankicon_large",
@@ -133,7 +133,7 @@
             "rarity":2,
             "required_id":[],
             "parameter":[{
-                "ranged_damage":1
+                "ranged_damage":7
             }],
             "title":"射撃ダメージ+++",
             "icon_large_assetname":"blankicon_large",

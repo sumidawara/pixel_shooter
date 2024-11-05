@@ -11,7 +11,7 @@ class WhiteEye : public IEnemy
 {
 public:
 	WhiteEye();
-	void init(Vec2 pos) override;
+	void init(Vec2 pos, int32 level) override;
 	void update(double delta_time) override;
 	void draw() const override;
 

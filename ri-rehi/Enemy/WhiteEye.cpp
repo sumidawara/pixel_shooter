@@ -25,11 +25,9 @@ struct WhiteEye::Impl
 	int32 _current_hp = 5;
 	int32 _defence = 0;
     int32 _collision_damage = 2;
-
 	int32 _drop_exp = 1;
 
 	bool _is_active = true;
-
     bool _is_right_face = false;
 
     void plan()
@@ -92,7 +90,7 @@ WhiteEye::WhiteEye(): p_impl(std::make_shared<Impl>())
 {
 }
 
-void WhiteEye::init(Vec2 pos)
+void WhiteEye::init(Vec2 pos, int32 level)
 {
     p_impl->_ptr_still_behavior = std::make_shared<StillBehavior>();
     p_impl->_ptr_chase_player_behavior = std::make_shared<ChasePlayerBehavior>();

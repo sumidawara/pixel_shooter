@@ -57,6 +57,7 @@ void PlayerStateManager::init()
 {
 	p_impl->_ptr_player_state = std::make_shared<PlayerState>();
 
+	//Playerのパラメータ
 	p_impl->_ptr_player_state->max_hp = 20;
 	p_impl->_ptr_player_state->current_hp = 20;
 	p_impl->_ptr_player_state->defence = 0;
@@ -103,12 +104,15 @@ void PlayerStateManager::enhancePlayerState(const PlayerState& parameter)
 {
 	auto current_state = p_impl->_ptr_player_state;
 
+	//Playerの強化
 	p_impl->_ptr_player_state->max_hp = current_state->max_hp + parameter.max_hp;
-	p_impl->_ptr_player_state->current_hp = current_state->current_hp + parameter.current_hp;
+	p_impl->_ptr_player_state->current_hp = current_state->current_hp + parameter.max_hp;
 	p_impl->_ptr_player_state->defence = current_state->defence + parameter.defence;
 	p_impl->_ptr_player_state->collision_damage = current_state->collision_damage + parameter.collision_damage;
-	p_impl->_ptr_player_state->ranged_damage = current_state->ranged_damage + parameter.ranged_damage;
 	p_impl->_ptr_player_state->move_speed = current_state->move_speed + parameter.move_speed;
+
+	//Bulletのパラメータ
+	p_impl->_ptr_player_state->ranged_damage = current_state->ranged_damage + parameter.ranged_damage;
 }
 
 void PlayerStateManager::addExp(int32 value)

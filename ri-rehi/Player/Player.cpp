@@ -7,7 +7,7 @@
 #include "GraphicSetting.h"
 #include "CollisionUtil.h"
 #include "Particle/DamageAmountParticle.h"
-#include "IEnemy.h"
+#include "Enemy/IEnemy.h"
 #include "God.h"
 #include "PlayerState.h"
 #include "PlayerStateManager.h"
@@ -89,6 +89,7 @@ struct Player::Impl
         	//HP更新
         	auto player_state = _ptr_player_state_manager->getPlayerState();
         	int32 damage_amount = damage_from_enemy -  player_state.defence;
+        	if(damage_amount < 0) damage_amount = 0;
         	_ptr_player_state_manager->setCurrentHP(player_state.current_hp - damage_amount);
 
         	//DamageAmountEffect
@@ -140,6 +141,10 @@ void Player::update(double delta_time)
 
 void Player::draw() const
 {
+	//無敵の時は点滅
+	bool is_invincible = p_impl->_ptr_player_state_manager->getPlayerState().is_invincible;
+	double alpha = (is_invincible) ? Periodic::Square0_1(0.1) : 1.0;
+
 	//立ち・歩きのスプライトアニメーション
 	if (p_impl->_is_run)
 	{
@@ -150,11 +155,14 @@ void Player::draw() const
 			0,
 			NORMAL_TILE_WIDTH,
 			NORMAL_TILE_HEIGHT)
-			.mirrored(p_impl->_is_right_face).drawAt(p_impl->_rectf.center());
+			.mirrored(p_impl->_is_right_face)
+		.drawAt(p_impl->_rectf.center(), ColorF{1.0, alpha});
 	}
 	else
 	{
-		TextureAsset(AssetKey::liebesrechner_stand).mirrored(p_impl->_is_right_face).drawAt(p_impl->_rectf.center());
+		TextureAsset(AssetKey::liebesrechner_stand)
+		.mirrored(p_impl->_is_right_face)
+		.drawAt(p_impl->_rectf.center(), ColorF{1.0, alpha});
 	}
 
 	//衝突判定の描画

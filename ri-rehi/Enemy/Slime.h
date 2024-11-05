@@ -11,7 +11,7 @@ class Slime : public IEnemy
 {
 public:
 	Slime();
-    void init(Vec2 pos) override;
+    void init(Vec2 pos, int32 level) override;
 	void update(double delta_time) override;
 	void draw() const override;
 
@@ -21,8 +21,11 @@ public:
 	ICollidableType getType() const override;
 
 	//IEnemy
+	void setHasKey(bool value) override;
+
 	int32 getCollisionDamage() const override;
 	bool getIsActive() const override;
+	bool getHasKey() const override;
 
 private:
     struct Impl;

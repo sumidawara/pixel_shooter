@@ -60,6 +60,7 @@ struct Layer::Impl
 		}
 	}
 
+	//L_EntityPlacementだけが呼び出し
 	void placeEntity()
 	{
 		for (int32 gy = 0; gy < _world_size.y; gy++)
@@ -85,6 +86,11 @@ struct Layer::Impl
 				}
 			}
 		}
+
+		//敵の中の1体だけに鍵を渡す
+		auto enemy_manager = God::getInstance().getEnemyManager();
+		enemy_manager->giveKeyToOneEnemy();
+
 	}
 
 	Vec2 indexPos2worldPos(Point index_pos, bool is_center)

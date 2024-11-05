@@ -97,9 +97,15 @@ void GameScene::update()
 	Debug::getInstance().update(system_delta_time);
 	writeline();
 
+	//ゲームオーバー判定 タイムオーバーも後々に実装
+	if(_ptr_player->getPtrPlayerStateManager()->getPlayerState().current_hp == 0)
+	{
+		God::getInstance().setSceneTransitionData(SceneTransitionData::GameOver());
+	}
+
 	auto scene_transition_data = God::getInstance().getSceneTransitionData();
 	//？？？ -> ゲームオーバー
-	if(_ptr_player->getPtrPlayerStateManager()->getPlayerState().current_hp == 0)
+	if(scene_transition_data.getDestinationSceneType() == Sc_Gameover)
 	{
 		God::getInstance().setSceneTransitionData(SceneTransitionData::None());
 		changeScene(Sc_Gameover, scene_transition_data.getTransitionTimeMillisecond());

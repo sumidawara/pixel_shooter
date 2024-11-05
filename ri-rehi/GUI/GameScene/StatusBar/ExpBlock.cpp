@@ -3,6 +3,7 @@
 
 #include "AssetKey.h"
 #include "DebugSetting.h"
+#include "GraphicSetting.h"
 
 struct ExpBlock::Impl
 {
@@ -39,7 +40,7 @@ void ExpBlock::draw() const
 	if(is_gui_debugging_visible) Circle{p_impl->_pos, 3}.draw(DebugSetting::getGuiDebugColor());
 
 	String str_lv_xx = U"Lv" + Format(p_impl->_level);
-	FontAsset(AssetKey::pixel_b80)(str_lv_xx).draw(p_impl->_level_text_pos);
+	FontAsset(AssetKey::pixel_b80)(str_lv_xx).draw(p_impl->_level_text_pos, GraphicSetting::getSKY());
 	if(is_gui_debugging_visible) Circle{p_impl->_level_text_pos, 3}.draw(DebugSetting::getGuiDebugColor());
 
 	p_impl->_expprogress.draw();
