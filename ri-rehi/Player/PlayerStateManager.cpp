@@ -69,9 +69,9 @@ void PlayerStateManager::init()
 
 	//ShotManagerのパラメータ
 	p_impl->_ptr_player_state->shot_interval = 0.3;
-	p_impl->_ptr_player_state->n_way_front_shot = 2;
+	p_impl->_ptr_player_state->n_way_front_shot = 3;
 	p_impl->_ptr_player_state->n_way_side_shot = 0;
-	p_impl->_ptr_player_state->n_way_back_shot = 1;
+	p_impl->_ptr_player_state->n_way_back_shot = 0;
 	p_impl->_ptr_player_state->front_angle = 60;
 	p_impl->_ptr_player_state->side_angle = 60;
 	p_impl->_ptr_player_state->back_angle = 60;
@@ -83,7 +83,7 @@ void PlayerStateManager::init()
 	p_impl->_ptr_player_state->bullet_range = 600;
 	p_impl->_ptr_player_state->bullet_size = 10;
 	p_impl->_ptr_player_state->bullet_speed = 400;
-	p_impl->_ptr_player_state->reflection_count = 2;
+	p_impl->_ptr_player_state->reflection_count = 0;
 	p_impl->_ptr_player_state->penetration_count = 0;
 
 	p_impl->_ptr_player_state->is_invincible = false;

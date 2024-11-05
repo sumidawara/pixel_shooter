@@ -54,6 +54,7 @@ struct ShotManager::Impl
 			Arg::center_<Vec2>(player_rectf.center()), player_state.bullet_size, player_state.bullet_size
 		};
 		context.owner_type = T_Player;
+		context.colorf = GraphicSetting::getSKY();
 		context.speed = player_state.bullet_speed;
 		context.range = player_state.bullet_range;
 		context.damage = player_state.ranged_damage;

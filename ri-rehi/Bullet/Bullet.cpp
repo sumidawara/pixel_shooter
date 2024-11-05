@@ -14,6 +14,7 @@ struct Bullet::Impl
 	RectF _rectf;
 	Vec2 _direction;
 	ICollidableType _owner_type;
+	ColorF _colorf;
 	double _speed;
 	double _range;
 	int32 _damage;
@@ -119,9 +120,11 @@ struct Bullet::Impl
 	{
 		if (_is_active)
 		{
-			std::shared_ptr<BulletParticle> ptr_bulletParticle = std::make_shared<BulletParticle>();
-			ptr_bulletParticle->init(_rectf.center());
-			God::getInstance().getPtrParticleManager()->addParticle(ptr_bulletParticle);
+			//パーティクル表示
+			// std::shared_ptr<BulletParticle> ptr_bulletParticle = std::make_shared<BulletParticle>();
+			// ptr_bulletParticle->init(_rectf.center());
+			// God::getInstance().getPtrParticleManager()->addParticle(ptr_bulletParticle);
+
 			_is_active = false;
 		}
 	}
@@ -136,6 +139,8 @@ void Bullet::init(const BulletContext& bullet_context)
 	p_impl->_rectf = bullet_context.rectf;
 	p_impl->_direction = bullet_context.direction;
 	p_impl->_owner_type = bullet_context.owner_type;
+	p_impl->_colorf = bullet_context.colorf;
+
 	p_impl->_speed = bullet_context.speed;
 	p_impl->_range = bullet_context.range;
 	p_impl->_damage = bullet_context.damage;
@@ -151,7 +156,7 @@ void Bullet::update(double delta_time)
 
 void Bullet::draw() const
 {
-	p_impl->_rectf.draw(Palette::White);
+	p_impl->_rectf.draw(p_impl->_colorf);
 }
 
 RectF Bullet::getBoundingShape() const
