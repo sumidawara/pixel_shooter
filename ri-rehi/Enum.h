@@ -39,3 +39,13 @@ namespace EnemyType
 		Slime
 	};
 }
+
+namespace GameSceneTransitionType
+{
+	enum State
+	{
+		None,
+		Starting,
+		Ending,
+	};
+}

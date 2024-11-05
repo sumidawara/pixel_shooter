@@ -1,14 +1,18 @@
 ﻿#include "stdafx.h"
 #include "GameSceneGUIManager.h"
+#include "Enum.h"
 
 #include "Debug.h"
 #include "God.h"
+#include "GameSceneTransition/GameSceneTransition.h"
 
 struct GameSceneGUIManager::Impl
 {
 	bool _is_ability_select_block_enabled = false;
 
 	bool _is_gamescene_menu_enabled = false;
+
+	GameSceneTransitionType::State _transition_state = GameSceneTransitionType::State::None;
 
 	//誤入力防止
 	bool _is_inputlock = false;
@@ -22,6 +26,31 @@ struct GameSceneGUIManager::Impl
 		{
 			setIsGamesceneMenuEnabled(not _is_gamescene_menu_enabled);
 		}
+	}
+
+	//トランジションがフェードイン
+	void onEnterTransitionStarting()
+	{
+		Debug::getInstance().writeline(0, U"GameSceneTransition : Enter Starting");
+	}
+
+	//トランジションがフェードアウト
+	void onEnterTransitionEnding()
+	{
+		Debug::getInstance().writeline(0, U"GameSceneTransition : Enter Ending");
+
+		auto next_stage_num = God::getInstance().getStageNum() + 1;
+		God::getInstance().setStageNum(next_stage_num);
+
+		auto transition_data = SceneTransitionData::Game();
+		transition_data.setIsGameSceneToGameScene(true);
+		God::getInstance().setSceneTransitionData(transition_data);
+	}
+
+	//トランジションが完全に終了
+	void onEnterTransitionNone()
+	{
+		Debug::getInstance().writeline(0, U"GameSceneTransition : Enter None");
 	}
 
 	void setIsGamesceneMenuEnabled(int value)
@@ -96,6 +125,24 @@ void GameSceneGUIManager::setIsAbilitySelectEnabled(bool value)
 	p_impl->_is_ability_select_block_enabled = value;
 }
 
+void GameSceneGUIManager::setTransitionState(GameSceneTransitionType::State state)
+{
+	p_impl->_transition_state = state;
+
+	switch (p_impl->_transition_state)
+	{
+	case GameSceneTransitionType::Starting:
+		p_impl->onEnterTransitionStarting();
+		break;
+	case GameSceneTransitionType::Ending:
+		p_impl->onEnterTransitionEnding();
+		break;
+	case GameSceneTransitionType::None:
+		p_impl->onEnterTransitionNone();
+		break;
+	}
+}
+
 //ゲッター
 
 bool GameSceneGUIManager::getIsAbilitySelectEnabled() const
@@ -111,4 +158,9 @@ bool GameSceneGUIManager::getIsGameSceneMenuEnabled() const
 bool GameSceneGUIManager::getIsInputLock() const
 {
 	return p_impl->_is_inputlock;
+}
+
+GameSceneTransitionType::State GameSceneGUIManager::getTransitionState() const
+{
+	return p_impl->_transition_state;
 }

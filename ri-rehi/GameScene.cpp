@@ -36,7 +36,7 @@ void GameScene::init()
 	_ptr_enemy_manager->init();
 	God::getInstance().setEnemyManager(_ptr_enemy_manager);
 
-	_ptr_world->init({0, 0}, AssetKey::getStages()[0]);
+	_ptr_world->init({0, 0}, AssetKey::getStages()[God::getInstance().getStageNum()]);
 	God::getInstance().setPtrWorld(_ptr_world);
 
 	_ptr_player->init(God::getInstance().getInitialPlayerPos());
@@ -93,27 +93,36 @@ void GameScene::update()
 	_ptr_gamescene_gui_manager->update(system_delta_time);
 	_ptr_ability_manager->update(system_delta_time);
 	_ptr_time_manager->update(system_delta_time);
+
 	Debug::getInstance().update(system_delta_time);
+	writeline();
 
 	auto scene_transition_data = God::getInstance().getSceneTransitionData();
+	//？？？ -> ゲームオーバー
 	if(_ptr_player->getPtrPlayerStateManager()->getPlayerState().current_hp == 0)
 	{
 		God::getInstance().setSceneTransitionData(SceneTransitionData::None());
 		changeScene(Sc_Gameover, scene_transition_data.getTransitionTimeMillisecond());
 	}
+	//？？？ -> タイトル
 	if(scene_transition_data.getDestinationSceneType() == Sc_Title)
 	{
 		God::getInstance().setSceneTransitionData(SceneTransitionData::None());
 		changeScene(Sc_Title, scene_transition_data.getTransitionTimeMillisecond());
 	}
+	//？？？ -> ゲームシーン
 	if(scene_transition_data.getDestinationSceneType() == Sc_Game)
 	{
 		God::getInstance().setSceneTransitionData(SceneTransitionData::None());
+		//ゲームシーン -> ゲームシーン
 		if(scene_transition_data.getIsGameSceneToGameScene())
 		{
-
+			loadNextStage();
 		}
-		init();
+		else
+		{
+			init();
+		}
 	}
 }
 
@@ -166,4 +175,60 @@ void GameScene::drawFadeOut(double t) const
 
 	draw();
 	fade_in_background.draw(Palette::Black);
+}
+
+void GameScene::loadNextStage()
+{
+	// _ptr_world = std::make_shared<World>();
+	// _ptr_player = std::make_shared<Player>();
+	// _ptr_exit = std::make_shared<Exit>();
+	// _ptr_particle_manager = std::make_shared<ParticleManager>();
+	// _ptr_bullet_manager = std::make_shared<BulletManager>();
+	// _ptr_enemy_manager = std::make_shared<EnemyManager>();
+	// _ptr_gamescene_gui = std::make_shared<GameSceneGUI>();
+	// _ptr_gamescene_gui_manager = std::make_shared<GameSceneGUIManager>();
+	// _ptr_collision_manager = std::make_shared<CollisionManager>();
+	// _ptr_ability_manager = std::make_shared<AbilityManager>();
+	// _ptr_time_manager = std::make_shared<TimeManager>();
+
+	_ptr_collision_manager->init();
+	God::getInstance().setCollisionManager(_ptr_collision_manager);
+
+	_ptr_enemy_manager->init();
+	God::getInstance().setEnemyManager(_ptr_enemy_manager);
+
+	_ptr_world->init({0, 0}, AssetKey::getStages()[God::getInstance().getStageNum()]);
+	God::getInstance().setPtrWorld(_ptr_world);
+
+	_ptr_player->init(God::getInstance().getInitialPlayerPos());
+	_ptr_exit->init(God::getInstance().getExitPos());
+	// _ptr_gamescene_gui->init();
+	// _ptr_gamescene_gui_manager->init();
+	// _ptr_particle_manager->init();
+	// _ptr_ability_manager->init();
+	// _ptr_time_manager->init();
+	// _cursor.init();
+
+	_ptr_camera = std::make_shared<Camera2D>(God::getInstance().getInitialPlayerPos(), 1.0);
+	_ptr_camera->setParameters(Camera2DParameters::NoControl());
+
+	God::getInstance().setPtrPlayer(_ptr_player);
+	God::getInstance().setPtrCamera(_ptr_camera);
+	// God::getInstance().setParticleManager(_ptr_particle_manager);
+	// God::getInstance().setBulletManager(_ptr_bullet_manager);
+	// God::getInstance().setGameSceneGUI(_ptr_gamescene_gui);
+	// God::getInstance().setGameSceneGUIManager(_ptr_gamescene_gui_manager);
+	// God::getInstance().setAbilityManager(_ptr_ability_manager);
+	// God::getInstance().setTimeManager(_ptr_time_manager);
+	// AssetManager::registerAsset();
+	// Debug::getInstance().init();
+
+	//ICollidableの登録 これは将来消す
+	_ptr_collision_manager->addICollidable(_ptr_player);
+	_ptr_collision_manager->addICollidable(_ptr_exit);
+}
+
+void GameScene::writeline() const
+{
+	Debug::getInstance().writeline(1, U"StageNum : " + Format(God::getInstance().getStageNum()));
 }

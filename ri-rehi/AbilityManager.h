@@ -7,7 +7,7 @@ public:
 	AbilityManager();
 	void init();
 	void update(double delta_time);
-	void draw();
+	void draw() const;
 
 	void rollAbility();
 	void addAbility(int32 index);

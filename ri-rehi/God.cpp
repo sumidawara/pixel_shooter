@@ -5,6 +5,7 @@ struct God::Impl
 {
 public:
 	//ゲーム
+	int32 _stage_num = 1;
 	std::shared_ptr<World> _ptr_world;
 	std::shared_ptr<Player> _ptr_player;
 	std::shared_ptr<Camera2D> _ptr_camera;
@@ -40,6 +41,11 @@ God& God::getInstance()
 	return instance;
 }
 
+int32 God::getStageNum() const
+{
+	return p_impl->_stage_num;
+}
+
 Player God::getPlayer() const
 {
 	return *p_impl->_ptr_player;
@@ -65,42 +71,47 @@ World God::getWorld() const
 	return *p_impl->_ptr_world;
 }
 
-std::shared_ptr<CollisionManager> God::getPtrCollisionManager()
+std::shared_ptr<CollisionManager> God::getPtrCollisionManager() const
 {
 	return p_impl->_ptr_collision_manager;
 }
 
-std::shared_ptr<ParticleManager> God::getPtrParticleManager()
+std::shared_ptr<ParticleManager> God::getPtrParticleManager() const
 {
 	return p_impl->_ptr_particle_manager;
 }
 
-std::shared_ptr<BulletManager> God::getBulletManager()
+std::shared_ptr<BulletManager> God::getBulletManager() const
 {
 	return p_impl->_ptr_bullet_manager;
 }
 
-std::shared_ptr<GameSceneGUIManager> God::getPtrGameSceneGUIManager()
+std::shared_ptr<GameSceneGUIManager> God::getPtrGameSceneGUIManager() const
 {
 	return p_impl->_ptr_gamescene_gui_manager;
 }
 
-std::shared_ptr<AbilityManager> God::getPtrAbilityManager()
+std::shared_ptr<AbilityManager> God::getPtrAbilityManager() const
 {
 	return p_impl->_ptr_ability_manager;
 }
 
-std::shared_ptr<TimeManager> God::getPtrTimeManager()
+std::shared_ptr<TimeManager> God::getPtrTimeManager() const
 {
 	return p_impl->_ptr_time_manager;
 }
 
-std::shared_ptr<EnemyManager> God::getEnemyManager()
+std::shared_ptr<EnemyManager> God::getEnemyManager() const
 {
 	return p_impl->_ptr_enemy_manager;
 }
 
 //セッター
+
+void God::setStageNum(int32 value)
+{
+	p_impl->_stage_num = value;
+}
 
 void God::setPtrWorld(const std::shared_ptr<World>& ptr_world) const
 {
@@ -194,6 +205,7 @@ SceneTransitionData God::getSceneTransitionData() const
 {
 	return p_impl->_scene_transition_data;
 }
+
 void God::setSceneTransitionData(const SceneTransitionData& value)
 {
 	p_impl->_scene_transition_data = value;

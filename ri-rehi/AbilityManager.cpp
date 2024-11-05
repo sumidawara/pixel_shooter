@@ -99,7 +99,7 @@ void AbilityManager::update(double delta_time)
 	p_impl->writeline();
 }
 
-void AbilityManager::draw()
+void AbilityManager::draw() const
 {
 }
 

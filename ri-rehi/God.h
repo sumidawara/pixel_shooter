@@ -22,21 +22,22 @@ public:
     static God& getInstance();
 
 	//ゲーム
-
+	int32 getStageNum() const;
 	World getWorld() const;
 	Player getPlayer() const;
 	Camera2D getCamera() const;
 	Vec2 getInitialPlayerPos() const;
 	Vec2 getExitPos() const;
 
-	std::shared_ptr<CollisionManager> getPtrCollisionManager();
-	std::shared_ptr<ParticleManager> getPtrParticleManager();
-	std::shared_ptr<BulletManager> getBulletManager();
-	std::shared_ptr<GameSceneGUIManager> getPtrGameSceneGUIManager();
-	std::shared_ptr<AbilityManager> getPtrAbilityManager();
-	std::shared_ptr<TimeManager> getPtrTimeManager();
-	std::shared_ptr<EnemyManager> getEnemyManager();
+	std::shared_ptr<CollisionManager> getPtrCollisionManager() const;
+	std::shared_ptr<ParticleManager> getPtrParticleManager() const;
+	std::shared_ptr<BulletManager> getBulletManager() const;
+	std::shared_ptr<GameSceneGUIManager> getPtrGameSceneGUIManager() const;
+	std::shared_ptr<AbilityManager> getPtrAbilityManager() const;
+	std::shared_ptr<TimeManager> getPtrTimeManager() const;
+	std::shared_ptr<EnemyManager> getEnemyManager() const;
 
+	void setStageNum(int32 value);
 	void setPtrWorld(const std::shared_ptr<World>& ptr_world) const;
 	void setPtrPlayer(const std::shared_ptr<Player>& ptr_player) const;
 	void setPtrCamera(const std::shared_ptr<Camera2D>& ptr_camera);

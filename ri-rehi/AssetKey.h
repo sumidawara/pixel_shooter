@@ -25,6 +25,7 @@ namespace AssetKey
 	inline std::vector<StringView> getStages()
 	{
 		return {
+			U"resources/world/stage0.json",
 			U"resources/world/stage1.json",
 			U"resources/world/stage2.json"
 		};

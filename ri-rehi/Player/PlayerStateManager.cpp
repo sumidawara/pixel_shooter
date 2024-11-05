@@ -104,6 +104,7 @@ void PlayerStateManager::enhancePlayerState(const PlayerState& parameter)
 	auto current_state = p_impl->_ptr_player_state;
 
 	p_impl->_ptr_player_state->max_hp = current_state->max_hp + parameter.max_hp;
+	p_impl->_ptr_player_state->current_hp = current_state->current_hp + parameter.current_hp;
 	p_impl->_ptr_player_state->defence = current_state->defence + parameter.defence;
 	p_impl->_ptr_player_state->collision_damage = current_state->collision_damage + parameter.collision_damage;
 	p_impl->_ptr_player_state->ranged_damage = current_state->ranged_damage + parameter.ranged_damage;

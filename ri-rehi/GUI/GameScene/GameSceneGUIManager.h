@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include "Enum.h"
 
 class GameSceneGUIManager
 {
@@ -15,10 +16,12 @@ public:
 	void onTitleBtnClicked();
 
 	void setIsAbilitySelectEnabled(bool value);
+	void setTransitionState(GameSceneTransitionType::State state);
 
 	bool getIsAbilitySelectEnabled() const;
 	bool getIsGameSceneMenuEnabled() const;
 	bool getIsInputLock() const;
+	GameSceneTransitionType::State getTransitionState() const;
 
 private:
 	struct Impl;

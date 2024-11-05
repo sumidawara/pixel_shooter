@@ -456,6 +456,7 @@
       <AdditionalOptions>/Zc:__cplusplus </AdditionalOptions>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
+    <ClCompile Include="GUI\GameScene\GameSceneTransition\GameSceneTransition.cpp" />
     <ClCompile Include="GUI\GameScene\StatusBar\ExpBlock.cpp" />
     <ClCompile Include="GUI\GameScene\StatusBar\ExpProgress.cpp" />
     <ClCompile Include="GUI\GameScene\StatusBar\HPBar.cpp" />
@@ -963,6 +964,7 @@
     <ClInclude Include="GUI\GameScene\GameSceneGUI.h" />
     <ClInclude Include="GUI\GameScene\GameSceneGUIManager.h" />
     <ClInclude Include="GUI\GameScene\GameSceneMenu.h" />
+    <ClInclude Include="GUI\GameScene\GameSceneTransition\GameSceneTransition.h" />
     <ClInclude Include="GUI\GameScene\StatusBar\ExpBlock.h" />
     <ClInclude Include="GUI\GameScene\StatusBar\ExpProgress.h" />
     <ClInclude Include="GUI\GameScene\StatusBar\HPBar.h" />

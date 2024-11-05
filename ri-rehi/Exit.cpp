@@ -8,6 +8,7 @@
 struct Exit::Impl
 {
 	RectF _rectf;
+	int32 _enter_counter;
 };
 
 Exit::Exit() : p_impl(std::make_shared<Impl>())
@@ -18,6 +19,7 @@ void Exit::init(Vec2 pos)
 {
 	auto size = Vec2{GraphicSetting::getNormalTileWidth(), GraphicSetting::getNormalTileHeight()};
 	p_impl->_rectf = RectF{pos, size};
+	p_impl->_enter_counter = 0;
 }
 
 void Exit::update(double delta_time)
@@ -38,8 +40,12 @@ void Exit::onCollision(const ICollidable& other)
 {
 	if(other.getType() == T_Player)
 	{
-		God::getInstance().setSceneTransitionData(SceneTransitionData::Game());
-
+		//Transition開始
+		if(p_impl->_enter_counter == 0)
+		{
+			p_impl->_enter_counter += 1;
+			God::getInstance().getPtrGameSceneGUIManager()->setTransitionState(GameSceneTransitionType::Starting);
+		}
 	}
 }
 

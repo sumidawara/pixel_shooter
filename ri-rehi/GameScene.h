@@ -26,6 +26,9 @@ public:
 	void drawFadeIn(double t) const override;
 	void drawFadeOut(double t) const override;
 
+	void loadNextStage();
+	void writeline() const;
+
 private:
 	std::shared_ptr<World> _ptr_world;
 	std::shared_ptr<Player> _ptr_player;
