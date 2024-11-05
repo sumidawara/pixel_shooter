@@ -78,3 +78,8 @@ void EnemyManager::giveKeyToOneEnemy()
 	auto list_size = static_cast<int32>(p_impl->_enemy_ptr_list.size());
 	p_impl->_enemy_ptr_list[Random(0, list_size - 1)]->setHasKey(true);
 }
+
+void EnemyManager::onKeyEnemyDeath()
+{
+	God::getInstance().getPtrExit()->setIsLocked(false);
+}

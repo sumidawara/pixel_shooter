@@ -54,6 +54,11 @@ void AssetManager::registerImage()
 	Image original_exit_image{U"resources/img/exit.png"};
 	TextureAsset::Register(AssetKey::exit, image2TextureAssetData(original_exit_image.scale(SCALE_RATE, InterpolationAlgorithm::Nearest)));
 
+	//鍵のかかった出口
+	Image original_locked_exit_image{U"resources/img/locked_exit.png"};
+	TextureAsset::Register(AssetKey::locked_exit, image2TextureAssetData(original_locked_exit_image.scale(SCALE_RATE, InterpolationAlgorithm::Nearest)));
+
+
 	//スライム
 	Image original_slime_image{ U"resources/img/slime.png" };
 	TextureAsset::Register(AssetKey::slime, image2TextureAssetData(original_slime_image.scale(SCALE_RATE, InterpolationAlgorithm::Nearest)));

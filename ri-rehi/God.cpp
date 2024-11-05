@@ -20,6 +20,7 @@ public:
 	std::shared_ptr<AbilityManager> _ptr_ability_manager;
 	std::shared_ptr<TimeManager> _ptr_time_manager;
 	std::shared_ptr<EnemyManager> _ptr_enemy_manager;
+	std::shared_ptr<Exit> _ptr_exit;
 
 	//タイトル
 	std::shared_ptr<TitleSceneGUIManager> _ptr_titlescene_gui_manager;
@@ -106,6 +107,11 @@ std::shared_ptr<EnemyManager> God::getEnemyManager() const
 	return p_impl->_ptr_enemy_manager;
 }
 
+std::shared_ptr<Exit> God::getPtrExit() const
+{
+	return p_impl->_ptr_exit;
+}
+
 //セッター
 
 void God::setStageNum(int32 value)
@@ -176,6 +182,11 @@ void God::setTimeManager(const std::shared_ptr<TimeManager>& ptr_time_manager)
 void God::setEnemyManager(const std::shared_ptr<EnemyManager>& ptr_enemy_manager)
 {
 	p_impl->_ptr_enemy_manager = ptr_enemy_manager;
+}
+
+void God::setPtrExit(const std::shared_ptr<Exit>& ptr_exit)
+{
+	p_impl->_ptr_exit = ptr_exit;
 }
 
 std::shared_ptr<TitleSceneGUIManager> God::getTitleSceneGUIManager() const

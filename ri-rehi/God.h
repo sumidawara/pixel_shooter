@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include "AbilityManager.h"
 #include "CollisionManager.h"
+#include "Exit.h"
 #include "Enemy/EnemyManager.h"
 #include "SceneTransitionData.h"
 #include "TimeManager.h"
@@ -36,6 +37,7 @@ public:
 	std::shared_ptr<AbilityManager> getPtrAbilityManager() const;
 	std::shared_ptr<TimeManager> getPtrTimeManager() const;
 	std::shared_ptr<EnemyManager> getEnemyManager() const;
+	std::shared_ptr<Exit> getPtrExit() const;
 
 	void setStageNum(int32 value);
 	void setPtrWorld(const std::shared_ptr<World>& ptr_world) const;
@@ -52,6 +54,7 @@ public:
 	void setAbilityManager(const std::shared_ptr<AbilityManager>& ptr_ability_manager);
 	void setTimeManager(const std::shared_ptr<TimeManager>& ptr_time_manager);
 	void setEnemyManager(const std::shared_ptr<EnemyManager>& ptr_enemy_manager);
+	void setPtrExit(const std::shared_ptr<Exit>& ptr_exit);
 
 	//タイトル
 	std::shared_ptr<TitleSceneGUIManager> getTitleSceneGUIManager() const;

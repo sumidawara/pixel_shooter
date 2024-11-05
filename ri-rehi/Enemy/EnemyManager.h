@@ -9,10 +9,11 @@ public:
 	void update(double delta_time);
 	void draw() const;
 
+	void createEnemy(EnemyType::EnemyType enemy_type, Vec2 pos);
 	void clearEnemy();
 
-	void createEnemy(EnemyType::EnemyType enemy_type, Vec2 pos);
 	void giveKeyToOneEnemy();
+	void onKeyEnemyDeath();
 
 private:
 	struct Impl;

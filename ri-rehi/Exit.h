@@ -13,6 +13,9 @@ public:
 	virtual void onCollision(const ICollidable& other) override;
 	virtual ICollidableType getType() const override;
 
+	bool getIsLocked() const;
+	void setIsLocked(bool value);
+
 private:
 	struct Impl;
 	std::shared_ptr<Impl> p_impl;

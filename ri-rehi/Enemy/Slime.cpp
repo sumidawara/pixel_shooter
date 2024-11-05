@@ -80,6 +80,16 @@ struct Slime::Impl
 
 	void onKilled()
 	{
+		if(_has_key)
+		{
+			//鍵持ちの場合はEnemyManagerのOnKeyEnemyDeath()を呼ぶ
+			auto enemy_manager = God::getInstance().getEnemyManager();
+			enemy_manager->onKeyEnemyDeath();
+
+			//キラキラパーティクル
+		}
+
+		//経験値をプレイヤーに与える
 		auto ptr_player_state_manager = God::getInstance().getPlayer().getPtrPlayerStateManager();
 		ptr_player_state_manager->addExp(_drop_exp);
 	}

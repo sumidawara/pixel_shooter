@@ -54,6 +54,7 @@ void GameScene::init()
 
 	God::getInstance().setPtrPlayer(_ptr_player);
 	God::getInstance().setPtrCamera(_ptr_camera);
+	God::getInstance().setPtrExit(_ptr_exit);
 	God::getInstance().setParticleManager(_ptr_particle_manager);
 	God::getInstance().setBulletManager(_ptr_bullet_manager);
 	God::getInstance().setGameSceneGUI(_ptr_gamescene_gui);
