@@ -67,6 +67,10 @@ void AssetManager::registerImage()
 	Image original_blankicon_image{U"resources/img/blankicon.png"};
 	TextureAsset::Register(U"blankicon_small", image2TextureAssetData(original_blankicon_image));
 	TextureAsset::Register(U"blankicon_large", image2TextureAssetData(original_blankicon_image.scale(8, InterpolationAlgorithm::Nearest)));
+
+	//きらめきエフェクト
+	Image original_sparkle_image{ U"resources/img/sparkle.png" };
+	TextureAsset::Register(AssetKey::sparkle, image2TextureAssetData(original_sparkle_image.scale(SCALE_RATE, InterpolationAlgorithm::Nearest)));
 }
 
 void AssetManager::registerFont()

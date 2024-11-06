@@ -5,6 +5,7 @@
 #include "BulletParticle.h"
 #include "Debug.h"
 #include "DamageAmountParticle.h"
+#include "SparkleParticle.h"
 
 struct ParticleManager::Impl
 {
@@ -13,6 +14,7 @@ struct ParticleManager::Impl
 	int32 _writeline_index = 4;
 	int32 _bullet_particle_count = 0;
 	int32 _damage_amount_particle_count = 0;
+	int32 _sparkle_particle_count = 0;
 
 	void updateParticles(double delta_time)
 	{
@@ -31,6 +33,7 @@ struct ParticleManager::Impl
 	{
 		_bullet_particle_count = 0;
 		_damage_amount_particle_count = 0;
+		_sparkle_particle_count = 0;
 
 		for (auto& ptr_particle : _particle_ptr_list)
 		{
@@ -45,6 +48,12 @@ struct ParticleManager::Impl
 				_damage_amount_particle_count++;
 				continue;
 			}
+
+			if (auto ptr = dynamic_cast<SparkleParticle*>(ptr_particle.get()))
+			{
+				_sparkle_particle_count++;
+				continue;
+			}
 		}
 	}
 
@@ -52,6 +61,7 @@ struct ParticleManager::Impl
 	{
 		Debug::getInstance().writeline(_writeline_index, U"BulletParticle Count : " + Format(_bullet_particle_count));
 		Debug::getInstance().writeline(_writeline_index, U"DamageAmountParticle Count : " + Format(_damage_amount_particle_count));
+		Debug::getInstance().writeline(_writeline_index, U"SparkleParticle Count : " + Format(_sparkle_particle_count));
 	}
 };
 
@@ -88,7 +98,7 @@ void ParticleManager::clearParticle()
 }
 
 
-void ParticleManager::addParticle(std::shared_ptr<IParticle> ptr_particle)
+void ParticleManager::addParticle(const std::shared_ptr<IParticle>& ptr_particle)
 {
 	p_impl->_particle_ptr_list << ptr_particle;
 }

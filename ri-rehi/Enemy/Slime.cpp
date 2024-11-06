@@ -7,6 +7,7 @@
 #include "CollisionUtil.h"
 #include "Particle/DamageAmountParticle.h"
 #include "God.h"
+#include "Particle/SparkleParticle.h"
 
 struct Slime::Impl
 {
@@ -39,6 +40,12 @@ struct Slime::Impl
 	double _run_speed = 100.0;
 	double _view_range = 500.0;
 
+	//sparkle particle のパラメーター
+	double _inner_circle_range = 50;
+	double _outer_circle_range = 80;
+	double _sparkle_accumulated_time = 0.0;
+	double _sparkle_threshold_time = 0.2;
+
 	void plan()
 	{
 		auto player = God::getInstance().getPlayer();
@@ -59,6 +66,28 @@ struct Slime::Impl
 		}
 	}
 
+	void generateSparkle_if_hasKey(double delta_time)
+	{
+		if(_has_key)
+		{
+			_sparkle_accumulated_time += delta_time;
+			if(_sparkle_threshold_time < _sparkle_accumulated_time)
+			{
+				_sparkle_accumulated_time -= _sparkle_threshold_time;
+
+				double random_distance = Random(_inner_circle_range, _outer_circle_range);
+				double angle = Random(0.0, 2 * Math::Pi);
+				double x = _rectf.centerX() + random_distance * Math::Cos(angle);
+				double y = _rectf.centerY() + random_distance * Math::Sin(angle);
+
+				//キラキラパーティクル
+				auto ptr_sparkle_particle = std::make_shared<SparkleParticle>();
+				ptr_sparkle_particle->init(Vec2{x, y});
+				God::getInstance().getPtrParticleManager()->addParticle(ptr_sparkle_particle);
+			}
+		}
+	}
+
 	void onDamaged(int32 raw_damage_received)
 	{
 		int32 damage_amount = raw_damage_received - _defence;
@@ -66,7 +95,7 @@ struct Slime::Impl
 		_current_hp -= damage_amount;
 
 		//パーティクルを発生
-		std::shared_ptr<DamageAmountParticle> ptr_damage_amount_particle = std::make_shared<DamageAmountParticle>();
+		auto ptr_damage_amount_particle = std::make_shared<DamageAmountParticle>();
 		ptr_damage_amount_particle->init(_rectf.center(), damage_amount);
 		God::getInstance().getPtrParticleManager()->addParticle(ptr_damage_amount_particle);
 
@@ -85,8 +114,6 @@ struct Slime::Impl
 			//鍵持ちの場合はEnemyManagerのOnKeyEnemyDeath()を呼ぶ
 			auto enemy_manager = God::getInstance().getEnemyManager();
 			enemy_manager->onKeyEnemyDeath();
-
-			//キラキラパーティクル
 		}
 
 		//経験値をプレイヤーに与える
@@ -157,6 +184,8 @@ void Slime::update(double delta_time)
 	p_impl->plan();
 	p_impl->_ptr_behavior->execute(mob_ai_context, delta_time);
 
+	p_impl->generateSparkle_if_hasKey(delta_time); //has_key=trueのとき
+
 	p_impl->judgeIsRightFace();
 }
 
@@ -178,8 +207,7 @@ void Slime::draw() const
 
 void Slime::onCollision(const ICollidable& other)
 {
-	auto other_type = other.getType();
-	switch (other_type)
+	switch (other.getType())
 	{
 	case T_Player:
 

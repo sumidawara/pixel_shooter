@@ -8,6 +8,7 @@ namespace AssetKey
 	constexpr StringView exit = U"exit";
 	constexpr StringView locked_exit = U"locked_exit";
 	constexpr StringView slime = U"slime";
+	constexpr StringView sparkle = U"sparkle";
 
 	constexpr StringView pixel_b12 = U"pixel_b12";
 	constexpr StringView pixel_b18 = U"pixel_b18";

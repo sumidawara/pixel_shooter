@@ -1094,6 +1094,7 @@
     <ClCompile Include="Particle\DamageAmountParticle.cpp" />
     <ClCompile Include="Particle\IParticle.cpp" />
     <ClCompile Include="Particle\ParticleManager.cpp" />
+    <ClCompile Include="Particle\SparkleParticle.cpp" />
     <ClCompile Include="Player\Player.cpp" />
     <ClCompile Include="Player\PlayerState.cpp" />
     <ClCompile Include="Player\PlayerStateManager.cpp" />
@@ -1601,6 +1602,7 @@
     <ClInclude Include="Particle\DamageAmountParticle.h" />
     <ClInclude Include="Particle\IParticle.h" />
     <ClInclude Include="Particle\ParticleManager.h" />
+    <ClInclude Include="Particle\SparkleParticle.h" />
     <ClInclude Include="Player\Player.h" />
     <ClInclude Include="Player\PlayerState.h" />
     <ClInclude Include="Player\PlayerStateManager.h" />

@@ -12,7 +12,7 @@ public:
 
 	void clearParticle();
 
-	void addParticle(std::shared_ptr<IParticle> ptr_particle);
+	void addParticle(const std::shared_ptr<IParticle>& ptr_particle);
 
 private:
 	struct Impl;
