@@ -14,5 +14,9 @@ private:
 	static std::unique_ptr<TextureAssetData> image2TextureAssetData(Image image);
 	static Image tileMapExtend(Image old_image);
 	static void registerTileFromTileMap(const Image& extended_image);
+
+	static void registerAbilityIconFromKey(StringView key);
+	// static String append_large_suffix(StringView str);
+	// static String append_small_suffix(StringView str);
 };
 

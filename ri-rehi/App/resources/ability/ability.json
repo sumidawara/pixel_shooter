@@ -8,7 +8,7 @@
                 "max_hp":10
             }],
             "title":"HP+",
-            "icon_large_assetname":"blankicon_large",
+            "icon_large_assetname":"icon_hp",
             "description_list":["HP +10"],
             "comment":""
         },
@@ -20,7 +20,7 @@
                 "max_hp":20
             }],
             "title":"HP++",
-            "icon_large_assetname":"blankicon_large",
+            "icon_large_assetname":"icon_hp",
             "description_list":["HP +20"],
             "comment":""
         },
@@ -32,7 +32,7 @@
                 "max_hp":50
             }],
             "title":"HP+++",
-            "icon_large_assetname":"blankicon_large",
+            "icon_large_assetname":"icon_hp",
             "description_list":["HP +50"],
             "comment":""
         },
@@ -46,7 +46,7 @@
                 "defence":1
             }],
             "title":"防御力+",
-            "icon_large_assetname":"blankicon_large",
+            "icon_large_assetname":"icon_defence",
             "description_list":["防御力 +1"],
             "comment":""
         },
@@ -58,7 +58,7 @@
                 "defence":3
             }],
             "title":"防御力++",
-            "icon_large_assetname":"blankicon_large",
+            "icon_large_assetname":"icon_defence",
             "description_list":["防御力 +3"],
             "comment":""
         },
@@ -70,7 +70,7 @@
                 "defence":7
             }],
             "title":"防御力+++",
-            "icon_large_assetname":"blankicon_large",
+            "icon_large_assetname":"icon_defence",
             "description_list":["防御力 +7"],
             "comment":""
         },
@@ -90,7 +90,7 @@
                 "shot_interval":-0.1
             }],
             "title":"射撃頻度+",
-            "icon_large_assetname":"blankicon_large",
+            "icon_large_assetname":"icon_shot_interval",
             "description_list":["射撃の間隔が-0.1s"],
             "comment":""
         },
@@ -112,7 +112,7 @@
                 "ranged_damage":1
             }],
             "title":"射撃ダメージ+",
-            "icon_large_assetname":"blankicon_large",
+            "icon_large_assetname":"icon_bulletdamage",
             "description_list":["遠距離攻撃力 +1"],
             "comment":""
         },
@@ -124,7 +124,7 @@
                 "ranged_damage":3
             }],
             "title":"射撃ダメージ++",
-            "icon_large_assetname":"blankicon_large",
+            "icon_large_assetname":"icon_bulletdamage",
             "description_list":["遠距離攻撃力 +3"],
             "comment":""
         },        
@@ -136,7 +136,7 @@
                 "ranged_damage":7
             }],
             "title":"射撃ダメージ+++",
-            "icon_large_assetname":"blankicon_large",
+            "icon_large_assetname":"icon_bulletdamage",
             "description_list":["遠距離攻撃力 +7"],
             "comment":""
         },
@@ -151,7 +151,7 @@
                 "bullet_speed":100
             }],
             "title":"スナイパー+",
-            "icon_large_assetname":"blankicon_large",
+            "icon_large_assetname":"icon_sniper",
             "description_list":[
                 "射程 +100",
                 "弾速 +100"
@@ -168,7 +168,7 @@
                 "reflection_count":1
             }],
             "title":"反射+",
-            "icon_large_assetname":"blankicon_large",
+            "icon_large_assetname":"icon_reflection",
             "description_list":[
                 "弾丸が敵を+1回だけ反射します"
             ],
@@ -184,7 +184,7 @@
                 "reflection_count":1
             }],
             "title":"貫通+",
-            "icon_large_assetname":"blankicon_large",
+            "icon_large_assetname":"icon_penetrate",
             "description_list":[
                 "弾丸が敵を+1回だけ貫通します"
             ],

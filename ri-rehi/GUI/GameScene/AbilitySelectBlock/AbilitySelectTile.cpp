@@ -21,6 +21,11 @@ struct AbilitySelectTile::Impl
 
 	Vec2 _description_pos;
 	std::vector<String> _description_list;
+
+	String append_large_suffix(StringView str)
+	{
+		return String(str) + U"_large";
+	}
 };
 
 AbilitySelectTile::AbilitySelectTile() : p_impl(std::make_shared<Impl>())
@@ -54,7 +59,7 @@ void AbilitySelectTile::update(double delta_time)
 {
 	auto rolled_ability = God::getInstance().getPtrAbilityManager()->getRolledAbilityList()[p_impl->_index];
 	p_impl->_title_string = rolled_ability.getTitle();
-	p_impl->_icon_large_assetname = rolled_ability.getIconLargeAssetName();
+	p_impl->_icon_large_assetname = p_impl->append_large_suffix(rolled_ability.getIconLargeAssetName());
 	p_impl->_description_list = rolled_ability.getDescriptionList();
 
 	//クリック判定

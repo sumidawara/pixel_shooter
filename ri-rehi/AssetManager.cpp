@@ -64,9 +64,11 @@ void AssetManager::registerImage()
 	TextureAsset::Register(AssetKey::slime, image2TextureAssetData(original_slime_image.scale(SCALE_RATE, InterpolationAlgorithm::Nearest)));
 
 	//Abilityのアイコン
-	Image original_blankicon_image{U"resources/img/blankicon.png"};
-	TextureAsset::Register(U"blankicon_small", image2TextureAssetData(original_blankicon_image));
-	TextureAsset::Register(U"blankicon_large", image2TextureAssetData(original_blankicon_image.scale(8, InterpolationAlgorithm::Nearest)));
+	for(auto& str : AssetKey::ability_icon_name_list)
+	{
+		registerAbilityIconFromKey(str);
+	}
+
 
 	//きらめきエフェクト
 	Image original_sparkle_image{ U"resources/img/sparkle.png" };
@@ -175,4 +177,15 @@ void AssetManager::registerTileFromTileMap(const Image& extended_image)
 			tileImage.save(U"resources/output/" + tileAssetName + U".png");
 		}
 	}
+}
+
+void AssetManager::registerAbilityIconFromKey(StringView key)
+{
+	String str_icon_path = U"resources/img/ability/" + String(key) + U".png";
+	String str_icon_large = String(key) + U"_large";
+	String str_icon_small = String(key) + U"_small";
+
+	Image icon_image{str_icon_path};
+	TextureAsset::Register(str_icon_large, image2TextureAssetData(icon_image.scale(8, InterpolationAlgorithm::Nearest)));
+	TextureAsset::Register(str_icon_small, image2TextureAssetData(icon_image));
 }

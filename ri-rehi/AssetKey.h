@@ -10,6 +10,28 @@ namespace AssetKey
 	constexpr StringView slime = U"slime";
 	constexpr StringView sparkle = U"sparkle";
 
+	//Ability用のアイコン
+	constexpr StringView icon_blank = U"icon_blank";
+	constexpr StringView icon_bulletdamage = U"icon_bulletdamage";
+	constexpr StringView icon_defence = U"icon_defence";
+	constexpr StringView icon_hp = U"icon_hp";
+	constexpr StringView icon_penetrate = U"icon_penetrate";
+	constexpr StringView icon_reflection = U"icon_reflection";
+	constexpr StringView icon_shot_interval = U"icon_shot_interval";
+	constexpr StringView icon_sniper = U"icon_sniper";
+
+	inline std::vector<StringView> ability_icon_name_list =
+	{
+		U"icon_blank",
+		U"icon_bulletdamage",
+		U"icon_defence",
+		U"icon_hp",
+		U"icon_penetrate",
+		U"icon_reflection",
+		U"icon_shot_interval",
+		U"icon_sniper"
+	};
+
 	constexpr StringView pixel_b12 = U"pixel_b12";
 	constexpr StringView pixel_b18 = U"pixel_b18";
 	constexpr StringView pixel_b24 = U"pixel_b24";
