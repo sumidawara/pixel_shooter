@@ -3,6 +3,7 @@
 
 #include "AssetKey.h"
 #include "DebugSetting.h"
+#include "God.h"
 #include "GraphicSetting.h"
 #include "HPBar.h"
 
@@ -26,11 +27,13 @@ void HPBlock::init(Vec2 pos)
 
 	Vec2 hpbar_pos = pos + Vec2{120, 0};
 	Vec2 hpbar_size{ 700, 100 };
-	p_impl->_hpbar.init(RectF{hpbar_pos, hpbar_size}, 100, 100);
+
+	p_impl->_hpbar.init(RectF{hpbar_pos, hpbar_size});
 }
 
 void HPBlock::update(double delta_time)
 {
+	p_impl->_hpbar.update(delta_time);
 }
 
 void HPBlock::draw() const
@@ -43,9 +46,4 @@ void HPBlock::draw() const
 
 	p_impl->_hpbar.draw();
 	if(is_gui_debugging_visible) Circle{p_impl->_hpbar.getPos(), 3}.draw(DebugSetting::getGuiDebugColor());
-}
-
-void HPBlock::setHP(int32 current_hp, int32 max_hpe)
-{
-	p_impl->_hpbar.setHP(current_hp, max_hpe);
 }

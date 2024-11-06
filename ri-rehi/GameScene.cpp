@@ -40,6 +40,8 @@ void GameScene::init()
 	God::getInstance().setPtrWorld(_ptr_world);
 
 	_ptr_player->init(God::getInstance().getInitialPlayerPos());
+	God::getInstance().setPtrPlayer(_ptr_player); //GamesceneGUIはPlayerに依存
+
 	_ptr_exit->init(God::getInstance().getExitPos());
 	_ptr_gamescene_gui->init();
 	_ptr_gamescene_gui_manager->init();
@@ -52,7 +54,6 @@ void GameScene::init()
 	_ptr_camera = std::make_shared<Camera2D>(God::getInstance().getInitialPlayerPos(), 1.0);
 	_ptr_camera->setParameters(Camera2DParameters::NoControl());
 
-	God::getInstance().setPtrPlayer(_ptr_player);
 	God::getInstance().setPtrCamera(_ptr_camera);
 	God::getInstance().setPtrExit(_ptr_exit);
 	God::getInstance().setParticleManager(_ptr_particle_manager);

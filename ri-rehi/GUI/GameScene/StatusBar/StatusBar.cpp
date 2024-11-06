@@ -36,7 +36,7 @@ void StatusBar::update(double delta_time)
 	auto ptr_player_state_manager = God::getInstance().getPlayer().getPtrPlayerStateManager();
 	auto player_state = ptr_player_state_manager->getPlayerState();
 
-	p_impl->_hpblock.setHP(player_state.current_hp, player_state.max_hp);
+	p_impl->_hpblock.update(delta_time);
 
 	p_impl->_expblock.setLevel(player_state.level);
 	p_impl->_expblock.setRemainingExpToNextLevelUp(ptr_player_state_manager->getRemainingExpToNextLevelUp());
