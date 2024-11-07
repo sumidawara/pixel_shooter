@@ -13,7 +13,7 @@ struct Ability::Impl
 
 	//AbilitySelectTileに表示させる
 	String _title;
-	AssetName _icon_large_assetname;
+	AssetName _icon_assetname;
 	std::vector<String> _description_list;
 };
 
@@ -24,7 +24,7 @@ Ability::Ability() : p_impl(std::make_shared<Impl>())
 void Ability::init(const String& title, const AssetName& icon_large_assetname, const std::vector<String>& description_list)
 {
 	p_impl->_title = title;
-	p_impl->_icon_large_assetname = icon_large_assetname;
+	p_impl->_icon_assetname = icon_large_assetname;
 	p_impl->_description_list = description_list;
 }
 
@@ -36,7 +36,7 @@ void Ability::init(const AbilityContext& ability_context)
 	p_impl->_parameter = ability_context.parameter;
 
 	p_impl->_title = ability_context.title;
-	p_impl->_icon_large_assetname = ability_context.icon_large_assetname;
+	p_impl->_icon_assetname = ability_context.icon_assetname;
 	p_impl->_description_list = ability_context.description_list;
 }
 
@@ -84,9 +84,9 @@ int32 Ability::getRarity() const
 	return p_impl->_rarity;
 }
 
-const AssetName& Ability::getIconLargeAssetName() const
+const AssetName& Ability::getIconAssetName() const
 {
-	return p_impl->_icon_large_assetname;
+	return p_impl->_icon_assetname;
 }
 
 const std::vector<String>& Ability::getDescriptionList() const

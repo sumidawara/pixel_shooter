@@ -18,6 +18,8 @@ public:
 	static ColorF getYELLOW();
 	static ColorF getLIME();
 
+	static ColorF rarity2ColorF(int32 rarity);
+
 private:
 	static int32 SCALE_RATE;
 	static int32 EXTENDED_LENGTH;

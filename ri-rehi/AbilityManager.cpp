@@ -29,7 +29,7 @@ struct AbilityManager::Impl
 			context.id = raw_ability[U"id"].get<int32>();
 			context.rarity = raw_ability[U"rarity"].get<int32>();
 			context.title = raw_ability[U"title"].get<String>();
-			context.icon_large_assetname = raw_ability[U"icon_assetname"].get<String>();
+			context.icon_assetname = raw_ability[U"icon_assetname"].get<String>();
 			for(const auto& raw_required_id : raw_ability[U"required_id"].arrayView())
 			{
 				int32 required_id = raw_required_id.get<int32>();
@@ -62,11 +62,6 @@ struct AbilityManager::Impl
 			_all_ability_list.push_back(ability);
 			_all_ability_by_rarity_list[ability.getRarity()].push_back(ability);
 		}
-	}
-
-	void addAbilityFromKeyInput()
-	{
-
 	}
 
 	void writeline()
@@ -145,7 +140,7 @@ void AbilityManager::rollAbility()
 }
 
 //GameSceneGUIManager::onAbilitySelectTileClickedで呼び出される
-void AbilityManager::addAbility(int32 index)
+void AbilityManager::addAbilityFromRollAbilityList(int32 index)
 {
 	auto rolled_ability = p_impl->_rolled_ability_list[index];
 
@@ -159,4 +154,9 @@ void AbilityManager::addAbility(int32 index)
 std::vector<Ability>& AbilityManager::getRolledAbilityList() const
 {
 	return p_impl->_rolled_ability_list;
+}
+
+std::vector<Ability>& AbilityManager::getAchievedAbilityList() const
+{
+	return p_impl->_achieved_ability_list;
 }

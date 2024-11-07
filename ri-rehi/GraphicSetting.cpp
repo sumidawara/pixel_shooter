@@ -67,3 +67,21 @@ ColorF GraphicSetting::getLIME()
 {
 	return LIME;
 }
+
+ColorF GraphicSetting::rarity2ColorF(int32 rarity)
+{
+	switch (rarity)
+	{
+	case 0:
+		return Palette::White;
+	case 1:
+		return GraphicSetting::getLIME();
+	case 2:
+		return GraphicSetting::getSKY();
+	case 3:
+		return GraphicSetting::getPINK();
+	case 4:
+		return GraphicSetting::getYELLOW();
+	}
+	return Palette::White ;
+}

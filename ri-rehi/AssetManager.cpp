@@ -186,6 +186,6 @@ void AssetManager::registerAbilityIconFromKey(StringView key)
 	String str_icon_small = String(key) + U"_small";
 
 	Image icon_image{str_icon_path};
-	TextureAsset::Register(str_icon_large, image2TextureAssetData(icon_image.scale(8, InterpolationAlgorithm::Nearest)));
+	TextureAsset::Register(str_icon_large, image2TextureAssetData(icon_image.scaled(8, InterpolationAlgorithm::Nearest)));
 	TextureAsset::Register(str_icon_small, image2TextureAssetData(icon_image));
 }

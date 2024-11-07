@@ -844,6 +844,7 @@
     <ClCompile Include="GUI\CursorEx.cpp" />
     <ClCompile Include="GUI\GameScene\AbilitySelectBlock\AbilitySelectBlock.cpp" />
     <ClCompile Include="GUI\GameScene\AbilitySelectBlock\AbilitySelectTile.cpp" />
+    <ClCompile Include="GUI\GameScene\AbilitySummary\AbilitySummary.cpp" />
     <ClCompile Include="GUI\GameScene\GameSceneGUI.cpp">
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -1584,6 +1585,7 @@
     <ClInclude Include="GUI\CursorEx.h" />
     <ClInclude Include="GUI\GameScene\AbilitySelectBlock\AbilitySelectBlock.h" />
     <ClInclude Include="GUI\GameScene\AbilitySelectBlock\AbilitySelectTile.h" />
+    <ClInclude Include="GUI\GameScene\AbilitySummary\AbilitySummary.h" />
     <ClInclude Include="GUI\GameScene\GameSceneGUI.h" />
     <ClInclude Include="GUI\GameScene\GameSceneGUIManager.h" />
     <ClInclude Include="GUI\GameScene\GameSceneMenu.h" />

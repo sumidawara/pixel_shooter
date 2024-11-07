@@ -9,6 +9,6 @@ struct AbilityContext
 	PlayerState parameter;
 
 	String title;
-	AssetName icon_large_assetname;
+	AssetName icon_assetname;
 	std::vector<String> description_list;
 };

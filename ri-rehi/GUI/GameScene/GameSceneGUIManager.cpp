@@ -97,7 +97,7 @@ void GameSceneGUIManager::draw()
 
 void GameSceneGUIManager::onAbilitySelectTileClicked(int32 index)
 {
-	God::getInstance().getPtrAbilityManager()->addAbility(index);
+	God::getInstance().getPtrAbilityManager()->addAbilityFromRollAbilityList(index);
 
 	God::getInstance().getPtrTimeManager()->setIsForciblyPaused(false);
 	p_impl->_is_ability_select_block_enabled = false;

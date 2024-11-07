@@ -10,9 +10,10 @@ public:
 	void draw() const;
 
 	void rollAbility();
-	void addAbility(int32 index);
+	void addAbilityFromRollAbilityList(int32 index);
 
 	std::vector<Ability>& getRolledAbilityList() const;
+	std::vector<Ability>& getAchievedAbilityList() const;
 
 private:
 	struct Impl;

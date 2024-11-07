@@ -18,7 +18,7 @@ public:
 
 	const String& getTitle() const;
 	int32 getRarity() const;
-	const AssetName& getIconLargeAssetName() const;
+	const AssetName& getIconAssetName() const;
 	const std::vector<String>& getDescriptionList() const;
 
 private:

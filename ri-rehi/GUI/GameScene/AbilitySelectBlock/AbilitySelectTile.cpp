@@ -27,24 +27,6 @@ struct AbilitySelectTile::Impl
 	{
 		return String(str) + U"_large";
 	}
-
-	ColorF rarity2ColorF(int32 rarity)
-	{
-		switch (rarity)
-		{
-		case 0:
-			return Palette::White;
-		case 1:
-			return GraphicSetting::getLIME();
-		case 2:
-			return GraphicSetting::getSKY();
-		case 3:
-			return GraphicSetting::getPINK();
-		case 4:
-			return GraphicSetting::getYELLOW();
-		}
-		return Palette::White ;
-	}
 };
 
 AbilitySelectTile::AbilitySelectTile() : p_impl(std::make_shared<Impl>())
@@ -77,7 +59,7 @@ void AbilitySelectTile::update(double delta_time)
 	auto rolled_ability = God::getInstance().getPtrAbilityManager()->getRolledAbilityList()[p_impl->_index];
 	p_impl->_title_string = rolled_ability.getTitle();
 	p_impl->_rarity = rolled_ability.getRarity();
-	p_impl->_icon_large_assetname = p_impl->appendLargeSuffix(rolled_ability.getIconLargeAssetName());
+	p_impl->_icon_large_assetname = p_impl->appendLargeSuffix(rolled_ability.getIconAssetName());
 	p_impl->_description_list = rolled_ability.getDescriptionList();
 
 	//クリック判定
@@ -90,7 +72,7 @@ void AbilitySelectTile::update(double delta_time)
 
 void AbilitySelectTile::draw()
 {
-	auto rarity_color = p_impl->rarity2ColorF(p_impl->_rarity);
+	auto rarity_color = GraphicSetting::rarity2ColorF(p_impl->_rarity);
 
 	//背景と外枠の描画
 	if(p_impl->_rectf.mouseOver())
