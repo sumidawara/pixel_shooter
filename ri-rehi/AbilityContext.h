@@ -4,6 +4,7 @@
 struct AbilityContext
 {
 	int32 id;
+	int32 rarity;
 	std::vector<int32> required_id_list;
 	PlayerState parameter;
 

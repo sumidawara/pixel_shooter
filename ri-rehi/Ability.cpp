@@ -7,6 +7,7 @@
 struct Ability::Impl
 {
 	int32 _id;
+	int32 _rarity;
 	std::vector<int32> _required_id_list;
 	PlayerState _parameter;
 
@@ -27,9 +28,10 @@ void Ability::init(const String& title, const AssetName& icon_large_assetname, c
 	p_impl->_description_list = description_list;
 }
 
-void Ability::init(AbilityContext ability_context)
+void Ability::init(const AbilityContext& ability_context)
 {
 	p_impl->_id = ability_context.id;
+	p_impl->_rarity = ability_context.rarity;
 	p_impl->_required_id_list = ability_context.required_id_list;
 	p_impl->_parameter = ability_context.parameter;
 
@@ -75,6 +77,11 @@ std::vector<int> Ability::getRequiredIdList() const
 const String& Ability::getTitle() const
 {
 	return p_impl->_title;
+}
+
+int32 Ability::getRarity() const
+{
+	return p_impl->_rarity;
 }
 
 const AssetName& Ability::getIconLargeAssetName() const

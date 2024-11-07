@@ -6,7 +6,7 @@ class Ability
 public:
 	Ability();
 	void init(const String& title, const AssetName& icon_large_assetname, const std::vector<String>& description_list);
-	void init(AbilityContext ability_context);
+	void init(const AbilityContext& ability_context);
 	void update(double delta_time);
 	void draw();
 
@@ -17,6 +17,7 @@ public:
 	std::vector<int> getRequiredIdList() const;
 
 	const String& getTitle() const;
+	int32 getRarity() const;
 	const AssetName& getIconLargeAssetName() const;
 	const std::vector<String>& getDescriptionList() const;
 

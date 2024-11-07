@@ -12,6 +12,7 @@ struct AbilitySelectTile::Impl
 	double _rectf_mouseover_thickness = 12;
 
 	int32 _index;
+	int32 _rarity;
 
 	Vec2 _title_pos;
 	String _title_string;
@@ -22,9 +23,27 @@ struct AbilitySelectTile::Impl
 	Vec2 _description_pos;
 	std::vector<String> _description_list;
 
-	String append_large_suffix(StringView str)
+	String appendLargeSuffix(StringView str)
 	{
 		return String(str) + U"_large";
+	}
+
+	ColorF rarity2ColorF(int32 rarity)
+	{
+		switch (rarity)
+		{
+		case 0:
+			return Palette::White;
+		case 1:
+			return GraphicSetting::getLIME();
+		case 2:
+			return GraphicSetting::getSKY();
+		case 3:
+			return GraphicSetting::getPINK();
+		case 4:
+			return GraphicSetting::getYELLOW();
+		}
+		return Palette::White ;
 	}
 };
 
@@ -50,16 +69,15 @@ void AbilitySelectTile::init(Vec2 pos, int32 index)
 	p_impl->_description_pos = description_pos;
 
 	p_impl->_index = index;
-	p_impl->_title_string = U"HogeHoge";
-	p_impl->_icon_large_assetname = U"liebesrechner_stand";
-	p_impl->_description_list = { U"Description 1", U"Description 2", U"Description 3" };
 }
 
 void AbilitySelectTile::update(double delta_time)
 {
+	//abilityのパラメーターを渡す
 	auto rolled_ability = God::getInstance().getPtrAbilityManager()->getRolledAbilityList()[p_impl->_index];
 	p_impl->_title_string = rolled_ability.getTitle();
-	p_impl->_icon_large_assetname = p_impl->append_large_suffix(rolled_ability.getIconLargeAssetName());
+	p_impl->_rarity = rolled_ability.getRarity();
+	p_impl->_icon_large_assetname = p_impl->appendLargeSuffix(rolled_ability.getIconLargeAssetName());
 	p_impl->_description_list = rolled_ability.getDescriptionList();
 
 	//クリック判定
@@ -72,25 +90,34 @@ void AbilitySelectTile::update(double delta_time)
 
 void AbilitySelectTile::draw()
 {
+	auto rarity_color = p_impl->rarity2ColorF(p_impl->_rarity);
+
+	//背景と外枠の描画
 	if(p_impl->_rectf.mouseOver())
 	{
-		p_impl->_rectf.draw(Palette::Black).drawFrame(p_impl->_rectf_mouseover_thickness, Palette::White);
+		p_impl->_rectf.draw(Palette::Black).drawFrame(p_impl->_rectf_mouseover_thickness, rarity_color);
 	}
 	else
 	{
-		p_impl->_rectf.draw(Palette::Black).drawFrame(p_impl->_rectf_thickness, Palette::White);
+		p_impl->_rectf.draw(Palette::Black).drawFrame(p_impl->_rectf_thickness, rarity_color);
 	}
 
+	//タイトルの描画
 	auto title_rect = FontAsset(U"pixel_b48")(p_impl->_title_string).draw(p_impl->_title_pos);
+
+	//アイコンの描画
 	auto icon_rect = TextureAsset(p_impl->_icon_large_assetname).draw(p_impl->_icon_pos );
 
+	//descriptionの描画
 	std::vector<RectF> desc_rects;
+	auto description_pos = p_impl->_description_pos;
 	for(int i = 0; i < p_impl->_description_list.size(); i++)
 	{
 		auto desc_rect = FontAsset(AssetKey::pixel_b36)(p_impl->_description_list[i]).draw(p_impl->_description_pos);
 		desc_rects.push_back(desc_rect);
 	}
 
+	//デバッグ用
 	if(DebugSetting::getIsGuiDebuggingVisible())
 	{
 		title_rect.draw(DebugSetting::getGuiDebugColor());

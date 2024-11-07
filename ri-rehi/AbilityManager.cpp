@@ -10,6 +10,8 @@
 struct AbilityManager::Impl
 {
 	std::vector<Ability> _all_ability_list;
+	std::vector<std::vector<Ability>> _all_ability_by_rarity_list;
+
 	std::vector<Ability> _achieved_ability_list;
 	std::vector<Ability> _rolled_ability_list;
 
@@ -21,13 +23,13 @@ struct AbilityManager::Impl
 	{
 		const JSON json = JSON::Load(path);
 
-
 		for (const auto& raw_ability : json[U"abilities"].arrayView())
 		{
 			AbilityContext context;
 			context.id = raw_ability[U"id"].get<int32>();
+			context.rarity = raw_ability[U"rarity"].get<int32>();
 			context.title = raw_ability[U"title"].get<String>();
-			context.icon_large_assetname = raw_ability[U"icon_large_assetname"].get<String>();
+			context.icon_large_assetname = raw_ability[U"icon_assetname"].get<String>();
 			for(const auto& raw_required_id : raw_ability[U"required_id"].arrayView())
 			{
 				int32 required_id = raw_required_id.get<int32>();
@@ -56,8 +58,15 @@ struct AbilityManager::Impl
 
 			Ability ability;
 			ability.init(context);
+
 			_all_ability_list.push_back(ability);
+			_all_ability_by_rarity_list[ability.getRarity()].push_back(ability);
 		}
+	}
+
+	void addAbilityFromKeyInput()
+	{
+
 	}
 
 	void writeline()
@@ -68,12 +77,12 @@ struct AbilityManager::Impl
 			Debug::getInstance().writeline(i, U"_all_ability_list.size() : " + Format(_all_ability_list.size()));
 			Debug::getInstance().writeline(i);
 
-			Debug::getInstance().writeline(i, U"all_ability_list");
-			for(const auto& ability : _all_ability_list)
-			{
-				Debug::getInstance().writeline(i, U"title : " + ability.getTitle());
-			}
-			Debug::getInstance().writeline(i);
+			// Debug::getInstance().writeline(i, U"all_ability_list");
+			// for(const auto& ability : _all_ability_list)
+			// {
+			// 	Debug::getInstance().writeline(i, U"title : " + ability.getTitle());
+			// }
+			// Debug::getInstance().writeline(i);
 
 			Debug::getInstance().writeline(i, U"achieved_ability_list");
 			for(const auto& ability : _achieved_ability_list)
@@ -91,11 +100,25 @@ AbilityManager::AbilityManager() : p_impl(std::make_shared<Impl>())
 
 void AbilityManager::init()
 {
+	//all_ability_by_rarity_listの初期化
+	p_impl->_all_ability_by_rarity_list.clear();
+	for(int32 i = 0; i < 5; i++)
+	{
+		p_impl->_all_ability_by_rarity_list.push_back({});
+	}
+
 	p_impl->loadAbilityJson(U"resources/ability/ability.json");
 }
 
 void AbilityManager::update(double delta_time)
 {
+#ifdef _DEBUG
+	if(KeyL.down())
+	{
+		rollAbility();
+	}
+#endif
+
 	p_impl->writeline();
 }
 
@@ -103,19 +126,25 @@ void AbilityManager::draw() const
 {
 }
 
+//レベルアップ時に呼び出される
 void AbilityManager::rollAbility()
 {
 	p_impl->_rolled_ability_list.clear();
 
-	auto random_index_triplet = MathEx::generateUniqueRandomNumbers(0, p_impl->_all_ability_list.size() - 1, 3);
-	p_impl->_rolled_ability_list.push_back(p_impl->_all_ability_list[random_index_triplet[0]]);
-	p_impl->_rolled_ability_list.push_back(p_impl->_all_ability_list[random_index_triplet[1]]);
-	p_impl->_rolled_ability_list.push_back(p_impl->_all_ability_list[random_index_triplet[2]]);
+	std::vector<int32> weight_list = {30, 40, 20, 10, 0};
+	std::vector<int32> rarity_list = {0, 1, 2, 3, 4};
+	for(int32 i = 0; i < 3; i++)
+	{
+		int32 rarity = MathEx::weightedRandomDraw(weight_list, rarity_list);
+		auto random_index = MathEx::generateUniqueRandomNumbers(0, p_impl->_all_ability_by_rarity_list[rarity].size() - 1, 1);
+		p_impl->_rolled_ability_list.push_back(p_impl->_all_ability_by_rarity_list[rarity][random_index[0]]);
+	}
 
 	God::getInstance().getPtrTimeManager()->setIsForciblyPaused(true);
 	God::getInstance().getPtrGameSceneGUIManager()->setIsAbilitySelectEnabled(true);
 }
 
+//GameSceneGUIManager::onAbilitySelectTileClickedで呼び出される
 void AbilityManager::addAbility(int32 index)
 {
 	auto rolled_ability = p_impl->_rolled_ability_list[index];

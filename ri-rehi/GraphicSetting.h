@@ -16,6 +16,7 @@ public:
 	static ColorF getPINK();
 	static ColorF getSKY();
 	static ColorF getYELLOW();
+	static ColorF getLIME();
 
 private:
 	static int32 SCALE_RATE;
@@ -28,5 +29,6 @@ private:
 	static ColorF PINK;
 	static ColorF SKY;
 	static ColorF YELLOW;
+	static ColorF LIME;
 };
 
