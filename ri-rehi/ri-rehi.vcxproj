@@ -598,6 +598,8 @@
       <AdditionalOptions>/Zc:__cplusplus </AdditionalOptions>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
+    <ClCompile Include="Enemy\EnemyState.cpp" />
+    <ClCompile Include="Enemy\EnemyStateManager.cpp" />
     <ClCompile Include="Enemy\IEnemy.cpp">
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -1570,6 +1572,8 @@
     <ClInclude Include="Enemy\Behavior\StillBehavior.h" />
     <ClInclude Include="Enemy\Behavior\WanderBehavior.h" />
     <ClInclude Include="Enemy\EnemyManager.h" />
+    <ClInclude Include="Enemy\EnemyState.h" />
+    <ClInclude Include="Enemy\EnemyStateManager.h" />
     <ClInclude Include="Enemy\IEnemy.h" />
     <ClInclude Include="Enemy\Slime.h" />
     <ClInclude Include="Enum.h" />

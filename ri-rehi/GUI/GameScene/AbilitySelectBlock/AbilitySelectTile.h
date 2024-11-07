@@ -6,7 +6,7 @@ public:
 	AbilitySelectTile();
 	void init(Vec2 pos, int32 index);
 	void update(double delta_time);
-	void draw();
+	void draw() const;
 
 	RectF getRectF() const;
 

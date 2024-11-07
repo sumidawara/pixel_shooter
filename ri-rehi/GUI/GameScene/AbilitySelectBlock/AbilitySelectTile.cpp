@@ -70,7 +70,7 @@ void AbilitySelectTile::update(double delta_time)
 	}
 }
 
-void AbilitySelectTile::draw()
+void AbilitySelectTile::draw() const
 {
 	auto rarity_color = GraphicSetting::rarity2ColorF(p_impl->_rarity);
 
