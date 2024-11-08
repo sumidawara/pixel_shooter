@@ -8,6 +8,8 @@ public:
 	void update(double delta_time);
 	void draw() const;
 
+	void setPos(Vec2 pos);
+
 	RectF getRectF() const;
 
 private:

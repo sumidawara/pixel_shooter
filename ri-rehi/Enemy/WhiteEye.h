@@ -24,6 +24,9 @@ public:
 	int32 getCollisionDamage() const override;
 	bool getIsActive() const override;
 
+	bool getHasKey() const override;
+	void setHasKey(bool value) override;
+
 private:
 	struct Impl;
 	std::shared_ptr<Impl> p_impl;

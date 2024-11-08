@@ -25,7 +25,7 @@ GameSceneGUI::GameSceneGUI() : p_impl(std::make_shared<Impl>())
 void GameSceneGUI::init()
 {
 	p_impl->_status_bar.init({0, 900});
-	p_impl->_ability_select_block.init({260, 200});
+	p_impl->_ability_select_block.init();
 	p_impl->_ability_summary.init(Vec2{100, 100});
 	p_impl->_gamescene_menu.init();
 	p_impl->_gamescene_transition.init(1.0, 1.0);

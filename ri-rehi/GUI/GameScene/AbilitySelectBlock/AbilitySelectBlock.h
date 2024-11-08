@@ -4,7 +4,7 @@ class AbilitySelectBlock
 {
 public:
 	AbilitySelectBlock();
-	void init(Vec2 pos);
+	void init();
 	void update(double delta_time);
 	void draw();
 

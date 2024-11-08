@@ -35,21 +35,7 @@ AbilitySelectTile::AbilitySelectTile() : p_impl(std::make_shared<Impl>())
 
 void AbilitySelectTile::init(Vec2 pos, int32 index)
 {
-	auto size = Vec2{400, 650};
-	auto rectf = RectF{pos, size};
-	p_impl->_rectf = rectf;
-
-	double LEFT_PADDING = 40;
-
-	auto title_pos = pos + Vec2{LEFT_PADDING, 40};
-	p_impl->_title_pos = title_pos;
-
-	auto icon_pos = pos + Vec2(72, 130);
-	p_impl->_icon_pos = icon_pos;
-
-	auto description_pos = pos + Vec2(LEFT_PADDING, 410);
-	p_impl->_description_pos = description_pos;
-
+	setPos(pos);
 	p_impl->_index = index;
 }
 
@@ -109,6 +95,24 @@ void AbilitySelectTile::draw() const
 			desc_rect.draw(DebugSetting::getGuiDebugColor());
 		}
 	}
+}
+
+void AbilitySelectTile::setPos(Vec2 pos)
+{
+	auto size = Vec2{400, 650};
+	auto rectf = RectF{pos, size};
+	p_impl->_rectf = rectf;
+
+	double LEFT_PADDING = 40;
+
+	auto title_pos = pos + Vec2{LEFT_PADDING, 40};
+	p_impl->_title_pos = title_pos;
+
+	auto icon_pos = pos + Vec2(72, 130);
+	p_impl->_icon_pos = icon_pos;
+
+	auto description_pos = pos + Vec2(LEFT_PADDING, 410);
+	p_impl->_description_pos = description_pos;
 }
 
 RectF AbilitySelectTile::getRectF() const

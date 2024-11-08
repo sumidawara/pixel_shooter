@@ -19,6 +19,7 @@ public:
 	void setTransitionState(GameSceneTransitionType::State state);
 
 	bool getIsAbilitySelectEnabled() const;
+	Vec2 getAbilitySelectBlockPos() const;
 	bool getIsGameSceneMenuEnabled() const;
 	bool getIsInputLock() const;
 	GameSceneTransitionType::State getTransitionState() const;

@@ -4,11 +4,19 @@
 
 #include "Debug.h"
 #include "God.h"
+#include "MathEx.h"
 #include "GameSceneTransition/GameSceneTransition.h"
 
 struct GameSceneGUIManager::Impl
 {
+	//AbilitySelectBlockのポップアップ
 	bool _is_ability_select_block_enabled = false;
+	bool _is_ability_select_block_popup_ongoing = false;
+	double _ability_select_block_popup_accumulated_time = 0.0;
+	double _ability_select_block_popup_threshold_time = 0.6;
+	Vec2 _ability_select_block_pos = {260, -1200};
+	Vec2 _ability_select_block_start_pos = {260, -1200};
+	Vec2 _ability_select_block_end_pos = {260, 200};
 
 	bool _is_gamescene_menu_enabled = false;
 
@@ -71,6 +79,28 @@ struct GameSceneGUIManager::Impl
 			_is_inputlock = false;
 		}
 	}
+
+	void updateAbilitySelectBlockPos(double delta_time)
+	{
+		_ability_select_block_popup_accumulated_time += delta_time;
+
+		if(_ability_select_block_popup_threshold_time > _ability_select_block_popup_accumulated_time)
+		{
+			double t = _ability_select_block_popup_accumulated_time / _ability_select_block_popup_threshold_time;
+
+			double e = EaseOut(Easing::Quad, t);
+
+			_ability_select_block_pos = MathEx::lerp(_ability_select_block_start_pos, _ability_select_block_end_pos, e);
+		}
+		else //アニメーションの完了
+		{
+			_ability_select_block_pos = _ability_select_block_end_pos;
+
+			//リセット
+			_ability_select_block_popup_accumulated_time = 0.0;
+			_is_ability_select_block_popup_ongoing = false;
+		}
+	}
 };
 
 GameSceneGUIManager::GameSceneGUIManager() : p_impl(std::make_shared<Impl>())
@@ -85,6 +115,7 @@ void GameSceneGUIManager::update(double delta_time)
 {
 	p_impl->input();
 	if(p_impl->_is_inputlock) p_impl->updateInputLock(delta_time);
+	if(p_impl->_is_ability_select_block_popup_ongoing) p_impl->updateAbilitySelectBlockPos(delta_time);
 
 }
 
@@ -121,8 +152,20 @@ void GameSceneGUIManager::onTitleBtnClicked()
 
 void GameSceneGUIManager::setIsAbilitySelectEnabled(bool value)
 {
-	//誤入力を防ぐためにしばらくの間は入力禁止
-	if(value) p_impl->_is_inputlock = true;
+	if(value)
+	{
+		//誤入力を防ぐためにしばらくの間は入力禁止
+		p_impl->_is_inputlock = true;
+
+		//PopUpのアニメーションを開始
+		p_impl->_ability_select_block_popup_accumulated_time = 0.0;
+		p_impl->_is_ability_select_block_popup_ongoing = true;
+	}
+	else
+	{
+		//解除されたときは、上の方で待機させる
+		p_impl->_ability_select_block_pos = p_impl->_ability_select_block_start_pos;
+	}
 
 	p_impl->_is_ability_select_block_enabled = value;
 }
@@ -150,6 +193,11 @@ void GameSceneGUIManager::setTransitionState(GameSceneTransitionType::State stat
 bool GameSceneGUIManager::getIsAbilitySelectEnabled() const
 {
 	return p_impl->_is_ability_select_block_enabled;
+}
+
+Vec2 GameSceneGUIManager::getAbilitySelectBlockPos() const
+{
+	return p_impl->_ability_select_block_pos;
 }
 
 bool GameSceneGUIManager::getIsGameSceneMenuEnabled() const

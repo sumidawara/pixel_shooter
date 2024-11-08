@@ -13,6 +13,11 @@ double MathEx::distance(Vec2 pos1, Vec2 pos2)
 	return sqrt(Pow((pos1.x - pos2.x), 2) + Pow((pos1.y - pos2.y), 2));
 }
 
+Vec2 MathEx::lerp(Vec2 start, Vec2 end, double t)
+{
+	return start + t * (end - start);
+}
+
 std::vector<int> MathEx::generateUniqueRandomNumbers(int32 min, int32 max, int32 count)
 {
 	// 整数の集合を使って重複を排除

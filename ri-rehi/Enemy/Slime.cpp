@@ -124,7 +124,6 @@ void Slime::onCollision(const ICollidable& other)
 	switch (other.getType())
 	{
 	case T_Player:
-
 		break;
 	case T_Enemy:
 		break;

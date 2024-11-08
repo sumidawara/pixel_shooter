@@ -21,11 +21,12 @@ public:
 	ICollidableType getType() const override;
 
 	//IEnemy
-	void setHasKey(bool value) override;
-
 	int32 getCollisionDamage() const override;
 	bool getIsActive() const override;
+
 	bool getHasKey() const override;
+
+	void setHasKey(bool value) override;
 
 private:
     struct Impl;
