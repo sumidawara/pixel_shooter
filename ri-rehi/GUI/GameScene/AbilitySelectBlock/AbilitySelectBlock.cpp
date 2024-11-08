@@ -8,13 +8,17 @@
 struct AbilitySelectBlock::Impl
 {
 	Vec2 _pos;
+	Vec2 _start_pos = {260, -1200};
+	Vec2 _end_pos = {260, 200};
 
 	std::vector<AbilitySelectTile> _ability_select_tile_list;
 	int32 TILE_COUNT = 3;
 	double TILE_INTERVAL = 500;
 
-	Vec2 _start_pos = {260, -1200};
-	Vec2 _end_pos = {260, 200};
+	RectF _back_ground = {Vec2{0, 0}, Scene::Size()};
+	ColorF _back_ground_colorf;
+	double _start_alpha = 0.0;
+	double _end_alpha = 0.6;
 
 	void updatePos()
 	{
@@ -27,6 +31,13 @@ struct AbilitySelectBlock::Impl
 			auto p = _pos + Vec2{TILE_INTERVAL * i, 0};
 			_ability_select_tile_list[i].setPos(p);
 		}
+	}
+
+	void updateBackGroundColor()
+	{
+		auto t = God::getInstance().getPtrGameSceneGUIManager()->getAbilitySelectBlockPopupInterpolationT();
+
+		_back_ground_colorf = ColorF{0, 0, 0, std::lerp(_start_alpha, _end_alpha, t)};
 	}
 };
 
@@ -52,6 +63,7 @@ void AbilitySelectBlock::init()
 void AbilitySelectBlock::update(double delta_time)
 {
 	p_impl->updatePos();
+	p_impl->updateBackGroundColor();
 
 	//それぞれのタイルの更新
 	for(int32 i = 0; i < p_impl->TILE_COUNT; i++)
@@ -62,6 +74,8 @@ void AbilitySelectBlock::update(double delta_time)
 
 void AbilitySelectBlock::draw()
 {
+	p_impl->_back_ground.draw(p_impl->_back_ground_colorf);
+
 	for(int32 i = 0; i < p_impl->TILE_COUNT; i++)
 	{
 		p_impl->_ability_select_tile_list[i].draw();

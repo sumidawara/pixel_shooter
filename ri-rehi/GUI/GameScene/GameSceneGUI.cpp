@@ -61,7 +61,6 @@ void GameSceneGUI::draw() const
 	p_impl->_status_bar.draw();
 	p_impl->_ability_summary.draw();
 
-
 	if(is_ability_select_enabled)
 	{
 		p_impl->_ability_select_block.draw();
