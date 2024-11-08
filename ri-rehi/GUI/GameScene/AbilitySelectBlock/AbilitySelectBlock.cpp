@@ -3,6 +3,7 @@
 
 #include "AbilitySelectTile.h"
 #include "God.h"
+#include "MathEx.h"
 
 struct AbilitySelectBlock::Impl
 {
@@ -12,11 +13,15 @@ struct AbilitySelectBlock::Impl
 	int32 TILE_COUNT = 3;
 	double TILE_INTERVAL = 500;
 
+	Vec2 _start_pos = {260, -1200};
+	Vec2 _end_pos = {260, 200};
+
 	void updatePos()
 	{
-		_pos = God::getInstance().getPtrGameSceneGUIManager()->getAbilitySelectBlockPos();
+		auto t = God::getInstance().getPtrGameSceneGUIManager()->getAbilitySelectBlockPopupInterpolationT();
+		auto e = EaseOut(Easing::Quad, t);
+		_pos = MathEx::lerp(_start_pos, _end_pos, e);
 
-		_ability_select_tile_list.resize(TILE_COUNT);
 		for(int32 i = 0; i < TILE_COUNT; i++)
 		{
 			auto p = _pos + Vec2{TILE_INTERVAL * i, 0};
@@ -31,8 +36,7 @@ AbilitySelectBlock::AbilitySelectBlock() : p_impl(std::make_shared<Impl>())
 
 void AbilitySelectBlock::init()
 {
-	//見えない所で初期化すればどこでもいい（はず）
-	p_impl->_pos = {260, -1200};
+	p_impl->_pos = p_impl->_start_pos;
 
 	int32 TILE_COUNT = p_impl->TILE_COUNT;
 	double TILE_INTERVAL = p_impl->TILE_INTERVAL;
@@ -47,7 +51,6 @@ void AbilitySelectBlock::init()
 
 void AbilitySelectBlock::update(double delta_time)
 {
-	//位置情報の更新
 	p_impl->updatePos();
 
 	//それぞれのタイルの更新

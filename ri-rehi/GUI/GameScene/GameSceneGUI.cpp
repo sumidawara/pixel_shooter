@@ -39,7 +39,6 @@ void GameSceneGUI::update(double delta_time)
 
 	p_impl->_status_bar.update(delta_time);
 	p_impl->_ability_summary.update(delta_time);
-	p_impl->_gamescene_transition.update(delta_time);
 
 	if(is_ability_select_enabled)
 	{
@@ -49,6 +48,8 @@ void GameSceneGUI::update(double delta_time)
 	{
 		p_impl->_gamescene_menu.update(delta_time);
 	}
+
+	p_impl->_gamescene_transition.update(delta_time);
 }
 
 void GameSceneGUI::draw() const
@@ -59,7 +60,7 @@ void GameSceneGUI::draw() const
 
 	p_impl->_status_bar.draw();
 	p_impl->_ability_summary.draw();
-	p_impl->_gamescene_transition.draw();
+
 
 	if(is_ability_select_enabled)
 	{
@@ -69,4 +70,6 @@ void GameSceneGUI::draw() const
 	{
 		p_impl->_gamescene_menu.draw();
 	}
+
+	p_impl->_gamescene_transition.draw();
 }

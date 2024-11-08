@@ -92,9 +92,9 @@ void GameScene::update()
 	_ptr_camera->update();
 	_ptr_camera->setTargetCenter(_ptr_player->getCenterPos());
 	_cursor.update(system_delta_time);
-	_ptr_gamescene_gui->update(system_delta_time);
-	_ptr_gamescene_gui_manager->update(system_delta_time);
 	_ptr_ability_manager->update(system_delta_time);
+	_ptr_gamescene_gui_manager->update(system_delta_time);
+	_ptr_gamescene_gui->update(system_delta_time);
 	_ptr_time_manager->update(system_delta_time);
 
 	Debug::getInstance().update(system_delta_time);

@@ -14,9 +14,7 @@ struct GameSceneGUIManager::Impl
 	bool _is_ability_select_block_popup_ongoing = false;
 	double _ability_select_block_popup_accumulated_time = 0.0;
 	double _ability_select_block_popup_threshold_time = 0.6;
-	Vec2 _ability_select_block_pos = {260, -1200};
-	Vec2 _ability_select_block_start_pos = {260, -1200};
-	Vec2 _ability_select_block_end_pos = {260, 200};
+	double _ability_select_block_popup_t = 0.0;
 
 	bool _is_gamescene_menu_enabled = false;
 
@@ -87,14 +85,11 @@ struct GameSceneGUIManager::Impl
 		if(_ability_select_block_popup_threshold_time > _ability_select_block_popup_accumulated_time)
 		{
 			double t = _ability_select_block_popup_accumulated_time / _ability_select_block_popup_threshold_time;
-
-			double e = EaseOut(Easing::Quad, t);
-
-			_ability_select_block_pos = MathEx::lerp(_ability_select_block_start_pos, _ability_select_block_end_pos, e);
+			_ability_select_block_popup_t = t;
 		}
 		else //アニメーションの完了
 		{
-			_ability_select_block_pos = _ability_select_block_end_pos;
+			_ability_select_block_popup_t = 1.0;
 
 			//リセット
 			_ability_select_block_popup_accumulated_time = 0.0;
@@ -164,7 +159,7 @@ void GameSceneGUIManager::setIsAbilitySelectEnabled(bool value)
 	else
 	{
 		//解除されたときは、上の方で待機させる
-		p_impl->_ability_select_block_pos = p_impl->_ability_select_block_start_pos;
+		p_impl->_ability_select_block_popup_t = 0;
 	}
 
 	p_impl->_is_ability_select_block_enabled = value;
@@ -195,9 +190,9 @@ bool GameSceneGUIManager::getIsAbilitySelectEnabled() const
 	return p_impl->_is_ability_select_block_enabled;
 }
 
-Vec2 GameSceneGUIManager::getAbilitySelectBlockPos() const
+double GameSceneGUIManager::getAbilitySelectBlockPopupInterpolationT() const
 {
-	return p_impl->_ability_select_block_pos;
+	return p_impl->_ability_select_block_popup_t;
 }
 
 bool GameSceneGUIManager::getIsGameSceneMenuEnabled() const
