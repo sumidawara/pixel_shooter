@@ -63,12 +63,15 @@ void AssetManager::registerImage()
 	Image original_slime_image{ U"resources/img/slime.png" };
 	TextureAsset::Register(AssetKey::slime, image2TextureAssetData(original_slime_image.scale(SCALE_RATE, InterpolationAlgorithm::Nearest)));
 
+	//ホワイトアイ
+	Image original_white_eye_image{ U"resources/img/white_eye.png" };
+	TextureAsset::Register(AssetKey::white_eye, image2TextureAssetData(original_white_eye_image.scale(SCALE_RATE, InterpolationAlgorithm::Nearest)));
+
 	//Abilityのアイコン
 	for(auto& str : AssetKey::ability_icon_name_list)
 	{
 		registerAbilityIconFromKey(str);
 	}
-
 
 	//きらめきエフェクト
 	Image original_sparkle_image{ U"resources/img/sparkle.png" };

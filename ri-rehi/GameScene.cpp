@@ -208,5 +208,8 @@ void GameScene::loadNextStage()
 
 void GameScene::writeline() const
 {
-	Debug::getInstance().writeline(1, U"StageNum : " + Format(God::getInstance().getStageNum()));
+	if(Debug::getInstance().getDebugScreenIndex() == 1)
+	{
+		Debug::getInstance().writeline(1, U"StageNum : " + Format(God::getInstance().getStageNum()));
+	}
 }

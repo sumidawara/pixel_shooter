@@ -90,6 +90,39 @@ struct EnemyStateManager::Impl
 			_state.is_right_face = false;
 		}
 	}
+
+	void judgeDirection(Vec2 vec)
+	{
+		std::vector<Vec2> dir = {{1,1},{1,-1},{-1,-1},{-1,1}};
+
+		//右
+		if(0 <= vec.cross(dir[0]) && vec.cross(dir[1]) < 0)
+		{
+			_state.direction_index = 1;
+			return;
+		}
+
+		//上
+		if(0 <= vec.cross(dir[1]) && vec.cross(dir[2]) < 0)
+		{
+			_state.direction_index = 0;
+			return;
+		}
+
+		//左
+		if(0 <= vec.cross(dir[2]) && vec.cross(dir[3]) < 0)
+		{
+			_state.direction_index = 3;
+			return;
+		}
+
+		//下
+		if(0 <= vec.cross(dir[3]) && vec.cross(dir[0]) < 0)
+		{
+			_state.direction_index = 2;
+			return;
+		}
+	}
 };
 
 EnemyStateManager::EnemyStateManager() : p_impl(std::make_shared<Impl>())
@@ -107,6 +140,7 @@ void EnemyStateManager::update(double delta_time)
 {
 	p_impl->generateSparkle_if_hasKey(delta_time);
 	p_impl->judgeIsRightFace();
+	p_impl->judgeDirection(p_impl->_direction);
 }
 
 void EnemyStateManager::draw() const

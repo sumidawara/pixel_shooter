@@ -208,6 +208,7 @@
       <AdditionalOptions>/Zc:__cplusplus </AdditionalOptions>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
+    <ClCompile Include="Enemy\Behavior\GridChaseBehavior.cpp" />
     <ClCompile Include="Enemy\Behavior\IEnemyBehavior.cpp">
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -843,6 +844,7 @@
     </ClCompile>
     <ClCompile Include="God.cpp" />
     <ClCompile Include="GraphicSetting.cpp" />
+    <ClCompile Include="GridUtil.cpp" />
     <ClCompile Include="GUI\Component\Button.cpp" />
     <ClCompile Include="GUI\CursorEx.cpp" />
     <ClCompile Include="GUI\GameScene\AbilitySelectBlock\AbilitySelectBlock.cpp" />
@@ -1568,6 +1570,7 @@
     <ClInclude Include="Debug.h" />
     <ClInclude Include="DebugSetting.h" />
     <ClInclude Include="Enemy\Behavior\ChasePlayerBehavior.h" />
+    <ClInclude Include="Enemy\Behavior\GridChaseBehavior.h" />
     <ClInclude Include="Enemy\Behavior\IEnemyBehavior.h" />
     <ClInclude Include="Enemy\Behavior\MobAIContext.h" />
     <ClInclude Include="Enemy\Behavior\StillBehavior.h" />
@@ -1587,6 +1590,7 @@
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="God.h" />
     <ClInclude Include="GraphicSetting.h" />
+    <ClInclude Include="GridUtil.h" />
     <ClInclude Include="GUI\Component\Button.h" />
     <ClInclude Include="GUI\CursorEx.h" />
     <ClInclude Include="GUI\GameScene\AbilitySelectBlock\AbilitySelectBlock.h" />

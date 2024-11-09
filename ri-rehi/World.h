@@ -12,6 +12,7 @@ public:
 	bool isBlockAtWorldPos(Vec2 worldPos);
 	bool isBlockAtIndexPos(Point index_pos);
 	Point worldPos2indexPos(Vec2 worldpos);
+	Vec2 indexPos2worldPos(Point index_pos, bool is_center);
 
 	Vec2 getPos() const;
 	Point getSize() const;

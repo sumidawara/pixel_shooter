@@ -5,21 +5,22 @@
 #include "GraphicSetting.h"
 #include "DebugSetting.h"
 #include "CollisionUtil.h"
+#include "Debug.h"
 #include "EnemyStateManager.h"
 #include "Particle/DamageAmountParticle.h"
 #include "God.h"
+#include "Behavior/GridChaseBehavior.h"
 
 struct WhiteEye::Impl
 {
-    RectF _rectf;
-    Vec2 _direction{-1.0, 0.0};
+	RectF _rectf;
+	Vec2 _direction{-1.0, 0.0};
 
 	EnemyStateManager _enemy_state_manager;
 
-    std::shared_ptr<StillBehavior> _ptr_still_behavior;
-    std::shared_ptr<ChasePlayerBehavior> _ptr_chase_player_behavior;
-    std::shared_ptr<WanderBehavior> _ptr_wander_behavior;
-    std::shared_ptr<IEnemyBehavior> _ptr_behavior;
+	std::shared_ptr<StillBehavior> _ptr_still_behavior;
+	std::shared_ptr<GridChaseBehavior> _ptr_grid_chase_behavior;
+	std::shared_ptr<IEnemyBehavior> _ptr_behavior;
 
 	void plan()
 	{
@@ -30,11 +31,11 @@ struct WhiteEye::Impl
 
 		if (state.view_range <= distance)
 		{
-			_ptr_behavior = _ptr_wander_behavior;
+			_ptr_behavior = _ptr_grid_chase_behavior;
 		}
 		else if (NEAR <= distance and distance <= (state.view_range))
 		{
-			_ptr_behavior = _ptr_chase_player_behavior;
+			_ptr_behavior = _ptr_grid_chase_behavior;
 		}
 		else if (distance <= NEAR)
 		{
@@ -55,27 +56,20 @@ void WhiteEye::init(Vec2 pos, int32 level)
 	context.basic_defence = 0;
 	context.basic_collision_damage = 2;
 	context.basic_drop_exp = 1;
+	context.walk_speed = 350;
+	context.run_speed = 350;
+	context.view_range = 500;
 	p_impl->_enemy_state_manager.init(context, level);
 
 	//behaviorの初期化
 	p_impl->_ptr_still_behavior = std::make_shared<StillBehavior>();
-	p_impl->_ptr_chase_player_behavior = std::make_shared<ChasePlayerBehavior>();
-	p_impl->_ptr_wander_behavior = std::make_shared<WanderBehavior>();
+	p_impl->_ptr_grid_chase_behavior = std::make_shared<GridChaseBehavior>();
 	p_impl->_ptr_behavior = p_impl->_ptr_still_behavior;
 
-	{
-		int32 _original_offset_left = 5;
-		int32 _original_offset_right = 5;
-		int32 _original_offset_top = 17;
-		int32 _original_offset_bottom = 1;
-
-		p_impl->_rectf = {
-			pos,
-			(GraphicSetting::getOriginalTileWidth() - _original_offset_left - _original_offset_right) *
-			GraphicSetting::getScaleRate(),
-			(GraphicSetting::getOriginalTileHeight() - _original_offset_top - _original_offset_bottom) *
-			GraphicSetting::getScaleRate()
-		};
+	p_impl->_rectf = {
+		pos,
+		GraphicSetting::getNormalTileWidth(),
+		GraphicSetting::getNormalTileHeight()
 	};
 }
 
@@ -103,7 +97,15 @@ void WhiteEye::update(double delta_time)
 void WhiteEye::draw() const
 {
 	auto state = p_impl->_enemy_state_manager.getEnemyState();
-	TextureAsset(AssetKey::slime).mirrored(state.is_right_face).drawAt(p_impl->_rectf.center());
+
+	int32 NORMAL_WIDTH = GraphicSetting::getNormalTileWidth();
+	int32 NORMAL_HEIGHT = GraphicSetting::getNormalTileHeight();
+	TextureAsset(AssetKey::white_eye)
+		(state.direction_index * NORMAL_WIDTH, 0, NORMAL_WIDTH, NORMAL_HEIGHT)
+		.drawAt(p_impl->_rectf.center());
+
+
+	Debug::getInstance().writeline(0, Format(state.direction_index));
 
 	//衝突判定の描画
 	if (DebugSetting::getIsCollisionRectVisible())

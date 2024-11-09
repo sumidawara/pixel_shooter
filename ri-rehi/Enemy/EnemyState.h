@@ -23,6 +23,7 @@ struct EnemyState
 
 	bool is_active = true;
 	bool is_right_face = false;
+	int32 direction_index = 0;
 	bool has_key = false;
 
 	//sparkle particle のパラメーター

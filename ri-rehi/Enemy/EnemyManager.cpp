@@ -2,6 +2,7 @@
 #include "EnemyManager.h"
 #include "God.h"
 #include "Slime.h"
+#include "WhiteEye.h"
 
 struct EnemyManager::Impl
 {

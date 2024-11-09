@@ -8,6 +8,7 @@ namespace AssetKey
 	constexpr StringView exit = U"exit";
 	constexpr StringView locked_exit = U"locked_exit";
 	constexpr StringView slime = U"slime";
+	constexpr StringView white_eye = U"white_eye";
 	constexpr StringView sparkle = U"sparkle";
 
 	//Ability用のアイコン
@@ -51,7 +52,10 @@ namespace AssetKey
 		return {
 			U"resources/world/stage0.json",
 			U"resources/world/stage1.json",
-			U"resources/world/stage2.json"
+			U"resources/world/stage2.json",
+			U"resources/world/stage3.json",
+			U"resources/world/stage4.json",
+			U"resources/world/stage5.json"
 		};
 	}
 }

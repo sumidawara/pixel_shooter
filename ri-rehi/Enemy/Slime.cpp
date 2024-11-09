@@ -16,6 +16,8 @@ struct Slime::Impl
 	RectF _rectf;
 	Vec2 _direction{-1.0, 0.0};
 
+	Vec2 drawOffset;
+
 	EnemyStateManager _enemy_state_manager;
 
 	std::shared_ptr<StillBehavior> _ptr_still_behavior;
@@ -65,20 +67,8 @@ void Slime::init(Vec2 pos, int32 level)
 	p_impl->_ptr_wander_behavior = std::make_shared<WanderBehavior>();
 	p_impl->_ptr_behavior = p_impl->_ptr_still_behavior;
 
-	{
-		int32 _original_offset_left = 5;
-		int32 _original_offset_right = 5;
-		int32 _original_offset_top = 17;
-		int32 _original_offset_bottom = 1;
-
-		p_impl->_rectf = {
-			pos,
-			(GraphicSetting::getOriginalTileWidth() - _original_offset_left - _original_offset_right) *
-			GraphicSetting::getScaleRate(),
-			(GraphicSetting::getOriginalTileHeight() - _original_offset_top - _original_offset_bottom) *
-			GraphicSetting::getScaleRate()
-		};
-	};
+	p_impl->_rectf = RectF{pos, Vec2{88, 66}};
+	p_impl->drawOffset = {-20, -48};
 }
 
 void Slime::update(double delta_time)
@@ -105,7 +95,9 @@ void Slime::update(double delta_time)
 void Slime::draw() const
 {
 	auto state = p_impl->_enemy_state_manager.getEnemyState();
-	TextureAsset(AssetKey::slime).mirrored(state.is_right_face).drawAt(p_impl->_rectf.center());
+	TextureAsset(AssetKey::slime)
+	            .mirrored(state.is_right_face)
+	            .draw(p_impl->_rectf.pos + p_impl->drawOffset);
 
 	//衝突判定の描画
 	if (DebugSetting::getIsCollisionRectVisible())

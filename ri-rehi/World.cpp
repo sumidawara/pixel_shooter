@@ -136,22 +136,26 @@ struct World::Impl
 
 	void writelineDistanceField()
 	{
-		for(int32 y = 0; y < _world_size.y ; y++)
+		int32 writeline_index = 8;
+		if(Debug::getInstance().getDebugScreenIndex() == writeline_index)
 		{
-			String line = U"";
-			for(int32 x = 0; x <_world_size.x; x++)
+			for(int32 y = 0; y < _world_size.y ; y++)
 			{
-				//プレイヤーの場合は目立たせる
-				if(_distance_field->at(y, x) == 0)
+				String line = U"";
+				for(int32 x = 0; x <_world_size.x; x++)
 				{
-					line += U"{: >4}"_fmt(U":P:");
+					//プレイヤーの場合は目立たせる
+					if(_distance_field->at(y, x) == 0)
+					{
+						line += U"{: >4}"_fmt(U":P:");
+					}
+					else
+					{
+						line += U"{: >4}"_fmt(_distance_field->at(y, x));
+					}
 				}
-				else
-				{
-					line += U"{: >4}"_fmt(_distance_field->at(y, x));
-				}
+				Debug::getInstance().writeline(writeline_index, line);
 			}
-			Debug::getInstance().writeline(8, line);
 		}
 	}
 };
@@ -212,6 +216,20 @@ bool World::isBlockAtIndexPos(Point index_pos)
 Point World::worldPos2indexPos(Vec2 worldpos)
 {
 	return p_impl->worldPos2indexPos(worldpos);
+}
+
+Vec2 World::indexPos2worldPos(Point index_pos, bool is_center)
+{
+	auto NORMAL_WIDTH = GraphicSetting::getNormalTileWidth();
+	auto NORMAL_HEIGHT = GraphicSetting::getNormalTileHeight();
+	Vec2 worldpos = {p_impl->_world_pos.x + index_pos.x * NORMAL_WIDTH, p_impl->_world_pos.y + index_pos.y * NORMAL_HEIGHT};
+
+	if (is_center)
+	{
+		worldpos += Vec2{NORMAL_WIDTH / 2, NORMAL_HEIGHT / 2};
+	}
+
+	return worldpos;
 }
 
 Vec2 World::getPos() const
