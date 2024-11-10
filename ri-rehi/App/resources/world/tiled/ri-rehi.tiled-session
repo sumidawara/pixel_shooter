@@ -1,0 +1,50 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "",
+    "expandedProjectPaths": [
+    ],
+    "fileStates": {
+        "stage1.tmx": {
+            "scale": 2,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 362.75,
+                "y": 209.75
+            }
+        },
+        "stage2.tmx": {
+            "scale": 2,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 561.75,
+                "y": 251.25
+            }
+        },
+        "stage3.tmx": {
+            "scale": 2,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 471.75,
+                "y": 334.25
+            }
+        },
+        "tileset.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        }
+    },
+    "last.exportedFilePath": "E:/root/development/c++/siv3d/ri-rehi/ri-rehi/App/resources/world",
+    "last.imagePath": "E:/root/development/c++/siv3d/ri-rehi/ri-rehi/App/resources/img",
+    "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
+    "map.lastUsedFormat": "tmx",
+    "openFiles": [
+    ],
+    "project": "ri-rehi.tiled-project",
+    "recentFiles": [
+        "tileset.tsx"
+    ],
+    "tileset.lastUsedFormat": "tsx"
+}
