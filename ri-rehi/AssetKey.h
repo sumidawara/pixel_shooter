@@ -10,6 +10,7 @@ namespace AssetKey
 	constexpr StringView slime = U"slime";
 	constexpr StringView white_eye = U"white_eye";
 	constexpr StringView sparkle = U"sparkle";
+	constexpr StringView key = U"key";
 
 	//Ability用のアイコン
 	constexpr StringView icon_blank = U"icon_blank";

@@ -64,7 +64,7 @@ void PlayerStateManager::init()
 	p_impl->_ptr_player_state->collision_damage = 1;
 	p_impl->_ptr_player_state->move_speed = 400.0;
 
-	p_impl->_ptr_player_state->level = 1;
+	p_impl->_ptr_player_state->level = 3;
 	p_impl->_ptr_player_state->current_exp = 0;
 
 	//ShotManagerのパラメータ

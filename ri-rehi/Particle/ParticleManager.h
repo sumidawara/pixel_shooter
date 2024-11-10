@@ -12,6 +12,7 @@ public:
 
 	void clearParticle();
 
+	void addParticleOnNextFrame(const std::shared_ptr<IParticle>& ptr_particle);
 	void addParticle(const std::shared_ptr<IParticle>& ptr_particle);
 
 private:

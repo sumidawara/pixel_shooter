@@ -130,84 +130,7 @@
     <ClCompile Include="CollisionUtil.cpp" />
     <ClCompile Include="Debug.cpp" />
     <ClCompile Include="DebugSetting.cpp" />
-    <ClCompile Include="Enemy\Behavior\ChasePlayerBehavior.cpp">
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
-      <Optimization>Disabled</Optimization>
-      <SupportJustMyCode>true</SupportJustMyCode>
-      <AssemblerOutput>NoListing</AssemblerOutput>
-      <AssemblerListingLocation>E:\root\development\c++\siv3d\ri-rehi\Intermediate\ri-rehi\Debug\Intermediate\</AssemblerListingLocation>
-      <UndefineAllPreprocessorDefinitions>false</UndefineAllPreprocessorDefinitions>
-      <BrowseInformation>false</BrowseInformation>
-      <BrowseInformationFile>E:\root\development\c++\siv3d\ri-rehi\Intermediate\ri-rehi\Debug\Intermediate\</BrowseInformationFile>
-      <CompileAs>Default</CompileAs>
-      <ConformanceMode>true</ConformanceMode>
-      <DiagnosticsFormat>Column</DiagnosticsFormat>
-      <DisableLanguageExtensions>false</DisableLanguageExtensions>
-      <ErrorReporting>Prompt</ErrorReporting>
-      <ExpandAttributedSource>false</ExpandAttributedSource>
-      <ExceptionHandling>Sync</ExceptionHandling>
-      <EnableASAN>false</EnableASAN>
-      <EnableFuzzer>false</EnableFuzzer>
-      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
-      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
-      <FloatingPointModel>Precise</FloatingPointModel>
-      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
-      <ForcedIncludeFiles>stdafx.h;</ForcedIncludeFiles>
-      <GenerateModuleDependencies>false</GenerateModuleDependencies>
-      <GenerateSourceDependencies>false</GenerateSourceDependencies>
-      <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
-      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
-      <IntrinsicFunctions>false</IntrinsicFunctions>
-      <IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
-      <LanguageStandard>stdcpplatest</LanguageStandard>
-      <LanguageStandard_C>Default</LanguageStandard_C>
-      <MinimalRebuild>false</MinimalRebuild>
-      <ModuleDependenciesFile>E:\root\development\c++\siv3d\ri-rehi\Intermediate\ri-rehi\Debug\Intermediate\</ModuleDependenciesFile>
-      <ModuleOutputFile>E:\root\development\c++\siv3d\ri-rehi\Intermediate\ri-rehi\Debug\Intermediate\</ModuleOutputFile>
-      <OmitDefaultLibName>false</OmitDefaultLibName>
-      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
-      <WholeProgramOptimization>false</WholeProgramOptimization>
-      <ObjectFileName>E:\root\development\c++\siv3d\ri-rehi\Intermediate\ri-rehi\Debug\Intermediate\</ObjectFileName>
-      <CallingConvention>Cdecl</CallingConvention>
-      <ProgramDataBaseFileName>E:\root\development\c++\siv3d\ri-rehi\Intermediate\ri-rehi\Debug\Intermediate\vc143.pdb</ProgramDataBaseFileName>
-      <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
-      <PrecompiledHeaderOutputFile>E:\root\development\c++\siv3d\ri-rehi\Intermediate\ri-rehi\Debug\Intermediate\ri-rehi(debug).pch</PrecompiledHeaderOutputFile>
-      <PreprocessToFile>false</PreprocessToFile>
-      <PreprocessKeepComments>false</PreprocessKeepComments>
-      <PreprocessSuppressLineNumbers>false</PreprocessSuppressLineNumbers>
-      <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
-      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
-      <ShowIncludes>false</ShowIncludes>
-      <SourceDependenciesFile>E:\root\development\c++\siv3d\ri-rehi\Intermediate\ri-rehi\Debug\Intermediate\</SourceDependenciesFile>
-      <SuppressStartupBanner>true</SuppressStartupBanner>
-      <BufferSecurityCheck>true</BufferSecurityCheck>
-      <SmallerTypeCheck>false</SmallerTypeCheck>
-      <SpectreMitigation>false</SpectreMitigation>
-      <StructMemberAlignment>Default</StructMemberAlignment>
-      <TrackerLogDirectory>E:\root\development\c++\siv3d\ri-rehi\Intermediate\ri-rehi\Debug\Intermediate\ri-rehi.tlog\</TrackerLogDirectory>
-      <TranslateIncludes>false</TranslateIncludes>
-      <MinimalRebuildFromTracking>true</MinimalRebuildFromTracking>
-      <TreatWarningAsError>false</TreatWarningAsError>
-      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
-      <UseFullPaths>true</UseFullPaths>
-      <WarningLevel>Level4</WarningLevel>
-      <XMLDocumentationFileName>E:\root\development\c++\siv3d\ri-rehi\Intermediate\ri-rehi\Debug\Intermediate\</XMLDocumentationFileName>
-      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <IntelJCCErratum>false</IntelJCCErratum>
-      <BuildStlModules>false</BuildStlModules>
-      <TreatAngleIncludeAsExternal>false</TreatAngleIncludeAsExternal>
-      <ExternalWarningLevel>InheritWarningLevel</ExternalWarningLevel>
-      <TreatExternalTemplatesAsInternal>true</TreatExternalTemplatesAsInternal>
-      <DisableAnalyzeExternal>false</DisableAnalyzeExternal>
-      <PreprocessorDefinitions>_DEBUG;_WINDOWS;_ENABLE_EXTENDED_ALIGNED_STORAGE;_SILENCE_CXX20_CISO646_REMOVED_WARNING;_SILENCE_ALL_CXX23_DEPRECATION_WARNINGS;_SILENCE_ALL_MS_EXT_DEPRECATION_WARNINGS;_UNICODE;UNICODE;</PreprocessorDefinitions>
-      <SDLCheck>true</SDLCheck>
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <DisableSpecificWarnings>26451;26812;</DisableSpecificWarnings>
-      <AdditionalOptions>/Zc:__cplusplus </AdditionalOptions>
-      <LinkCompiled>true</LinkCompiled>
-    </ClCompile>
+    <ClCompile Include="Enemy\Behavior\ChasePlayerBehavior.cpp"/>
     <ClCompile Include="Enemy\Behavior\GridChaseBehavior.cpp" />
     <ClCompile Include="Enemy\Behavior\IEnemyBehavior.cpp">
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -1099,6 +1022,7 @@
     <ClCompile Include="Particle\BulletParticle.cpp" />
     <ClCompile Include="Particle\DamageAmountParticle.cpp" />
     <ClCompile Include="Particle\IParticle.cpp" />
+    <ClCompile Include="Particle\KeyGetParticle.cpp" />
     <ClCompile Include="Particle\ParticleManager.cpp" />
     <ClCompile Include="Particle\SparkleParticle.cpp" />
     <ClCompile Include="Player\Player.cpp" />
@@ -1613,6 +1537,7 @@
     <ClInclude Include="Particle\BulletParticle.h" />
     <ClInclude Include="Particle\DamageAmountParticle.h" />
     <ClInclude Include="Particle\IParticle.h" />
+    <ClInclude Include="Particle\KeyGetParticle.h" />
     <ClInclude Include="Particle\ParticleManager.h" />
     <ClInclude Include="Particle\SparkleParticle.h" />
     <ClInclude Include="Player\Player.h" />

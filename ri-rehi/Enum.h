@@ -36,7 +36,8 @@ namespace EnemyType
 {
 	enum EnemyType
 	{
-		Slime
+		Slime,
+		WhiteEye
 	};
 }
 

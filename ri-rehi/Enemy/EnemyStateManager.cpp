@@ -4,6 +4,7 @@
 #include "Debug.h"
 #include "God.h"
 #include "Particle/DamageAmountParticle.h"
+#include "Particle/KeyGetParticle.h"
 #include "Particle/SparkleParticle.h"
 
 struct EnemyStateManager::Impl
@@ -68,6 +69,11 @@ struct EnemyStateManager::Impl
 	{
 		if(_state.has_key)
 		{
+			//鍵パーティクル
+			auto ptr_key_get_particle = std::make_shared<KeyGetParticle>();
+			ptr_key_get_particle->init(_rectf.center());
+			God::getInstance().getPtrParticleManager()->addParticle(ptr_key_get_particle);
+
 			//鍵持ちの場合はEnemyManagerのOnKeyEnemyDeath()を呼ぶ
 			auto enemy_manager = God::getInstance().getEnemyManager();
 			enemy_manager->onKeyEnemyDeath();

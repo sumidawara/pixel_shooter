@@ -6,4 +6,5 @@ namespace TileIndexKey
 	constexpr int32 exit = 4;
 	constexpr int32 player = 5;
 	constexpr int32 slime = 6;
+	constexpr int32 white_eye = 7;
 }

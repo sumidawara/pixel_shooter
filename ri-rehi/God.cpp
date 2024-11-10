@@ -5,7 +5,7 @@ struct God::Impl
 {
 public:
 	//ゲーム
-	int32 _stage_num = 3;
+	int32 _stage_num = 1;
 	std::shared_ptr<World> _ptr_world;
 	std::shared_ptr<Player> _ptr_player;
 	std::shared_ptr<Camera2D> _ptr_camera;

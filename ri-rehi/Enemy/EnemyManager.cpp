@@ -62,15 +62,25 @@ void EnemyManager::clearEnemy()
 
 void EnemyManager::createEnemy(EnemyType::EnemyType enemy_type, Vec2 pos)
 {
+	auto collision_manager = God::getInstance().getPtrCollisionManager();
+
 	switch (enemy_type)
 	{
 	case EnemyType::Slime:
-		auto _ptr_slime = std::make_shared<Slime>();
-		_ptr_slime->init(pos, 1);
-		p_impl->_enemy_ptr_list.push_back(_ptr_slime);
-		auto collision_manager = God::getInstance().getPtrCollisionManager();
-		collision_manager->addICollidable(_ptr_slime);
+		{
+			auto _ptr_slime = std::make_shared<Slime>();
+			_ptr_slime->init(pos, 1);
+			p_impl->_enemy_ptr_list.push_back(_ptr_slime);
+			collision_manager->addICollidable(_ptr_slime);
+		}
 		break;
+	case EnemyType::WhiteEye:
+		{
+			auto _ptr_white_eye = std::make_shared<WhiteEye>();
+			_ptr_white_eye->init(pos, 1);
+			p_impl->_enemy_ptr_list.push_back(_ptr_white_eye);
+			collision_manager->addICollidable(_ptr_white_eye);
+		}
 	}
 }
 

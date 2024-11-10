@@ -63,6 +63,8 @@ struct Layer::Impl
 	//L_EntityPlacementだけが呼び出し
 	void placeEntity()
 	{
+		auto enemy_manager = God::getInstance().getEnemyManager();
+
 		for (int32 gy = 0; gy < _world_size.y; gy++)
 		{
 			for (int32 gx = 0; gx < _world_size.x; gx++)
@@ -80,15 +82,16 @@ struct Layer::Impl
 					break;
 
 				case TileIndexKey::slime:
-					auto enemy_manager = God::getInstance().getEnemyManager();
 					enemy_manager->createEnemy(EnemyType::Slime, indexPos2worldPos(Point{gx, gy}, true));
+					break;
+				case TileIndexKey::white_eye:
+					enemy_manager->createEnemy(EnemyType::WhiteEye, indexPos2worldPos(Point{gx, gy}, false));
 					break;
 				}
 			}
 		}
 
 		//敵の中の1体だけに鍵を渡す
-		auto enemy_manager = God::getInstance().getEnemyManager();
 		enemy_manager->giveKeyToOneEnemy();
 
 	}

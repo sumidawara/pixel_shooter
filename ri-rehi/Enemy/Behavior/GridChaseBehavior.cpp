@@ -40,7 +40,7 @@ void GridChaseBehavior::execute(MobAIContext& mob_ai_context, double delta_time)
 	{
 		if(not GridUtil::isGridIndexValid(index_pos + adjacent_block.direction, world.getSize()))
 		{
-			return;
+			//return;
 		}
 
 		adjacent_block.distance = distance_field->at(index_pos + adjacent_block.direction);

@@ -10,6 +10,7 @@
 struct ParticleManager::Impl
 {
 	Array<std::shared_ptr<IParticle>> _particle_ptr_list;
+	Array<std::shared_ptr<IParticle>> _particle_ptr_added_on_next_frame_list;
 
 	int32 _writeline_index = 4;
 	int32 _bullet_particle_count = 0;
@@ -18,6 +19,11 @@ struct ParticleManager::Impl
 
 	void updateParticles(double delta_time)
 	{
+		for(auto& particle : _particle_ptr_added_on_next_frame_list)
+		{
+			_particle_ptr_list.push_back(particle);
+		}
+
 		//Particleのアップデートを実行
 		//なおかつnot is_activeなものを削除
 		_particle_ptr_list.remove_if([delta_time](const std::shared_ptr<IParticle>& ptr_particle)
@@ -95,6 +101,11 @@ void ParticleManager::draw() const
 void ParticleManager::clearParticle()
 {
 	p_impl->_particle_ptr_list.clear();
+}
+
+void ParticleManager::addParticleOnNextFrame(const std::shared_ptr<IParticle>& ptr_particle)
+{
+	p_impl->_particle_ptr_added_on_next_frame_list << ptr_particle;
 }
 
 
