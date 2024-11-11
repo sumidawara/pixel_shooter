@@ -24,6 +24,8 @@ void Main()
 	Scene::SetBackground(Palette::Pink);
 
 	FileSystem::ChangeCurrentDirectory( U"E:/root/development/c++/siv3d/ri-rehi/ri-rehi/App");
+    FileSystem::ChangeCurrentDirectory( U"C:/Users/mrkei/root/development/C++/siv3d/ri-rehi/ri-rehi/App");
+    //FileSystem::ChangeCurrentDirectory( U"ri-rehi/App");
 
 	//Console << FileSystem::ModulePath();
 
