@@ -14,6 +14,7 @@ public:
 	void onResumeBtnClicked();
 	void onSettingBtnClicked();
 	void onTitleBtnClicked();
+	void onMenuBtnClicked();
 
 	void setIsAbilitySelectEnabled(bool value);
 	void setTransitionState(GameSceneTransitionType::State state);

@@ -87,13 +87,18 @@ struct Layer::Impl
 				case TileIndexKey::white_eye:
 					enemy_manager->createEnemy(EnemyType::WhiteEye, indexPos2worldPos(Point{gx, gy}, false));
 					break;
+				case TileIndexKey::ghost:
+					enemy_manager->createEnemy(EnemyType::Ghost, indexPos2worldPos(Point{gx, gy}, false));
+					break;
+				case TileIndexKey::skelton:
+					enemy_manager->createEnemy(EnemyType::Skelton, indexPos2worldPos(Point{gx, gy}, false));
+					break;
 				}
 			}
 		}
 
 		//敵の中の1体だけに鍵を渡す
 		enemy_manager->giveKeyToOneEnemy();
-
 	}
 
 	Vec2 indexPos2worldPos(Point index_pos, bool is_center)

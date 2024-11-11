@@ -9,6 +9,7 @@ namespace AssetKey
 	constexpr StringView locked_exit = U"locked_exit";
 	constexpr StringView slime = U"slime";
 	constexpr StringView white_eye = U"white_eye";
+	constexpr StringView ghost = U"ghost";
 	constexpr StringView sparkle = U"sparkle";
 	constexpr StringView key = U"key";
 

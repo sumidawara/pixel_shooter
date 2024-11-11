@@ -215,6 +215,18 @@ RectF Player::getRect() const
 	return p_impl->_rectf;
 }
 
+Vec2 Player::getTargetDirection() const
+{
+	auto camera_mat3x2 = God::getInstance().getCamera().getMat3x2().inverse();
+	auto cursorWorldPos = camera_mat3x2.transformPoint(Cursor::PosF());
+	return Vec2{cursorWorldPos - p_impl->_rectf.center()}.normalize();
+}
+
+bool Player::getIsRightFace() const
+{
+	return p_impl->_is_right_face;
+}
+
 PlayerState Player::getPlayerState() const
 {
 	return p_impl->_ptr_player_state_manager->getPlayerState();

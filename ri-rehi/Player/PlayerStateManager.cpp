@@ -16,7 +16,15 @@ struct PlayerStateManager::Impl
 
 	int32 expCurveFunction(int32 level)
 	{
-		return Pow(level, 2);
+		std::vector<int32> exp_list = {2, 4, 9, 16, 25, 36, 49, 64, 81, 100};
+		if(level < exp_list.size())
+		{
+			return exp_list[level - 1];
+		}
+		else
+		{
+			return 200;
+		}
 	}
 
 	void updateIsInvincible(double delta_time)
@@ -64,7 +72,7 @@ void PlayerStateManager::init()
 	p_impl->_ptr_player_state->collision_damage = 1;
 	p_impl->_ptr_player_state->move_speed = 400.0;
 
-	p_impl->_ptr_player_state->level = 3;
+	p_impl->_ptr_player_state->level = 1;
 	p_impl->_ptr_player_state->current_exp = 0;
 
 	//ShotManagerのパラメータ

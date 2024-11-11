@@ -22,6 +22,8 @@ public:
 
 	Vec2 getCenterPos() const;
 	RectF getRect() const;
+	Vec2 getTargetDirection() const;
+	bool getIsRightFace() const;
 	PlayerState getPlayerState() const;
 	std::shared_ptr<PlayerStateManager> getPtrPlayerStateManager() const;
 

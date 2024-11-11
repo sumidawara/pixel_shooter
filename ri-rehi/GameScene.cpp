@@ -30,6 +30,7 @@ void GameScene::init()
 	_ptr_ability_manager = std::make_shared<AbilityManager>();
 	_ptr_time_manager = std::make_shared<TimeManager>();
 	_ptr_time_limit_manager = std::make_shared<TimeLimitManager>();
+	_ptr_annotation = std::make_shared<Annotation>();
 
 	_ptr_collision_manager->init();
 	God::getInstance().setCollisionManager(_ptr_collision_manager);
@@ -51,6 +52,7 @@ void GameScene::init()
 	_ptr_ability_manager->init();
 	_ptr_time_manager->init();
 	_ptr_time_limit_manager->init();
+	_ptr_annotation->init();
 	_cursor.init();
 
 	_ptr_camera = std::make_shared<Camera2D>(God::getInstance().getInitialPlayerPos(), 1.0);
@@ -151,6 +153,7 @@ void GameScene::draw() const
 
 			_ptr_world->draw();
 			_ptr_exit->draw();
+			_ptr_annotation->draw();
 			_ptr_enemy_manager->draw();
 			_ptr_player->draw();
 			_ptr_bullet_manager->draw();

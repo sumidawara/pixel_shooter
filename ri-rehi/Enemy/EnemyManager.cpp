@@ -1,5 +1,7 @@
 ﻿#include "stdafx.h"
 #include "EnemyManager.h"
+
+#include "Ghost.h"
 #include "God.h"
 #include "Slime.h"
 #include "WhiteEye.h"
@@ -81,6 +83,20 @@ void EnemyManager::createEnemy(EnemyType::EnemyType enemy_type, Vec2 pos)
 			p_impl->_enemy_ptr_list.push_back(_ptr_white_eye);
 			collision_manager->addICollidable(_ptr_white_eye);
 		}
+		break;
+	case EnemyType::Ghost:
+		{
+			auto _ptr_ghost = std::make_shared<Ghost>();
+			_ptr_ghost->init(pos, 1);
+			p_impl->_enemy_ptr_list.push_back(_ptr_ghost);
+			collision_manager->addICollidable(_ptr_ghost);
+		}
+		break;
+	case EnemyType::Skelton:
+		{
+
+		}
+		break;
 	}
 }
 

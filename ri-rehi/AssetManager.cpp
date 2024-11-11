@@ -70,6 +70,10 @@ void AssetManager::registerImage()
 	Image original_white_eye_image{ U"resources/img/white_eye.png" };
 	TextureAsset::Register(AssetKey::white_eye, image2TextureAssetData(original_white_eye_image.scale(SCALE_RATE, InterpolationAlgorithm::Nearest)));
 
+	//ゴースト
+	Image original_ghost_image{ U"resources/img/ghost.png" };
+	TextureAsset::Register(AssetKey::ghost, image2TextureAssetData(original_ghost_image.scale(SCALE_RATE, InterpolationAlgorithm::Nearest)));
+
 	//Abilityのアイコン
 	for(auto& str : AssetKey::ability_icon_name_list)
 	{

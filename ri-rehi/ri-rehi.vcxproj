@@ -120,6 +120,7 @@
     <ClCompile Include="AbilityManager.cpp" />
     <None Include="App\resources\shader\shader.hlsl" />
     <None Include="App\resources\shader\grayscale.hlsl" />
+    <ClCompile Include="Annotation.cpp" />
     <ClCompile Include="AssetKey.cpp" />
     <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="Block.cpp" />
@@ -132,6 +133,7 @@
     <ClCompile Include="Debug.cpp" />
     <ClCompile Include="DebugSetting.cpp" />
     <ClCompile Include="Enemy\Behavior\ChasePlayerBehavior.cpp"/>
+    <ClCompile Include="Enemy\Behavior\GhostChaseBehavior.cpp" />
     <ClCompile Include="Enemy\Behavior\GridChaseBehavior.cpp" />
     <ClCompile Include="Enemy\Behavior\IEnemyBehavior.cpp">
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -525,6 +527,7 @@
     </ClCompile>
     <ClCompile Include="Enemy\EnemyState.cpp" />
     <ClCompile Include="Enemy\EnemyStateManager.cpp" />
+    <ClCompile Include="Enemy\Ghost.cpp" />
     <ClCompile Include="Enemy\IEnemy.cpp">
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -603,6 +606,7 @@
       <AdditionalOptions>/Zc:__cplusplus </AdditionalOptions>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
+    <ClCompile Include="Enemy\Skelton.cpp" />
     <ClCompile Include="Enemy\Slime.cpp">
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -1009,6 +1013,7 @@
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="GUI\GameScene\GameSceneTransition\GameSceneTransition.cpp" />
+    <ClCompile Include="GUI\GameScene\MenuButton\MenuButton.cpp" />
     <ClCompile Include="GUI\GameScene\StatusBar\ExpBlock.cpp" />
     <ClCompile Include="GUI\GameScene\StatusBar\ExpProgress.cpp" />
     <ClCompile Include="GUI\GameScene\StatusBar\HPBar.cpp" />
@@ -1486,6 +1491,7 @@
     <ClInclude Include="Ability.h" />
     <ClInclude Include="AbilityContext.h" />
     <ClInclude Include="AbilityManager.h" />
+    <ClInclude Include="Annotation.h" />
     <ClInclude Include="AssetKey.h" />
     <ClInclude Include="AssetManager.h" />
     <ClInclude Include="Block.h" />
@@ -1498,6 +1504,7 @@
     <ClInclude Include="Debug.h" />
     <ClInclude Include="DebugSetting.h" />
     <ClInclude Include="Enemy\Behavior\ChasePlayerBehavior.h" />
+    <ClInclude Include="Enemy\Behavior\GhostChaseBehavior.h" />
     <ClInclude Include="Enemy\Behavior\GridChaseBehavior.h" />
     <ClInclude Include="Enemy\Behavior\IEnemyBehavior.h" />
     <ClInclude Include="Enemy\Behavior\MobAIContext.h" />
@@ -1506,7 +1513,9 @@
     <ClInclude Include="Enemy\EnemyManager.h" />
     <ClInclude Include="Enemy\EnemyState.h" />
     <ClInclude Include="Enemy\EnemyStateManager.h" />
+    <ClInclude Include="Enemy\Ghost.h" />
     <ClInclude Include="Enemy\IEnemy.h" />
+    <ClInclude Include="Enemy\Skelton.h" />
     <ClInclude Include="Enemy\Slime.h" />
     <ClInclude Include="Enemy\WhiteEye.h" />
     <ClInclude Include="Enum.h" />
@@ -1528,6 +1537,7 @@
     <ClInclude Include="GUI\GameScene\GameSceneGUIManager.h" />
     <ClInclude Include="GUI\GameScene\GameSceneMenu.h" />
     <ClInclude Include="GUI\GameScene\GameSceneTransition\GameSceneTransition.h" />
+    <ClInclude Include="GUI\GameScene\MenuButton\MenuButton.h" />
     <ClInclude Include="GUI\GameScene\StatusBar\ExpBlock.h" />
     <ClInclude Include="GUI\GameScene\StatusBar\ExpProgress.h" />
     <ClInclude Include="GUI\GameScene\StatusBar\HPBar.h" />

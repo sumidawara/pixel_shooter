@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "AbilityManager.h"
+#include "Annotation.h"
 #include "CollisionManager.h"
 #include "Player/Player.h"
 #include "World.h"
@@ -44,6 +45,7 @@ private:
 	std::shared_ptr<AbilityManager> _ptr_ability_manager;
 	std::shared_ptr<TimeManager> _ptr_time_manager;
 	std::shared_ptr<TimeLimitManager> _ptr_time_limit_manager;
+	std::shared_ptr<Annotation> _ptr_annotation;
 
 	RenderTexture _render_texture{ Scene::Size() };
 

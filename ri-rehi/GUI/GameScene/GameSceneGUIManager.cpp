@@ -143,6 +143,11 @@ void GameSceneGUIManager::onTitleBtnClicked()
 	God::getInstance().setSceneTransitionData(SceneTransitionData::Title());
 }
 
+void GameSceneGUIManager::onMenuBtnClicked()
+{
+	p_impl->setIsGamesceneMenuEnabled(not p_impl->_is_gamescene_menu_enabled);
+}
+
 //セッター
 
 void GameSceneGUIManager::setIsAbilitySelectEnabled(bool value)
