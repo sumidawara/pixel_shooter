@@ -8,19 +8,19 @@
     ],
     "fileStates": {
         "stage1.tmx": {
-            "scale": 2,
-            "selectedLayer": 2,
+            "scale": 1.28,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 362.75,
-                "y": 209.75
+                "x": 416.40625,
+                "y": 308.203125
             }
         },
         "stage2.tmx": {
             "scale": 2,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 561.75,
-                "y": 251.25
+                "x": 513,
+                "y": 358.25
             }
         },
         "stage3.tmx": {
