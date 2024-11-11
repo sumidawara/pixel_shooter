@@ -105,6 +105,7 @@ void AssetManager::registerFont()
 void AssetManager::registerPixelShader()
 {
 	PixelShaderAsset::Register(AssetKey::ps_default, HLSL{U"resources/shader/shader.hlsl", U"PS_Texture"});
+	PixelShaderAsset::Register(AssetKey::ps_grayscale, HLSL{U"resources/shader/grayscale.hlsl", U"PS"});
 }
 
 std::unique_ptr<TextureAssetData> AssetManager::image2TextureAssetData(Image image)

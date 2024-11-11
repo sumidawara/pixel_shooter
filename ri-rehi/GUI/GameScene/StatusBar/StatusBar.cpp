@@ -5,12 +5,14 @@
 #include "ExpBlock.h"
 #include "God.h"
 #include "DebugSetting.h"
+#include "KeyBlock.h"
 
 struct StatusBar::Impl
 {
 	RectF _rectf;
 	HPBlock _hpblock;
 	ExpBlock _expblock;
+	KeyBlock _keyblock;
 };
 
 StatusBar::StatusBar() : p_impl(std::make_shared<Impl>())
@@ -24,11 +26,16 @@ void StatusBar::init(Vec2 pos)
 	auto rectf = RectF{pos, size};
     p_impl->_rectf = rectf;
 
-	auto hpblock_pos = pos + Vec2{50, 40};
+	double y_padding = 30;
+
+	auto hpblock_pos = pos + Vec2{50, y_padding};
 	p_impl->_hpblock.init(hpblock_pos);
 
-	auto expblock_pos = pos + Vec2{940, 40};
+	auto expblock_pos = pos + Vec2{940, y_padding};
 	p_impl->_expblock.init(expblock_pos);
+
+	auto keyblock_pos = pos + Vec2{1300, y_padding};
+	p_impl->_keyblock.init(keyblock_pos);
 }
 
 void StatusBar::update(double delta_time)
@@ -50,4 +57,6 @@ void StatusBar::draw() const
 	p_impl->_hpblock.draw();
 
 	p_impl->_expblock.draw();
+
+	p_impl->_keyblock.draw();
 }

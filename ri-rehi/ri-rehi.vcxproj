@@ -119,6 +119,7 @@
     <ClCompile Include="AbilityContext.cpp" />
     <ClCompile Include="AbilityManager.cpp" />
     <None Include="App\resources\shader\shader.hlsl" />
+    <None Include="App\resources\shader\grayscale.hlsl" />
     <ClCompile Include="AssetKey.cpp" />
     <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="Block.cpp" />

@@ -44,6 +44,7 @@ namespace AssetKey
 	constexpr StringView pixel_b80 = U"pixel_b80";
 
 	constexpr StringView ps_default = U"ps_default";
+	constexpr StringView ps_grayscale = U"ps_grayscale";
 
 	// constexpr StringView stage1 = U"resources/world/stage1.json";
 	// constexpr StringView stage2 = U"resources/world/stage2.json";
