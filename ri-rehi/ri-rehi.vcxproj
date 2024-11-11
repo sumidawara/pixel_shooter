@@ -1012,7 +1012,9 @@
     <ClCompile Include="GUI\GameScene\StatusBar\ExpProgress.cpp" />
     <ClCompile Include="GUI\GameScene\StatusBar\HPBar.cpp" />
     <ClCompile Include="GUI\GameScene\StatusBar\HPBlock.cpp" />
+    <ClCompile Include="GUI\GameScene\StatusBar\KeyBlock.cpp" />
     <ClCompile Include="GUI\GameScene\StatusBar\StatusBar.cpp" />
+    <ClCompile Include="GUI\GameScene\TimeLimitGUI\TimeLimitGUI.cpp" />
     <ClCompile Include="ICollidable.cpp" />
     <ClCompile Include="ImageUtil.cpp" />
     <ClCompile Include="Layer.cpp" />
@@ -1037,6 +1039,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="TileIndexKey.cpp" />
+    <ClCompile Include="TimeLimitManager.cpp" />
     <ClCompile Include="TimeManager.cpp" />
     <ClCompile Include="TitleScene\TitleScene.cpp">
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -1528,7 +1531,9 @@
     <ClInclude Include="GUI\GameScene\StatusBar\ExpProgress.h" />
     <ClInclude Include="GUI\GameScene\StatusBar\HPBar.h" />
     <ClInclude Include="GUI\GameScene\StatusBar\HPBlock.h" />
+    <ClInclude Include="GUI\GameScene\StatusBar\KeyBlock.h" />
     <ClInclude Include="GUI\GameScene\StatusBar\StatusBar.h" />
+    <ClInclude Include="GUI\GameScene\TimeLimitGUI\TimeLimitGUI.h" />
     <ClInclude Include="ICollidable.h" />
     <ClInclude Include="ImageUtil.h" />
     <ClInclude Include="Layer.h" />
@@ -1549,6 +1554,7 @@
     <ClInclude Include="SceneTransitionData.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="TileIndexKey.h" />
+    <ClInclude Include="TimeLimitManager.h" />
     <ClInclude Include="TimeManager.h" />
     <ClInclude Include="TitleScene\TitleScene.h" />
     <ClInclude Include="TitleScene\TitleSceneGUI.h" />

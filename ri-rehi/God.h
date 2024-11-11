@@ -4,6 +4,7 @@
 #include "Exit.h"
 #include "Enemy/EnemyManager.h"
 #include "SceneTransitionData.h"
+#include "TimeLimitManager.h"
 #include "TimeManager.h"
 #include "Player/Player.h"
 #include "World.h"
@@ -36,6 +37,7 @@ public:
 	std::shared_ptr<GameSceneGUIManager> getPtrGameSceneGUIManager() const;
 	std::shared_ptr<AbilityManager> getPtrAbilityManager() const;
 	std::shared_ptr<TimeManager> getPtrTimeManager() const;
+	std::shared_ptr<TimeLimitManager> getTimeLimitManager() const;
 	std::shared_ptr<EnemyManager> getEnemyManager() const;
 	std::shared_ptr<Exit> getPtrExit() const;
 
@@ -53,6 +55,7 @@ public:
 	void setGameSceneGUIManager(const std::shared_ptr<GameSceneGUIManager>& ptr_gamescene_gui_manager);
 	void setAbilityManager(const std::shared_ptr<AbilityManager>& ptr_ability_manager);
 	void setTimeManager(const std::shared_ptr<TimeManager>& ptr_time_manager);
+	void setTimeLimitManager(const std::shared_ptr<TimeLimitManager>& ptr_time_limit_manager);
 	void setEnemyManager(const std::shared_ptr<EnemyManager>& ptr_enemy_manager);
 	void setPtrExit(const std::shared_ptr<Exit>& ptr_exit);
 

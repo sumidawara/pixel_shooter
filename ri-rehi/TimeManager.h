@@ -6,7 +6,6 @@ public:
 	TimeManager();
 	void init();
 	void update(double delta_time);
-	void draw();
 
 	void setGameTimeScale(double value);
 	void setIsManuallyPaused(bool value);

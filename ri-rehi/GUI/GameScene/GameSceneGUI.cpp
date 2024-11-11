@@ -7,12 +7,14 @@
 #include "God.h"
 #include "AbilitySummary/AbilitySummary.h"
 #include "GameSceneTransition/GameSceneTransition.h"
+#include "TimeLimitGUI/TimeLimitGUI.h"
 
 struct GameSceneGUI::Impl
 {
 	StatusBar _status_bar;
 	AbilitySelectBlock _ability_select_block;
 	AbilitySummary _ability_summary;
+	TimeLimitGUI _time_limit_gui;
 	GameSceneMenu _gamescene_menu;
 	GameSceneTransition _gamescene_transition;
 
@@ -27,6 +29,7 @@ void GameSceneGUI::init()
 	p_impl->_status_bar.init({0, 900});
 	p_impl->_ability_select_block.init();
 	p_impl->_ability_summary.init(Vec2{100, 100});
+	p_impl->_time_limit_gui.init();
 	p_impl->_gamescene_menu.init();
 	p_impl->_gamescene_transition.init(1.0, 1.0);
 }
@@ -60,6 +63,7 @@ void GameSceneGUI::draw() const
 
 	p_impl->_status_bar.draw();
 	p_impl->_ability_summary.draw();
+	p_impl->_time_limit_gui.draw();
 
 	if(is_ability_select_enabled)
 	{

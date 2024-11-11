@@ -19,6 +19,7 @@ public:
 	std::shared_ptr<GameSceneGUIManager> _ptr_gamescene_gui_manager;
 	std::shared_ptr<AbilityManager> _ptr_ability_manager;
 	std::shared_ptr<TimeManager> _ptr_time_manager;
+	std::shared_ptr<TimeLimitManager> _ptr_time_limit_manager;
 	std::shared_ptr<EnemyManager> _ptr_enemy_manager;
 	std::shared_ptr<Exit> _ptr_exit;
 
@@ -102,6 +103,11 @@ std::shared_ptr<TimeManager> God::getPtrTimeManager() const
 	return p_impl->_ptr_time_manager;
 }
 
+std::shared_ptr<TimeLimitManager> God::getTimeLimitManager() const
+{
+	return p_impl->_ptr_time_limit_manager;
+}
+
 std::shared_ptr<EnemyManager> God::getEnemyManager() const
 {
 	return p_impl->_ptr_enemy_manager;
@@ -177,6 +183,11 @@ void God::setAbilityManager(const std::shared_ptr<AbilityManager>& ptr_ability_m
 void God::setTimeManager(const std::shared_ptr<TimeManager>& ptr_time_manager)
 {
 	p_impl->_ptr_time_manager = ptr_time_manager;
+}
+
+void God::setTimeLimitManager(const std::shared_ptr<TimeLimitManager>& ptr_time_limit_manager)
+{
+	p_impl->_ptr_time_limit_manager = ptr_time_limit_manager;
 }
 
 void God::setEnemyManager(const std::shared_ptr<EnemyManager>& ptr_enemy_manager)

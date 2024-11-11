@@ -24,10 +24,6 @@ void TimeManager::update(double delta_time)
 
 }
 
-void TimeManager::draw()
-{
-}
-
 void TimeManager::setGameTimeScale(double value)
 {
 	p_impl->_game_timescale = value;

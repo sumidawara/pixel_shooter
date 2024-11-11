@@ -29,6 +29,7 @@ void GameScene::init()
 	_ptr_collision_manager = std::make_shared<CollisionManager>();
 	_ptr_ability_manager = std::make_shared<AbilityManager>();
 	_ptr_time_manager = std::make_shared<TimeManager>();
+	_ptr_time_limit_manager = std::make_shared<TimeLimitManager>();
 
 	_ptr_collision_manager->init();
 	God::getInstance().setCollisionManager(_ptr_collision_manager);
@@ -49,6 +50,7 @@ void GameScene::init()
 	_ptr_bullet_manager->init();
 	_ptr_ability_manager->init();
 	_ptr_time_manager->init();
+	_ptr_time_limit_manager->init();
 	_cursor.init();
 
 	_ptr_camera = std::make_shared<Camera2D>(God::getInstance().getInitialPlayerPos(), 1.0);
@@ -62,6 +64,7 @@ void GameScene::init()
 	God::getInstance().setGameSceneGUIManager(_ptr_gamescene_gui_manager);
 	God::getInstance().setAbilityManager(_ptr_ability_manager);
 	God::getInstance().setTimeManager(_ptr_time_manager);
+	God::getInstance().setTimeLimitManager(_ptr_time_limit_manager);
 	AssetManager::registerAsset();
 
 	Debug::getInstance().init();
@@ -87,6 +90,7 @@ void GameScene::update()
 		_ptr_particle_manager->update(game_delta_time);
 		_ptr_collision_manager->update(game_delta_time);
 		_ptr_bullet_manager->update(game_delta_time);
+		_ptr_time_limit_manager->update(game_delta_time);
 	}
 
 	_ptr_camera->update();
@@ -101,7 +105,8 @@ void GameScene::update()
 	writeline();
 
 	//ゲームオーバー判定 タイムオーバーも後々に実装
-	if(_ptr_player->getPtrPlayerStateManager()->getPlayerState().current_hp == 0)
+	if(_ptr_player->getPtrPlayerStateManager()->getPlayerState().current_hp == 0 ||
+		_ptr_time_limit_manager->getTimeLimitInt() <= 0)
 	{
 		God::getInstance().setSceneTransitionData(SceneTransitionData::GameOver());
 	}
@@ -196,6 +201,7 @@ void GameScene::loadNextStage()
 	_ptr_exit->init(God::getInstance().getExitPos());
 	_ptr_particle_manager->clearParticle();
 	_ptr_bullet_manager->clearBullet();
+	_ptr_time_limit_manager->reset();
 
 	_ptr_camera = std::make_shared<Camera2D>(God::getInstance().getInitialPlayerPos(), 1.0);
 	_ptr_camera->setParameters(Camera2DParameters::NoControl());

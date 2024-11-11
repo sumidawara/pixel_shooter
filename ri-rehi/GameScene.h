@@ -9,6 +9,7 @@
 #include "Particle/ParticleManager.h"
 #include "Enemy/EnemyManager.h"
 #include "Exit.h"
+#include "TimeLimitManager.h"
 #include "TimeManager.h"
 #include "GUI/CursorEx.h"
 #include "GUI/GameScene/GameSceneGUIManager.h"
@@ -42,6 +43,7 @@ private:
 	std::shared_ptr<GameSceneGUIManager> _ptr_gamescene_gui_manager;
 	std::shared_ptr<AbilityManager> _ptr_ability_manager;
 	std::shared_ptr<TimeManager> _ptr_time_manager;
+	std::shared_ptr<TimeLimitManager> _ptr_time_limit_manager;
 
 	RenderTexture _render_texture{ Scene::Size() };
 
