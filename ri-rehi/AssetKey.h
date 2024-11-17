@@ -10,6 +10,7 @@ namespace AssetKey
 	constexpr StringView slime = U"slime";
 	constexpr StringView white_eye = U"white_eye";
 	constexpr StringView ghost = U"ghost";
+	constexpr StringView skelton = U"skelton";
 	constexpr StringView sparkle = U"sparkle";
 	constexpr StringView key = U"key";
 
@@ -22,6 +23,9 @@ namespace AssetKey
 	constexpr StringView icon_reflection = U"icon_reflection";
 	constexpr StringView icon_shot_interval = U"icon_shot_interval";
 	constexpr StringView icon_sniper = U"icon_sniper";
+
+	constexpr StringView bg_title = U"title";
+	constexpr StringView bg_gameover = U"gameover";
 
 	inline std::vector<StringView> ability_icon_name_list =
 	{
@@ -43,6 +47,9 @@ namespace AssetKey
 	constexpr StringView pixel_b48 = U"pixel_b48";
 	constexpr StringView pixel_b60 = U"pixel_b60";
 	constexpr StringView pixel_b80 = U"pixel_b80";
+	constexpr StringView pixel_b100 = U"pixel_b100";
+	constexpr StringView pixel_b120 = U"pixel_b120";
+	constexpr StringView pixel_b150 = U"pixel_b150";
 
 	constexpr StringView ps_default = U"ps_default";
 	constexpr StringView ps_grayscale = U"ps_grayscale";

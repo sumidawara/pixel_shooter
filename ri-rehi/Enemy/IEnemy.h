@@ -13,7 +13,6 @@ public:
 	virtual int32 getCollisionDamage() const = 0;
 	virtual bool getIsActive() const = 0;
 	virtual bool getHasKey() const = 0;
-
 private:
 };
 

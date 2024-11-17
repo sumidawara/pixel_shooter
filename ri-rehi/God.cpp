@@ -4,8 +4,11 @@
 struct God::Impl
 {
 public:
+	//デバッグ用
+	int32 INITIAL_STAGE_NUM = 1;
+
 	//ゲーム
-	int32 _stage_num = 1;
+	int32 _stage_num = INITIAL_STAGE_NUM;
 	std::shared_ptr<World> _ptr_world;
 	std::shared_ptr<Player> _ptr_player;
 	std::shared_ptr<Camera2D> _ptr_camera;
@@ -41,6 +44,11 @@ God& God::getInstance()
 {
 	static God instance;
 	return instance;
+}
+
+int32 God::GET_INITIAL_STAGE_NUM()
+{
+	return p_impl->INITIAL_STAGE_NUM;
 }
 
 int32 God::getStageNum() const

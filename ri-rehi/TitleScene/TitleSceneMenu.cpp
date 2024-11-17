@@ -11,6 +11,8 @@ struct TitleSceneMenu::Impl
 	RectF _rectf;
 	double _rectf_thickness = 12;
 
+	bool _is_framed;
+
 	Button _start_btn;
 	Button _setting_btn;
 	Button _exit_btn;
@@ -56,13 +58,20 @@ TitleSceneMenu::TitleSceneMenu() : p_impl(std::make_shared<Impl>())
 
 void TitleSceneMenu::init()
 {
+	init(Vec2{Scene::Width() / 2, Scene::Height() / 2}, true);
+}
+
+void TitleSceneMenu::init(Vec2 pos, bool is_framed)
+{
 	Vec2 btn_size = {180, 50};
 	double btn_interval = 30 + btn_size.y;
 	AssetNameView font_asset_name = AssetKey::pixel_b48;
 
-	auto center_pos = Arg::center(Scene::Width() / 2, Scene::Height() / 2);
+	p_impl->_is_framed = is_framed;
+
+	auto rectf_pos = pos;
 	auto rectf_size = Vec2{400, 300};
-	p_impl->_rectf = RectF{center_pos, rectf_size};
+	p_impl->_rectf = RectF{rectf_pos, rectf_size};
 
 	auto base = p_impl->_rectf.pos + Vec2{p_impl->_rectf.w / 2, 60};
 	auto resume_btn_pos = base;
@@ -82,6 +91,13 @@ void TitleSceneMenu::update(double delta_time)
 
 void TitleSceneMenu::draw() const
 {
-	p_impl->_rectf.draw(Palette::Black).drawFrame(p_impl->_rectf_thickness, Palette::White);
+	if(p_impl->_is_framed)
+	{
+		p_impl->_rectf.draw(Palette::Black).drawFrame(p_impl->_rectf_thickness, Palette::White);
+	}
+	else
+	{
+		p_impl->_rectf.draw(Palette::Black);
+	}
 	p_impl->drawButton();
 }

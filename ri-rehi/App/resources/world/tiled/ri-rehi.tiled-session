@@ -3,32 +3,65 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "",
+    "activeFile": "stage3.tmx",
     "expandedProjectPaths": [
+        "."
     ],
     "fileStates": {
+        "stage0.tmx": {
+            "scale": 1.2894270833333332,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 479.6703962515653,
+                "y": 320.29728965545104
+            }
+        },
         "stage1.tmx": {
             "scale": 1.28,
-            "selectedLayer": 0,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 416.40625,
-                "y": 308.203125
+                "x": 373.828125,
+                "y": 183.59375
             }
         },
         "stage2.tmx": {
             "scale": 2,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 513,
-                "y": 358.25
+                "x": 513.25,
+                "y": 358.5
             }
         },
         "stage3.tmx": {
             "scale": 2,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": -6,
-                "y": 80.75
+                "x": 366.25,
+                "y": 262
+            }
+        },
+        "stage4.tmx": {
+            "scale": 0.9194,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 497.60713508810096,
+                "y": 244.7248205351316
+            }
+        },
+        "stage5.tmx": {
+            "scale": 1.0143229166666665,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 479.630295250321,
+                "y": 320.410783055199
+            }
+        },
+        "stage6.tmx": {
+            "scale": 1.0143229166666665,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 479.630295250321,
+                "y": 320.410783055199
             }
         },
         "tileset.tsx": {
@@ -41,10 +74,18 @@
     "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
     "map.lastUsedFormat": "tmx",
     "openFiles": [
+        "stage1.tmx",
+        "stage2.tmx",
+        "stage3.tmx",
+        "tileset.tsx"
     ],
     "project": "ri-rehi.tiled-project",
     "recentFiles": [
-        "tileset.tsx"
+        "tileset.tsx",
+        "stage0.tmx",
+        "stage1.tmx",
+        "stage2.tmx",
+        "stage3.tmx"
     ],
     "tileset.lastUsedFormat": "tsx"
 }

@@ -1,5 +1,7 @@
 ﻿#pragma once
 #include <Siv3D.hpp> // OpenSiv3D v0.6.3
+
+#include "AssetManager.h"
 #include "Player/Player.h"
 #include "DebugSetting.h"
 #include "GameoverScene/GameoverScene.h"
@@ -23,11 +25,8 @@ void Main()
 
 	Scene::SetBackground(Palette::Pink);
 
-	FileSystem::ChangeCurrentDirectory( U"E:/root/development/c++/siv3d/ri-rehi/ri-rehi/App");
-    FileSystem::ChangeCurrentDirectory( U"C:/Users/mrkei/root/development/C++/siv3d/ri-rehi/ri-rehi/App");
-    //FileSystem::ChangeCurrentDirectory( U"ri-rehi/App");
-
-	//Console << FileSystem::ModulePath();
+	AssetManager::registerAsset();
+	Debug::getInstance().init();
 
 	App manager;
 	manager.add<GameScene>(Sc_Game);

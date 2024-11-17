@@ -81,6 +81,7 @@ void WhiteEye::update(double delta_time)
 	p_impl->_enemy_state_manager.update(delta_time);
 
 	auto state = p_impl->_enemy_state_manager.getEnemyState();
+	BulletContext bullet_context;
 	MobAIContext mob_ai_context{
 		p_impl->_rectf,
 		state.walk_speed,
@@ -88,7 +89,9 @@ void WhiteEye::update(double delta_time)
 		state.view_range,
 		p_impl->_direction,
 
-		God::getInstance().getPlayer().getRect()
+		God::getInstance().getPlayer().getRect(),
+
+		bullet_context
 	};
 	p_impl->plan();
 	p_impl->_ptr_behavior->execute(mob_ai_context, delta_time);

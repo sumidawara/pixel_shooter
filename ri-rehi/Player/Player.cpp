@@ -175,6 +175,13 @@ void Player::onCollision(const ICollidable& other)
 		CollisionUtil::pushOutFromRectCollision(p_impl->_rectf, other);
 		break;
 	case T_Bullet:
+		{
+			auto ptr_bullet = dynamic_cast<const Bullet*>(&other);
+			if (ptr_bullet->getOwnerType() == T_Enemy)
+			{
+				p_impl->onDamaged(ptr_bullet->getCollisionDamage());
+			}
+		}
 		break;
 	}
 }

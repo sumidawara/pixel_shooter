@@ -8,7 +8,9 @@ MobAIContext::MobAIContext(
 	double view_range,
 	Vec2& direction,
 
-	RectF player_rectf)
+	RectF player_rectf,
+
+	BulletContext bullet_context)
 	:
 	enemy_rectf(enemy_rectf),
 	walk_speed(walk_speed),
@@ -16,7 +18,9 @@ MobAIContext::MobAIContext(
 	view_range(view_range),
 	direction(direction),
 
-	player_rectf(player_rectf)
+	player_rectf(player_rectf),
+
+	bullet_context(bullet_context)
 {
 
 }

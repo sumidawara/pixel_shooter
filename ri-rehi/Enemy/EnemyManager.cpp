@@ -3,6 +3,7 @@
 
 #include "Ghost.h"
 #include "God.h"
+#include "Skelton.h"
 #include "Slime.h"
 #include "WhiteEye.h"
 
@@ -94,7 +95,10 @@ void EnemyManager::createEnemy(EnemyType::EnemyType enemy_type, Vec2 pos)
 		break;
 	case EnemyType::Skelton:
 		{
-
+			auto _ptr_skelton = std::make_shared<Skelton>();
+			_ptr_skelton->init(pos, 1);
+			p_impl->_enemy_ptr_list.push_back(_ptr_skelton);
+			collision_manager->addICollidable(_ptr_skelton);
 		}
 		break;
 	}

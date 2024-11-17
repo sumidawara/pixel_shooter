@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include "Bullet/BulletContext.h"
 
 struct MobAIContext
 {
@@ -9,7 +10,9 @@ struct MobAIContext
 		double view_range,
 		Vec2& direction,
 
-		RectF player_rectf
+		RectF player_rectf,
+
+		BulletContext bullet_context
 	);
 
 	//敵自身のデータ
@@ -21,6 +24,8 @@ struct MobAIContext
 
 	//プレイヤーのデータ
 	RectF player_rectf;
+
+	BulletContext bullet_context;
 
 	//地形データ
 };

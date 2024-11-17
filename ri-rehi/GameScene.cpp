@@ -67,9 +67,6 @@ void GameScene::init()
 	God::getInstance().setAbilityManager(_ptr_ability_manager);
 	God::getInstance().setTimeManager(_ptr_time_manager);
 	God::getInstance().setTimeLimitManager(_ptr_time_limit_manager);
-	AssetManager::registerAsset();
-
-	Debug::getInstance().init();
 
 	//ICollidableの登録 これは将来消す
 	_ptr_collision_manager->addICollidable(_ptr_player);

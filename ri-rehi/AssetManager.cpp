@@ -74,11 +74,24 @@ void AssetManager::registerImage()
 	Image original_ghost_image{ U"resources/img/ghost.png" };
 	TextureAsset::Register(AssetKey::ghost, image2TextureAssetData(original_ghost_image.scale(SCALE_RATE, InterpolationAlgorithm::Nearest)));
 
+	//スケルトン
+	Image original_skeleton_image{ U"resources/img/skelton.png" };
+	TextureAsset::Register(AssetKey::skelton, image2TextureAssetData(original_skeleton_image.scale(SCALE_RATE, InterpolationAlgorithm::Nearest)));
+
 	//Abilityのアイコン
 	for(auto& str : AssetKey::ability_icon_name_list)
 	{
 		registerAbilityIconFromKey(str);
 	}
+
+	//Title
+	Image original_title_image{ U"resources/img/fullscreen/title_expand.png" };
+	TextureAsset::Register(AssetKey::bg_title, image2TextureAssetData(original_title_image));
+
+	//Gameover
+	Image original_gameover_image{ U"resources/img/fullscreen/gameover.png" };
+	TextureAsset::Register(AssetKey::bg_gameover, image2TextureAssetData(original_title_image));
+
 
 	//きらめきエフェクト
 	Image original_sparkle_image{ U"resources/img/sparkle.png" };
@@ -104,6 +117,9 @@ void AssetManager::registerFont()
 	FontAsset::Register(AssetKey::pixel_b48, 48, pixel_m_plus_12_bold_url);
 	FontAsset::Register(AssetKey::pixel_b60, 60, pixel_m_plus_12_bold_url);
 	FontAsset::Register(AssetKey::pixel_b80, 80, pixel_m_plus_12_bold_url);
+	FontAsset::Register(AssetKey::pixel_b100, 100, pixel_m_plus_12_bold_url);
+	FontAsset::Register(AssetKey::pixel_b120, 120, pixel_m_plus_12_bold_url);
+	FontAsset::Register(AssetKey::pixel_b150, 150, pixel_m_plus_12_bold_url);
 }
 
 void AssetManager::registerPixelShader()

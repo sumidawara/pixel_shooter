@@ -23,6 +23,9 @@ public:
 
     static God& getInstance();
 
+	//デバッグ
+	int32 GET_INITIAL_STAGE_NUM();
+
 	//ゲーム
 	int32 getStageNum() const;
 	World getWorld() const;
