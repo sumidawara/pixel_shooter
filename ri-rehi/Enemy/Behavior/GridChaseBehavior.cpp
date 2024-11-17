@@ -18,8 +18,6 @@ struct GridChaseBehavior::AdjacentBlock
 
 void GridChaseBehavior::execute(MobAIContext& mob_ai_context, double delta_time)
 {
-
-
 	auto world = God::getInstance().getWorld();
 	auto distance_field = world.getDistanceField();
 

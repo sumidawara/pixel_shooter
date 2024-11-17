@@ -154,7 +154,7 @@ void Ghost::onCollision(const ICollidable& other)
 	case T_Enemy:
 		break;
 	case T_Block:
-		CollisionUtil::pushOutFromRectCollision(p_impl->_rectf, other);
+		//CollisionUtil::pushOutFromRectCollision(p_impl->_rectf, other);
 		break;
 	case T_Bullet:
 		{

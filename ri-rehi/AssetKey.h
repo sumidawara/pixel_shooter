@@ -65,7 +65,17 @@ namespace AssetKey
 			U"resources/world/stage2.json",
 			U"resources/world/stage3.json",
 			U"resources/world/stage4.json",
-			U"resources/world/stage5.json"
+			U"resources/world/stage5.json",
+			U"resources/world/stage6.json",
+			U"resources/world/stage7.json",
+			U"resources/world/stage8.json",
+			U"resources/world/stage9.json",
+			U"resources/world/stage10.json",
+			U"resources/world/stage11.json",
+			U"resources/world/stage12.json",
+			U"resources/world/stage13.json",
+			U"resources/world/stage14.json",
+			U"resources/world/stage15.json",
 		};
 	}
 }
