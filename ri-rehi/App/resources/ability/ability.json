@@ -5,11 +5,11 @@
             "rarity":0,
             "required_id":[],
             "parameter":[{
-                "max_hp":10
+                "max_hp":5
             }],
             "title":"HP+",
             "icon_assetname":"icon_hp",
-            "description_list":["HP +10"],
+            "description_list":["HP +5"],
             "comment":""
         },
         {
@@ -17,11 +17,11 @@
             "rarity":1,
             "required_id":[],
             "parameter":[{
-                "max_hp":20
+                "max_hp":10
             }],
             "title":"HP++",
             "icon_assetname":"icon_hp",
-            "description_list":["HP +20"],
+            "description_list":["HP +10"],
             "comment":""
         },
         {
@@ -29,11 +29,11 @@
             "rarity":2,
             "required_id":[],
             "parameter":[{
-                "max_hp":50
+                "max_hp":15
             }],
             "title":"HP+++",
             "icon_assetname":"icon_hp",
-            "description_list":["HP +50"],
+            "description_list":["HP +15"],
             "comment":""
         },
         {
@@ -41,11 +41,11 @@
             "rarity":3,
             "required_id":[],
             "parameter":[{
-                "max_hp":100
+                "max_hp":20
             }],
             "title":"HP++++",
             "icon_assetname":"icon_hp",
-            "description_list":["HP +100"],
+            "description_list":["HP +20"],
             "comment":""
         },
 
@@ -67,11 +67,11 @@
             "rarity":1,
             "required_id":[],
             "parameter":[{
-                "defence":3
+                "defence":2
             }],
             "title":"防御力++",
             "icon_assetname":"icon_defence",
-            "description_list":["防御力 +3"],
+            "description_list":["防御力 +2"],
             "comment":""
         },
         {
@@ -79,11 +79,11 @@
             "rarity":2,
             "required_id":[],
             "parameter":[{
-                "defence":7
+                "defence":3
             }],
             "title":"防御力+++",
             "icon_assetname":"icon_defence",
-            "description_list":["防御力 +7"],
+            "description_list":["防御力 +3"],
             "comment":""
         },
 
@@ -99,14 +99,25 @@
             "rarity":1,
             "required_id":[],
             "parameter":[{
-                "shot_interval":-0.1
+                "shot_interval":0.1
             }],
             "title":"射撃頻度+",
             "icon_assetname":"icon_shot_interval",
             "description_list":["射撃の間隔が-0.1s"],
             "comment":""
         },
-        
+        {
+            "id":200,
+            "rarity":2,
+            "required_id":[],
+            "parameter":[{
+                "shot_interval":0.2
+            }],
+            "title":"射撃頻度+",
+            "icon_assetname":"icon_shot_interval",
+            "description_list":["射撃の間隔が-0.2s"],
+            "comment":""
+        },
 
 
 
@@ -133,11 +144,11 @@
             "rarity":1,
             "required_id":[],
             "parameter":[{
-                "ranged_damage":3
+                "ranged_damage":2
             }],
             "title":"射撃ダメージ++",
             "icon_assetname":"icon_bulletdamage",
-            "description_list":["遠距離攻撃力 +3"],
+            "description_list":["遠距離攻撃力 +2"],
             "comment":""
         },        
         {
@@ -145,11 +156,11 @@
             "rarity":2,
             "required_id":[],
             "parameter":[{
-                "ranged_damage":7
+                "ranged_damage":3
             }],
             "title":"射撃ダメージ+++",
             "icon_assetname":"icon_bulletdamage",
-            "description_list":["遠距離攻撃力 +7"],
+            "description_list":["遠距離攻撃力 +3"],
             "comment":""
         },
 
@@ -183,22 +194,6 @@
             "icon_assetname":"icon_reflection",
             "description_list":[
                 "弾丸が敵を+1回だけ反射します"
-            ],
-            "comment":""
-        },
-
-
-        {
-            "id":360,
-            "rarity":1,
-            "required_id":[],
-            "parameter":[{
-                "reflection_count":1
-            }],
-            "title":"貫通+",
-            "icon_assetname":"icon_penetrate",
-            "description_list":[
-                "弾丸が敵を+1回だけ貫通します"
             ],
             "comment":""
         }

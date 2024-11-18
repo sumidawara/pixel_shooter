@@ -72,6 +72,14 @@
                 "y": 320.410783055199
             }
         },
+        "stage8.tmx": {
+            "scale": 1.0143229166666665,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 479.630295250321,
+                "y": 320.410783055199
+            }
+        },
         "tileset.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1

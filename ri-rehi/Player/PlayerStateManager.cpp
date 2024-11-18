@@ -122,8 +122,16 @@ void PlayerStateManager::enhancePlayerState(const PlayerState& parameter)
 	p_impl->_ptr_player_state->collision_damage = current_state->collision_damage + parameter.collision_damage;
 	p_impl->_ptr_player_state->move_speed = current_state->move_speed + parameter.move_speed;
 
+	//ShotManagerの強化
+	auto new_shot_interval =  current_state->shot_interval - parameter.shot_interval;
+	p_impl->_ptr_player_state->shot_interval = new_shot_interval;
+	if(new_shot_interval < 0.1) p_impl->_ptr_player_state->shot_interval = 0.1;
+
 	//Bulletのパラメータ
 	p_impl->_ptr_player_state->ranged_damage = current_state->ranged_damage + parameter.ranged_damage;
+	p_impl->_ptr_player_state->bullet_speed = current_state->bullet_speed + parameter.bullet_speed;
+	p_impl->_ptr_player_state->bullet_range = current_state->bullet_range + parameter.bullet_range ;
+	p_impl->_ptr_player_state->reflection_count = current_state->reflection_count + parameter.reflection_count;
 }
 
 void PlayerStateManager::addExp(int32 value)

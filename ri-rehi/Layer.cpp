@@ -77,7 +77,7 @@ struct Layer::Impl
 					break;
 
 				case TileIndexKey::exit:
-					auto exit_pos = indexPos2worldPos(Point{gx, gy}, true);
+					auto exit_pos = indexPos2worldPos(Point{gx, gy}, false);
 					God::getInstance().setExitPos(exit_pos);
 					break;
 

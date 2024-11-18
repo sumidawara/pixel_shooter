@@ -126,7 +126,7 @@ void AbilityManager::rollAbility()
 {
 	p_impl->_rolled_ability_list.clear();
 
-	std::vector<int32> weight_list = {30, 40, 20, 10, 0};
+	std::vector<int32> weight_list = {50, 40, 10, 5, 0};
 	std::vector<int32> rarity_list = {0, 1, 2, 3, 4};
 	for(int32 i = 0; i < 3; i++)
 	{
