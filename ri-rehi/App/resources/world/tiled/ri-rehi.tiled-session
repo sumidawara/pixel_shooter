@@ -3,11 +3,19 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "stage3.tmx",
+    "activeFile": "stage9.tmx",
     "expandedProjectPaths": [
         "."
     ],
     "fileStates": {
+        "final_stage.tmx": {
+            "scale": 1.0143229166666665,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 479.630295250321,
+                "y": 319.9178433889603
+            }
+        },
         "stage0.tmx": {
             "scale": 1.2894270833333332,
             "selectedLayer": 2,
@@ -20,8 +28,8 @@
             "scale": 1.28,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 373.828125,
-                "y": 183.59375
+                "x": 321.484375,
+                "y": 600
             }
         },
         "stage2.tmx": {
@@ -45,7 +53,7 @@
             "selectedLayer": 2,
             "viewCenter": {
                 "x": 497.60713508810096,
-                "y": 244.7248205351316
+                "y": 239.83032412442898
             }
         },
         "stage5.tmx": {
@@ -53,7 +61,7 @@
             "selectedLayer": 2,
             "viewCenter": {
                 "x": 479.630295250321,
-                "y": 320.410783055199
+                "y": 315.9743260590501
             }
         },
         "stage6.tmx": {
@@ -69,7 +77,7 @@
             "selectedLayer": 2,
             "viewCenter": {
                 "x": 479.630295250321,
-                "y": 320.410783055199
+                "y": 315.9743260590501
             }
         },
         "stage8.tmx": {
@@ -77,7 +85,15 @@
             "selectedLayer": 2,
             "viewCenter": {
                 "x": 479.630295250321,
-                "y": 320.410783055199
+                "y": 185.83825417201544
+            }
+        },
+        "stage9.tmx": {
+            "scale": 1.0143229166666665,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 479.630295250321,
+                "y": 319.9178433889603
             }
         },
         "tileset.tsx": {
@@ -93,15 +109,28 @@
         "stage1.tmx",
         "stage2.tmx",
         "stage3.tmx",
-        "tileset.tsx"
+        "stage4.tmx",
+        "stage5.tmx",
+        "stage6.tmx",
+        "stage7.tmx",
+        "stage8.tmx",
+        "stage9.tmx",
+        "final_stage.tmx"
     ],
     "project": "ri-rehi.tiled-project",
     "recentFiles": [
-        "tileset.tsx",
-        "stage0.tmx",
         "stage1.tmx",
         "stage2.tmx",
-        "stage3.tmx"
+        "stage3.tmx",
+        "stage4.tmx",
+        "stage5.tmx",
+        "stage6.tmx",
+        "stage7.tmx",
+        "stage8.tmx",
+        "final_stage.tmx",
+        "stage9.tmx",
+        "tileset.tsx",
+        "stage0.tmx"
     ],
     "tileset.lastUsedFormat": "tsx"
 }

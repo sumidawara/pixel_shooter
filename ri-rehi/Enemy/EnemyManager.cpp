@@ -31,6 +31,22 @@ struct EnemyManager::Impl
 			}
 		}
 	}
+
+	int32 stageNum2Level()
+	{
+		int32 stage_num = God::getInstance().getStageNum();
+		if(0<= stage_num && stage_num < 5)
+		{
+			return 1;
+		}
+
+		if(5<= stage_num && stage_num < 10)
+		{
+			return 2;
+		}
+
+		return 3;
+	}
 };
 
 EnemyManager::EnemyManager() : p_impl(std::make_shared<Impl>())
@@ -72,7 +88,7 @@ void EnemyManager::createEnemy(EnemyType::EnemyType enemy_type, Vec2 pos)
 	case EnemyType::Slime:
 		{
 			auto _ptr_slime = std::make_shared<Slime>();
-			_ptr_slime->init(pos, 1);
+			_ptr_slime->init(pos, p_impl->stageNum2Level());
 			p_impl->_enemy_ptr_list.push_back(_ptr_slime);
 			collision_manager->addICollidable(_ptr_slime);
 		}
@@ -80,7 +96,7 @@ void EnemyManager::createEnemy(EnemyType::EnemyType enemy_type, Vec2 pos)
 	case EnemyType::WhiteEye:
 		{
 			auto _ptr_white_eye = std::make_shared<WhiteEye>();
-			_ptr_white_eye->init(pos, 1);
+			_ptr_white_eye->init(pos, p_impl->stageNum2Level());
 			p_impl->_enemy_ptr_list.push_back(_ptr_white_eye);
 			collision_manager->addICollidable(_ptr_white_eye);
 		}
@@ -88,7 +104,7 @@ void EnemyManager::createEnemy(EnemyType::EnemyType enemy_type, Vec2 pos)
 	case EnemyType::Ghost:
 		{
 			auto _ptr_ghost = std::make_shared<Ghost>();
-			_ptr_ghost->init(pos, 1);
+			_ptr_ghost->init(pos, p_impl->stageNum2Level());
 			p_impl->_enemy_ptr_list.push_back(_ptr_ghost);
 			collision_manager->addICollidable(_ptr_ghost);
 		}
@@ -96,7 +112,7 @@ void EnemyManager::createEnemy(EnemyType::EnemyType enemy_type, Vec2 pos)
 	case EnemyType::Skelton:
 		{
 			auto _ptr_skelton = std::make_shared<Skelton>();
-			_ptr_skelton->init(pos, 1);
+			_ptr_skelton->init(pos, p_impl->stageNum2Level());
 			p_impl->_enemy_ptr_list.push_back(_ptr_skelton);
 			collision_manager->addICollidable(_ptr_skelton);
 		}

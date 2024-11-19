@@ -10,6 +10,7 @@
 #include "Particle/DamageAmountParticle.h"
 #include "God.h"
 #include "Behavior/GridChaseBehavior.h"
+#include "Behavior/GridWanderBehavior.h"
 
 struct WhiteEye::Impl
 {
@@ -19,6 +20,7 @@ struct WhiteEye::Impl
 	EnemyStateManager _enemy_state_manager;
 
 	std::shared_ptr<StillBehavior> _ptr_still_behavior;
+	std::shared_ptr<GridWanderBehavior> _ptr_grid_wander_behavior;
 	std::shared_ptr<GridChaseBehavior> _ptr_grid_chase_behavior;
 	std::shared_ptr<IEnemyBehavior> _ptr_behavior;
 
@@ -31,7 +33,7 @@ struct WhiteEye::Impl
 
 		if (state.view_range <= distance)
 		{
-			_ptr_behavior = _ptr_grid_chase_behavior;
+			_ptr_behavior = _ptr_grid_wander_behavior;
 		}
 		else if (NEAR <= distance and distance <= (state.view_range))
 		{
@@ -58,11 +60,12 @@ void WhiteEye::init(Vec2 pos, int32 level)
 	context.basic_drop_exp = 1;
 	context.walk_speed = 350;
 	context.run_speed = 350;
-	context.view_range = 500;
+	context.view_range = 700;
 	p_impl->_enemy_state_manager.init(context, level);
 
 	//behaviorの初期化
 	p_impl->_ptr_still_behavior = std::make_shared<StillBehavior>();
+	p_impl->_ptr_grid_wander_behavior = std::make_shared<GridWanderBehavior>();
 	p_impl->_ptr_grid_chase_behavior = std::make_shared<GridChaseBehavior>();
 	p_impl->_ptr_behavior = p_impl->_ptr_still_behavior;
 

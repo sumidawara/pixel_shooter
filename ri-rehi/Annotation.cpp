@@ -27,6 +27,11 @@ struct Annotation::Impl
 	{
 
 	}
+
+	void final_stage()
+	{
+
+	}
 };
 
 Annotation::Annotation() : p_impl(std::make_shared<Impl>())
@@ -54,5 +59,7 @@ void Annotation::draw() const
 	case 3:
 		p_impl->stage3();
 		break;
+	// case AssetKey::STAGE_COUNT - 1:
+	// 	p_impl->final_stage();
 	}
 }

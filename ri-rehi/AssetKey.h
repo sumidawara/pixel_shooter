@@ -57,6 +57,7 @@ namespace AssetKey
 	// constexpr StringView stage1 = U"resources/world/stage1.json";
 	// constexpr StringView stage2 = U"resources/world/stage2.json";
 
+
 	inline std::vector<StringView> getStages()
 	{
 		return {
@@ -69,13 +70,9 @@ namespace AssetKey
 			U"resources/world/stage6.json",
 			U"resources/world/stage7.json",
 			U"resources/world/stage8.json",
-			U"resources/world/stage9.json",
-			U"resources/world/stage10.json",
-			U"resources/world/stage11.json",
-			U"resources/world/stage12.json",
-			U"resources/world/stage13.json",
-			U"resources/world/stage14.json",
-			U"resources/world/stage15.json",
+
+			U"resources/world/final_stage.json",
 		};
 	}
+	constexpr int32 STAGE_COUNT = 10;
 }

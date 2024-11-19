@@ -38,7 +38,8 @@ void GameScene::init()
 	_ptr_enemy_manager->init();
 	God::getInstance().setEnemyManager(_ptr_enemy_manager);
 
-	_ptr_world->init({0, 0}, AssetKey::getStages()[God::getInstance().getStageNum()]);
+	auto stage_file_path = AssetKey::getStages()[God::getInstance().getStageNum()];
+	_ptr_world->init({0, 0}, stage_file_path);
 	God::getInstance().setPtrWorld(_ptr_world);
 
 	_ptr_player->init(God::getInstance().getInitialPlayerPos());

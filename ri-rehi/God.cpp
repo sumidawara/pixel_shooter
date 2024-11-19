@@ -5,7 +5,7 @@ struct God::Impl
 {
 public:
 	//デバッグ用
-	int32 INITIAL_STAGE_NUM = 1;
+	int32 INITIAL_STAGE_NUM = 9;
 
 	//ゲーム
 	int32 _stage_num = INITIAL_STAGE_NUM;
