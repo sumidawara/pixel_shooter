@@ -26,6 +26,7 @@ void TitleSceneGUI::update(double delta_time)
 void TitleSceneGUI::draw() const
 {
 	TextureAsset(AssetKey::bg_title).draw();
-	FontAsset(AssetKey::pixel_b120)(U"Title").draw(200, 200);
+	FontAsset(AssetKey::pixel_b120)(U"Pixel").draw(200, 200);
+	FontAsset(AssetKey::pixel_b120)(U"Shooter").draw(200, 360);
 	p_impl->_titlescene_menu.draw();
 }

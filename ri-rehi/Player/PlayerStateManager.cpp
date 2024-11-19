@@ -16,7 +16,7 @@ struct PlayerStateManager::Impl
 
 	int32 expCurveFunction(int32 level)
 	{
-		std::vector<int32> exp_list = {2, 4, 9, 16, 25, 36, 49, 64, 81, 100};
+		std::vector<int32> exp_list = {2, 4, 7, 11, 16, 22, 29, 37, 46, 56};
 		if(level < exp_list.size())
 		{
 			return exp_list[level - 1];
@@ -76,8 +76,8 @@ void PlayerStateManager::init()
 	p_impl->_ptr_player_state->current_exp = 0;
 
 	//ShotManagerのパラメータ
-	p_impl->_ptr_player_state->shot_interval = 0.3;
-	p_impl->_ptr_player_state->n_way_front_shot = 3;
+	p_impl->_ptr_player_state->shot_interval = 0.5;
+	p_impl->_ptr_player_state->n_way_front_shot = 1;
 	p_impl->_ptr_player_state->n_way_side_shot = 0;
 	p_impl->_ptr_player_state->n_way_back_shot = 0;
 	p_impl->_ptr_player_state->front_angle = 60;

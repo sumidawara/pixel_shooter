@@ -21,7 +21,14 @@ void TimeManager::init()
 
 void TimeManager::update(double delta_time)
 {
-
+	if(KeyShift.pressed())
+	{
+		p_impl->_game_timescale = 2.0;
+	}
+	else
+	{
+		p_impl->_game_timescale = 1.0;
+	}
 }
 
 void TimeManager::setGameTimeScale(double value)

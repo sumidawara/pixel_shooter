@@ -89,7 +89,7 @@ struct Player::Impl
 			//HP更新
 			auto player_state = _ptr_player_state_manager->getPlayerState();
 			int32 damage_amount = damage_from_enemy - player_state.defence;
-			if (damage_amount < 0) damage_amount = 0;
+			if (damage_amount <= 0) damage_amount = 1;
 			_ptr_player_state_manager->setCurrentHP(player_state.current_hp - damage_amount);
 
 			//DamageAmountEffect

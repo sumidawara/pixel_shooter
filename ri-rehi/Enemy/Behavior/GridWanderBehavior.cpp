@@ -33,26 +33,28 @@ void GridWanderBehavior::execute(MobAIContext& mob_ai_context, double delta_time
 		AdjacentBlock({-1, 0})
 	};
 
+	std::vector<AdjacentBlock> appropriate_adjacent_blocks;
+
 	//距離を求める
 	for (auto& adjacent_block : adjacent_blocks)
 	{
 		if(not GridUtil::isGridIndexValid(index_pos + adjacent_block.direction, world.getSize()))
 		{
-			//return;
+			return;
 		}
 
 		adjacent_block.distance = distance_field->at(index_pos + adjacent_block.direction);
-		if(adjacent_block.distance == -1) adjacent_block.distance = 9999;
+		if(adjacent_block.distance != -1)
+		{
+			appropriate_adjacent_blocks.push_back(adjacent_block);
+		}
 	}
 
-	//距離の小さいものを選ぶ
-	auto min_it = std::min_element(adjacent_blocks.begin(), adjacent_blocks.end(),
-		[](const AdjacentBlock& a, const AdjacentBlock& b)
-		{
-			return a.distance < b.distance;
-		});
+	//適当に選ぶ
+	int32 random_index = Random(0, static_cast<int32>(appropriate_adjacent_blocks.size() - 1));
+	auto planned_direction = appropriate_adjacent_blocks[random_index];
 
-	if(min_it->direction != previous_dir)
+	if(planned_direction.direction != previous_dir)
 	{
 		//早すぎると過ぎてしまう
 		if(MathEx::distance(enemy_center_pos, block_center_pos) > 20)
@@ -64,8 +66,8 @@ void GridWanderBehavior::execute(MobAIContext& mob_ai_context, double delta_time
 		}
 	}
 
-	mob_ai_context.direction = min_it->direction;
-	previous_dir = min_it->direction;
+	mob_ai_context.direction = planned_direction.direction;
+	previous_dir = planned_direction.direction;
 
 	auto move_amount = mob_ai_context.direction.normalize() * mob_ai_context.run_speed * delta_time;
 	mob_ai_context.enemy_rectf.moveBy(move_amount);

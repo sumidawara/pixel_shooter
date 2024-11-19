@@ -25,5 +25,6 @@ void GameoverSceneGUI::update(double delta_time)
 
 void GameoverSceneGUI::draw() const
 {
+	FontAsset(AssetKey::pixel_b80)(U"GAME OVER").drawAt(Scene::Width() / 2, 310);
 	p_impl->_gameover_menu.draw();
 }

@@ -19,7 +19,13 @@ void Main()
 	Scene::SetTextureFilter(TextureFilter::Nearest);
 	Scene::SetResizeMode(ResizeMode::Keep);
 
-	//System::SetTerminationTriggers(UserAction::CloseButtonClicked);
+	Window::SetTitle(U"Pixel Shooter");
+
+#if _DEBUG
+	System::SetTerminationTriggers(UserAction::Default);
+#elif
+	System::SetTerminationTriggers(UserAction::CloseButtonClicked);
+#endif
 
 	// RenderTextureを拡大描画時にぼやけないように：
 	const ScopedRenderStates2D state(SamplerState::ClampNearest);

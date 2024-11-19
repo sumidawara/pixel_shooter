@@ -50,9 +50,31 @@ struct AbilityManager::Impl
 				{
 					context.parameter.defence = raw_parameter[U"defence"].get<int32>();
 				}
+
+
+
+				if(raw_parameter.contains(U"shot_interval"))
+				{
+					context.parameter.shot_interval = raw_parameter[U"shot_interval"].get<int32>();
+				}
+
+
+
 				if(raw_parameter.contains(U"ranged_damage"))
 				{
 					context.parameter.ranged_damage = raw_parameter[U"ranged_damage"].get<int32>();
+				}
+				if(raw_parameter.contains(U"bullet_range"))
+				{
+					context.parameter.bullet_range = raw_parameter[U"bullet_range"].get<int32>();
+				}
+				if(raw_parameter.contains(U"bullet_speed"))
+				{
+					context.parameter.bullet_speed = raw_parameter[U"bullet_speed"].get<int32>();
+				}
+				if(raw_parameter.contains(U"reflection_count"))
+				{
+					context.parameter.reflection_count = raw_parameter[U"reflection_count"].get<int32>();
 				}
 			}
 

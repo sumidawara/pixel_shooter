@@ -57,7 +57,7 @@
     <OutDir>$(SolutionDir)Intermediate\$(ProjectName)\Release\</OutDir>
     <IntDir>$(SolutionDir)Intermediate\$(ProjectName)\Release\Intermediate\</IntDir>
     <LocalDebuggerWorkingDirectory>$(ProjectDir)App</LocalDebuggerWorkingDirectory>
-    <IncludePath>$(SIV3D_0_6_15)\include;$(SIV3D_0_6_15)\include\ThirdParty;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir);$(SIV3D_0_6_15)\include;$(SIV3D_0_6_15)\include\ThirdParty;$(IncludePath)</IncludePath>
     <LibraryPath>$(SIV3D_0_6_15)\lib\Windows;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -132,22 +132,22 @@
     <ClCompile Include="CollisionUtil.cpp" />
     <ClCompile Include="Debug.cpp" />
     <ClCompile Include="DebugSetting.cpp" />
-    <ClCompile Include="Enemy\Behavior\ChasePlayerBehavior.cpp"/>
+    <ClCompile Include="Enemy\Behavior\ChasePlayerBehavior.cpp" />
     <ClCompile Include="Enemy\Behavior\GhostChaseBehavior.cpp" />
     <ClCompile Include="Enemy\Behavior\GridChaseBehavior.cpp" />
     <ClCompile Include="Enemy\Behavior\GridWanderBehavior.cpp" />
-    <ClCompile Include="Enemy\Behavior\IEnemyBehavior.cpp"/>
-    <ClCompile Include="Enemy\Behavior\MobAIContext.cpp"/>
+    <ClCompile Include="Enemy\Behavior\IEnemyBehavior.cpp" />
+    <ClCompile Include="Enemy\Behavior\MobAIContext.cpp" />
     <ClCompile Include="Enemy\Behavior\SkeltonShotBehavior.cpp" />
-    <ClCompile Include="Enemy\Behavior\StillBehavior.cpp"/>
-    <ClCompile Include="Enemy\Behavior\WanderBehavior.cpp"/>
-    <ClCompile Include="Enemy\EnemyManager.cpp"/>
+    <ClCompile Include="Enemy\Behavior\StillBehavior.cpp" />
+    <ClCompile Include="Enemy\Behavior\WanderBehavior.cpp" />
+    <ClCompile Include="Enemy\EnemyManager.cpp" />
     <ClCompile Include="Enemy\EnemyState.cpp" />
     <ClCompile Include="Enemy\EnemyStateManager.cpp" />
     <ClCompile Include="Enemy\Ghost.cpp" />
-    <ClCompile Include="Enemy\IEnemy.cpp"/>
+    <ClCompile Include="Enemy\IEnemy.cpp" />
     <ClCompile Include="Enemy\Skelton.cpp" />
-    <ClCompile Include="Enemy\Slime.cpp"/>
+    <ClCompile Include="Enemy\Slime.cpp" />
     <ClCompile Include="Enemy\WhiteEye.cpp" />
     <ClCompile Include="Enum.cpp" />
     <ClCompile Include="Exit.cpp" />
@@ -159,7 +159,7 @@
     <ClCompile Include="GameoverScene\GameoverMenu.cpp" />
     <ClCompile Include="GameoverScene\GameoverSceneGUI.cpp" />
     <ClCompile Include="GameoverScene\GameoverSceneGUIManager.cpp" />
-    <ClCompile Include="GameScene.cpp"/>
+    <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="God.cpp" />
     <ClCompile Include="GraphicSetting.cpp" />
     <ClCompile Include="GridUtil.cpp" />
@@ -168,9 +168,9 @@
     <ClCompile Include="GUI\GameScene\AbilitySelectBlock\AbilitySelectBlock.cpp" />
     <ClCompile Include="GUI\GameScene\AbilitySelectBlock\AbilitySelectTile.cpp" />
     <ClCompile Include="GUI\GameScene\AbilitySummary\AbilitySummary.cpp" />
-    <ClCompile Include="GUI\GameScene\GameSceneGUI.cpp"/>
-    <ClCompile Include="GUI\GameScene\GameSceneGUIManager.cpp"/>
-    <ClCompile Include="GUI\GameScene\GameSceneMenu.cpp"/>
+    <ClCompile Include="GUI\GameScene\GameSceneGUI.cpp" />
+    <ClCompile Include="GUI\GameScene\GameSceneGUIManager.cpp" />
+    <ClCompile Include="GUI\GameScene\GameSceneMenu.cpp" />
     <ClCompile Include="GUI\GameScene\GameSceneTransition\GameSceneTransition.cpp" />
     <ClCompile Include="GUI\GameScene\MenuButton\MenuButton.cpp" />
     <ClCompile Include="GUI\GameScene\StatusBar\ExpBlock.cpp" />
@@ -206,10 +206,10 @@
     <ClCompile Include="TileIndexKey.cpp" />
     <ClCompile Include="TimeLimitManager.cpp" />
     <ClCompile Include="TimeManager.cpp" />
-    <ClCompile Include="TitleScene\TitleScene.cpp"/>
-    <ClCompile Include="TitleScene\TitleSceneGUI.cpp"/>
+    <ClCompile Include="TitleScene\TitleScene.cpp" />
+    <ClCompile Include="TitleScene\TitleSceneGUI.cpp" />
     <ClCompile Include="TitleScene\TitleSceneGUIManager.cpp" />
-    <ClCompile Include="TitleScene\TitleSceneMenu.cpp"/>
+    <ClCompile Include="TitleScene\TitleSceneMenu.cpp" />
     <ClCompile Include="World.cpp" />
   </ItemGroup>
   <ItemGroup>

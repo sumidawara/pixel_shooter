@@ -27,13 +27,16 @@ struct GameSceneGUIManager::Impl
 	double _accumulated_inputlock_time = 0.0;
 	double _threshold_inputlock_time = 0.4;
 
+
 	void input()
 	{
+#ifdef _DEBUG
 		//Menu表示
 		if(KeyP.down())
 		{
 			setIsGamesceneMenuEnabled(not _is_gamescene_menu_enabled);
 		}
+#endif
 	}
 
 	//トランジションがフェードイン
