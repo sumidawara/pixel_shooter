@@ -7,6 +7,7 @@
 #include "GameoverScene/GameoverScene.h"
 
 #include "GameScene.h"
+#include "GameClearScene/GameClearScene.h"
 #include "TitleScene/TitleScene.h"
 
 
@@ -25,15 +26,18 @@ void Main()
 
 	Scene::SetBackground(Palette::Pink);
 
+    FileSystem::ChangeCurrentDirectory( U"C:/Users/mrkei/root/development/C++/siv3d/ri-rehi/ri-rehi/App");
+    
 	AssetManager::registerAsset();
 	Debug::getInstance().init();
 
 	App manager;
 	manager.add<GameScene>(Sc_Game);
 	manager.add<GameoverScene>(Sc_Gameover);
+    manager.add<GameClearScene>(Sc_GameClear);
 	manager.add<TitleScene>(Sc_Title);
 
-	manager.init(Sc_Game, 500);
+	manager.init(Sc_GameClear, 500);
 
 	while (System::Update())
 	{

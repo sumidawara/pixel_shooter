@@ -29,7 +29,8 @@ enum SceneType
 	Sc_None,
 	Sc_Title,
 	Sc_Game,
-	Sc_Gameover
+	Sc_Gameover,
+    Sc_GameClear,
 };
 
 namespace EnemyType

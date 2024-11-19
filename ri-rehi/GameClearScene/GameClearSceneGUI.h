@@ -2,6 +2,7 @@
 
 class GameClearSceneGUI
 {
+public:
     GameClearSceneGUI();
     void init();
     void update(double delta_time);

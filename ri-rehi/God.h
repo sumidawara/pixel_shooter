@@ -8,6 +8,7 @@
 #include "TimeManager.h"
 #include "Player/Player.h"
 #include "World.h"
+#include "GameClearScene/GameClearSceneGUIManager.h"
 #include "GameoverScene/GameoverSceneGUIManager.h"
 #include "GUI/GameScene/GameSceneGUI.h"
 #include "GUI/GameScene/GameSceneGUIManager.h"
@@ -71,6 +72,11 @@ public:
 	std::shared_ptr<GameoverSceneGUIManager> getGameoverSceneGUIManager() const;
 
 	void setGameoverSceneGUIManager(const std::shared_ptr<GameoverSceneGUIManager>& value);
+
+    //ゲームクリアー
+    std::shared_ptr<GameClearSceneGUIManager> getGameClearSceneGUIManager() const;
+
+    void setGameClearSceneGUIManager(const std::shared_ptr<GameClearSceneGUIManager>& value);
 
 	//共通
 	SceneTransitionData getSceneTransitionData() const;

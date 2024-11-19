@@ -28,7 +28,7 @@ void GameClearScene::init()
     p_impl->_gameclear_scene_gui->init();
     p_impl->_gameclear_scene_gui_manager->init();
 
-    God::getInstance().setGameoverSceneGUIManager(p_impl->_gameover_scene_gui_manager);
+    God::getInstance().setGameClearSceneGUIManager(p_impl->_gameclear_scene_gui_manager);
 }
 
 void GameClearScene::update()

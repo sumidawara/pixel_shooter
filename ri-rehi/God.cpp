@@ -1,6 +1,8 @@
 ﻿#include "stdafx.h"
 #include "God.h"
 
+class GameClearSceneGUIManager;
+
 struct God::Impl
 {
 public:
@@ -32,6 +34,9 @@ public:
 	//ゲームオーバー
 	std::shared_ptr<GameoverSceneGUIManager> _ptr_gameoverscene_gui_manager;
 
+    //ゲームクリア
+    std::shared_ptr<GameClearSceneGUIManager> _ptr_gameclearscene_gui_manager;
+    
 	//共通
 	SceneTransitionData _scene_transition_data;
 };
@@ -226,6 +231,16 @@ std::shared_ptr<GameoverSceneGUIManager> God::getGameoverSceneGUIManager() const
 void God::setGameoverSceneGUIManager(const std::shared_ptr<GameoverSceneGUIManager>& value)
 {
 	p_impl->_ptr_gameoverscene_gui_manager = value;
+}
+
+std::shared_ptr<GameClearSceneGUIManager> God::getGameClearSceneGUIManager() const
+{
+    return p_impl->_ptr_gameclearscene_gui_manager;
+}
+
+void God::setGameClearSceneGUIManager(const std::shared_ptr<GameClearSceneGUIManager>& value)
+{
+    p_impl->_ptr_gameclearscene_gui_manager = value;
 }
 
 

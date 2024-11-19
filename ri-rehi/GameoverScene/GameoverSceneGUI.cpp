@@ -1,6 +1,7 @@
 ﻿#include "stdafx.h"
 #include "GameoverSceneGUI.h"
 
+#include "AssetKey.h"
 #include "GameoverMenu.h"
 
 struct GameoverSceneGUI::Impl
