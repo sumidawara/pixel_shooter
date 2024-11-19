@@ -1,5 +1,7 @@
 ﻿#include "stdafx.h"
 #include "GameSceneGUIManager.h"
+
+#include "AssetKey.h"
 #include "Enum.h"
 
 #include "Debug.h"
@@ -44,14 +46,28 @@ struct GameSceneGUIManager::Impl
 	//トランジションがフェードアウト
 	void onEnterTransitionEnding()
 	{
-		//ステージ数のインクリメント
-		auto next_stage_num = God::getInstance().getStageNum() + 1;
-		God::getInstance().setStageNum(next_stage_num);
+		//ステージ数のインクリメント　 //ゲームクリアかどうかを判定
+		auto current_stage_num = God::getInstance().getStageNum();
 
-		//SceneTransitionDataの作成
-		auto transition_data = SceneTransitionData::Game();
-		transition_data.setIsGameSceneToGameScene(true);
-		God::getInstance().setSceneTransitionData(transition_data);
+	    //ゲームクリアかどうかを判定
+	    int32 stage_count = AssetKey::getStages().size();
+	    if(current_stage_num == stage_count - 1)
+	    {
+	        //ゲームクリア画面へ遷移
+	        auto transition_data = SceneTransitionData::GameClear();
+	        transition_data.setIsGameSceneToGameScene(true);
+	        God::getInstance().setSceneTransitionData(transition_data);
+	    }
+        else
+        {
+            int32 next_stage_num = current_stage_num + 1;
+            God::getInstance().setStageNum(next_stage_num);
+
+            //次のステージへ
+            auto transition_data = SceneTransitionData::Game();
+            transition_data.setIsGameSceneToGameScene(true);
+            God::getInstance().setSceneTransitionData(transition_data);
+        }
 	}
 
 	//トランジションが完全に終了

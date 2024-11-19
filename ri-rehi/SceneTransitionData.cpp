@@ -67,3 +67,10 @@ SceneTransitionData SceneTransitionData::Title()
 	scene_transition_data.init(Sc_Title, 1000, false);
 	return scene_transition_data;
 }
+
+SceneTransitionData SceneTransitionData::GameClear()
+{
+    SceneTransitionData scene_transition_data;
+    scene_transition_data.init(Sc_GameClear, 1000, false);
+    return scene_transition_data;
+}

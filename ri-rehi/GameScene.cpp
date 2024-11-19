@@ -117,6 +117,12 @@ void GameScene::update()
 		God::getInstance().setSceneTransitionData(SceneTransitionData::None());
 		changeScene(Sc_Gameover, scene_transition_data.getTransitionTimeMillisecond());
 	}
+    //??? -> ゲームクリアー
+    if(scene_transition_data.getDestinationSceneType() == Sc_GameClear)
+    {
+        God::getInstance().setSceneTransitionData(SceneTransitionData::None());
+        changeScene(Sc_GameClear, scene_transition_data.getTransitionTimeMillisecond());
+    }
 	//？？？ -> タイトル
 	if(scene_transition_data.getDestinationSceneType() == Sc_Title)
 	{

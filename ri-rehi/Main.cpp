@@ -37,7 +37,7 @@ void Main()
     manager.add<GameClearScene>(Sc_GameClear);
 	manager.add<TitleScene>(Sc_Title);
 
-	manager.init(Sc_GameClear, 500);
+	manager.init(Sc_Game, 500);
 
 	while (System::Update())
 	{

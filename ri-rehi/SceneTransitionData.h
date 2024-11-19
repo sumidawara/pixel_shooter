@@ -17,6 +17,7 @@ public:
 	static SceneTransitionData Game();
 	static SceneTransitionData GameOver();
 	static SceneTransitionData Title();
+    static SceneTransitionData GameClear();
 
 private:
 	struct Impl;
