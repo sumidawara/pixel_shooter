@@ -152,6 +152,10 @@
     <ClCompile Include="Enum.cpp" />
     <ClCompile Include="Exit.cpp" />
     <ClCompile Include="FrameSequencer.cpp" />
+    <ClCompile Include="GameClearScene\GameClearMenu.cpp" />
+    <ClCompile Include="GameClearScene\GameClearScene.cpp" />
+    <ClCompile Include="GameClearScene\GameClearSceneGUI.cpp" />
+    <ClCompile Include="GameClearScene\GameClearSceneGUIManager.cpp" />
     <ClCompile Include="GameoverScene\GameoverMenu.cpp" />
     <ClCompile Include="GameoverScene\GameoverSceneGUI.cpp" />
     <ClCompile Include="GameoverScene\GameoverSceneGUIManager.cpp" />
@@ -447,6 +451,10 @@
     <ClInclude Include="Enum.h" />
     <ClInclude Include="Exit.h" />
     <ClInclude Include="FrameSequencer.h" />
+    <ClInclude Include="GameClearScene\GameClearMenu.h" />
+    <ClInclude Include="GameClearScene\GameClearScene.h" />
+    <ClInclude Include="GameClearScene\GameClearSceneGUI.h" />
+    <ClInclude Include="GameClearScene\GameClearSceneGUIManager.h" />
     <ClInclude Include="GameoverScene\GameoverMenu.h" />
     <ClInclude Include="GameoverScene\GameoverSceneGUI.h" />
     <ClInclude Include="GameoverScene\GameoverSceneGUIManager.h" />
